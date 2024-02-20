@@ -1,0 +1,12 @@
+body {
+    padding: 0;
+    margin: 0;
+}
+
+.banner {
+    background-color: darkolivegreen; /* color for the banner */
+    color: #ffffff; /* color for the text */
+    padding: 5px; /* add padding to the banner */
+    text-align: center; /* center align text */
+    font-family: 'Helvetica', sans-serif
+}
