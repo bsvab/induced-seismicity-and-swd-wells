@@ -47,14 +47,23 @@ The visualization toolkit will consist of the following interconnected component
 
 ![Layered Geomap Example](/images/proposal_images/animation.png "Layered Geomap Example")
 
-- **Time-Series Plots**: The tool will generate time-series plots that allow users to examine trends and correlations. These plots will feature:
-  - Mean pore pressure increase over time (CMG gridded model data)
-  - Wastewater injection rates (public domain data)
-  - Earthquake frequency (TexNet data)
+- **Time-Series Plots (Conditional)**: Subject to the scope and timeframe of the project, the tool aims to include time-series plots that allow users to examine trends and correlations. These plots will feature mean pore pressure increase over time, wastewater injection rates, and earthquake frequency, offering detailed insights if project timelines permit.
+
 ![Layered Geomap Example](/images/proposal_images/time_series.png "Layered Geomap Example")
-### 2. User-Driven Data Exploration
-- **Interactive Selection Tools**: Users will be able to specify parameters such as geographic location (x,y), radius for data extraction, and time range for analysis. This customization will allow for focused investigation of specific areas within the Delaware Basin.
-- **Synchronized Animation and Plotting**: As users run the animation on the geomap, synchronized time-series plots will update in real time to reflect the data corresponding to the chosen location
+
+
+### 2. Web Interface and Navigation
+To effectively organize and display the diverse array of visualizations developed across different projects, the tool will feature a web interface housing several tabs, each dedicated to specific sets of visualizations.
+
+- **Tabbed Interface for Visualization Projects**:  
+The web interface will incorporate a tabbed structure to facilitate easy navigation between different visualization sets:
+
+      Project 1 Visualizations Tab: This tab will showcase visualizations from the first project, including Piper plots, interactive geomaps, and box and violin plots for each basin. Users will have the flexibility to select basins of interest from a dropdown menu, allowing for customized data exploration.
+
+      Project 3 Visualizations Tab: A separate tab will display the visualizations developed in project 3, detailing the advanced analyses and insights derived from this phase of the work.
+      
+      Future Expansion: The design anticipates the addition of more tabs to accommodate visualizations from the final project and any subsequent analyses. This approach ensures that the tool remains scalable and adaptable, providing a comprehensive resource for users.
+
 
 ### 3. Technologies and Tools
 - **Data Sources**:Integration of TexNet earthquake data, SWD well injection rate data, and CMG gridded model data.
