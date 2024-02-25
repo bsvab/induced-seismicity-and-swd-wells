@@ -3,26 +3,182 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Induced Seismic Activity and Salt Water Disposal Well Injection Rates in the Delaware Basin</title>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <title>Produced Water Data & Analysis</title>
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet"> <!-- Bootstrap -->
     <link rel="stylesheet" type="text/css" href="static/style.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/PapaParse/5.3.0/papaparse.min.js"></script>
 </head>
 <body>
     
-    <!-- Banner Title Section -->
-    <div class="container-fluid banner">
-        <h2>Induced Seismic Activity & Salt Water Disposal Well Injection Rates in the Delaware Basin</h2>
-        <p><em>Use the interactive map below to explore class II injection well data over time.</em></p>
-    </div>
+    <div class="container mt-3">
+        
+        <!-- Navigation Tabs via Bootstrap -->
+        <ul class="nav nav-tabs" id="myTab" role="tablist">
+            <li class="nav-item">
+                <a class="nav-link active" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true">Home</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" id="seismic-tab" data-toggle="tab" href="#seismic" role="tab" aria-controls="seismic" aria-selected="false">Induced Seismic Activity & Injection Wells</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" id="chemistry-tab" data-toggle="tab" href="#chemistry" role="tab" aria-controls="chemistry" aria-selected="false">Produced Water Chemistry</a>
+            </li>
+        </ul>
 
-    <!-- Content Section -->
-    <div class="container-fluid">
-        <div class="row">
-        <div class="col-md-12">
-            <p>Main content goes here...</p>
-        </div>
+        <div class="tab-content" id="myTabContent">
+            
+            <!-- Home Tab -->
+            <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
+
+                <!-- Banner Title Section -->
+                <div class="container-fluid banner">
+                    <h3>Home Page... TBD</h3>
+                    <p><em>Some subtitle here... TBD</em></p>
+                </div>
+
+                <!-- Content Section -->
+                <div class="container-fluid">
+                    <div class="row">
+                    <div class="col-md-12">
+                        <p>Content goes here...</p>
+                    </div>
+                    </div>
+                </div>
+
+                <!-- Side-by-side Containers -->
+                <div class="container-fluid">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="container-fluid">
+                                <h4>Induced Seismic Activity & Injection Wells | Abstract</h4>
+                                <p>Content goes here...</p>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="container-fluid">
+                                <h4>Produced Water Chemistry | Abstract</h4>
+                                <p><br>Produced water, a byproduct of oil and gas extraction, poses environmental challenges due to its complex chemical composition and high salinity. 
+                                    This project focuses on two key objectives: analyzing the chemistry of produced water with a focus on scaling elements and evaluating the 
+                                    availability of lithium for potential extraction. Utilizing data from the 
+                                    <a href="https://data.usgs.gov/datacatalog/data/USGS:59d25d63e4b05fe04cc235f9">United States Geological Survey (USGS)</a>, a comprehensive methodology 
+                                    for data cleaning and filtering is employed to ensure accuracy.
+                                    <br><br>
+                                    The analysis encompasses key elements such as Sodium, Calcium, Chloride, Sulfate, and Magnesium, with a focus on Total Dissolved Solids (TDS) 
+                                    greater than 35,000 ppm. Applying natural chemical balance conditions refines the dataset, and stringent charge balance criteria are employed 
+                                    for reliability. Missing data are addressed with tailored strategies respecting chemical properties.
+                                    <br><br>
+                                    Visualizations include box and violin plots showcasing elemental concentrations across geological basins, Piper plots for water type 
+                                    classification, and interactive maps revealing scaling element and lithium concentration clusters. The methodology ensures a clear representation 
+                                    of scaling element and lithium distribution and facilitates insights into spatial patterns. Furthermore, the project introduces a linear regression 
+                                    analysis on lithium concentration versus depth to investigate whether a relationship is present.
+                                    <br><br>
+                                    In conclusion, this research provides a nuanced understanding of produced water chemistry, supports sustainable water management, aligns with DOE 
+                                    goals, and explores the potential for resource recovery. The methodologies presented are adaptable, promoting transparency and fostering 
+                                    environmentally responsible practices in the oil and gas industry.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+            
+            <!-- Seismic Tab -->
+            <div class="tab-pane fade" id="seismic" role="tabpanel" aria-labelledby="seismic-tab">
+                
+                <!-- Banner Title Section -->
+                <div class="container-fluid banner">
+                    <h3>Induced Seismic Activity & Salt Water Disposal Well Injection Rates in the Delaware Basin</h3>
+                    <p><em>Use the interactive map below to explore class II injection well data over time.</em></p>
+                </div>
+
+                <!-- Content Section -->
+                <div class="container-fluid">
+                    <div class="row">
+                    <div class="col-md-12">
+                        <p>Main content goes here...</p>
+                    </div>
+                    </div>
+                </div>
+
+            </div>
+
+            <!-- Chemistry Tab -->
+            <div class="tab-pane fade" id="chemistry" role="tabpanel" aria-labelledby="chemistry-tab">
+                
+                <!-- Banner Title Section -->
+                <div class="container-fluid banner">
+                    <h3>Visualization of Produced Water Chemistry</h3>
+                    <p><em>Use the dropdown menu below to explore produced water chemistry data for the desired basin.</em></p>
+                </div>
+
+                <!-- Content Section -->
+                <div class="container-fluid">
+                    <div class="row">
+                    <div class="col-md-12">
+                        <p>Main content goes here...</p>
+                    </div>
+                    </div>
+                </div>
+
+                <!-- Containers for Dropdown & Visuals -->
+                <div class="row">
+                    
+                    <!-- Example split danger button -->
+                    <div class="btn-group">
+                        <button type="button" class="btn btn-basin">Select Basin</button>
+                        <button type="button" class="btn btn-basin dropdown-toggle dropdown-toggle-split" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <span class="sr-only">Toggle Dropdown</span>
+                        </button>
+                        <div class="dropdown-menu">
+                            <li><a class="dropdown-item" href="#">Action</a></li>
+                            <li><a class="dropdown-item" href="#">Another action</a></li>
+                            <li><a class="dropdown-item" href="#">Something else here</a></li>
+                            <div class="dropdown-divider"></div>
+                            <li><a class="dropdown-item" href="#">Separated link</a></li>
+                        </div>
+                    </div>
+                    
+                    <div class="col-md-12">
+                        <div class="well">
+                            <h5>Basin:</h5>
+                            <select id="selectBasin" onchange="optionChanged(this.value)"></select>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-md-6">
+                        <div id="violin"></div>
+                    </div>
+
+                    <div class="col-md-6">
+                        <div id="boxplot"></div>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-md-4">
+                        <div id="piperStandard"></div>
+                    </div>
+
+                    <div class="col-md-4">
+                        <div id="piperContour"></div>
+                    </div>
+
+                    <div class="col-md-4">
+                        <div id="piperColorful"></div>
+                    </div>
+                </div>
+
+            </div>
         </div>
     </div>
+      
+    <!-- Bootstrap JS (optional) - This is only needed if you want to use Bootstrap's JavaScript components -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script src="./static/app.js"></script>
 
 </body>
 </html>
