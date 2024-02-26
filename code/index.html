@@ -107,43 +107,53 @@
                 
                 <!-- Banner Title Section -->
                 <div class="container-fluid banner">
-                    <h3>Visualization of Produced Water Chemistry</h3>
+                    <h3>Visualization of Produced Water Chemistry for Select Basins</h3>
                     <p><em>Use the dropdown menu below to explore produced water chemistry data for the desired basin.</em></p>
                 </div>
 
                 <!-- Content Section -->
-                <div class="container-fluid">
+                
+                <!-- <div class="container-fluid">
                     <div class="row">
                     <div class="col-md-12">
                         <p>Main content goes here...</p>
                     </div>
                     </div>
-                </div>
+                </div> -->
 
                 <!-- Containers for Dropdown & Visuals -->
                 <div class="row">
                     
-                    <!-- Example split danger button -->
-                    <div class="btn-group">
+                    <!-- Bootstrap split button dropdown -->
+                    <!-- <div class="btn-group">
                         <button type="button" class="btn btn-basin">Select Basin</button>
                         <button type="button" class="btn btn-basin dropdown-toggle dropdown-toggle-split" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                             <span class="sr-only">Toggle Dropdown</span>
                         </button>
                         <div class="dropdown-menu">
-                            <li><a class="dropdown-item" href="#">Action</a></li>
-                            <li><a class="dropdown-item" href="#">Another action</a></li>
-                            <li><a class="dropdown-item" href="#">Something else here</a></li>
-                            <div class="dropdown-divider"></div>
-                            <li><a class="dropdown-item" href="#">Separated link</a></li>
+                            <li><a class="dropdown-item" href="#">Anadarko Basin</a></li>
+                            <li><a class="dropdown-item" href="#">Appalachian Basin</a></li>
+                            <li><a class="dropdown-item" href="#">Fort Worth Basin</a></li>
+                            <li><a class="dropdown-item" href="#">Gulf Coast Basin</a></li>
+                            <li><a class="dropdown-item" href="#">Illinois Basin</a></li>
+                            <li><a class="dropdown-item" href="#">Michigan Basin</a></li>
+                            <li><a class="dropdown-item" href="#">Oklahoma Platform Basins</a></li>
+                            <li><a class="dropdown-item" href="#">Permian Basin</a></li>
+                            <li><a class="dropdown-item" href="#">Rocky Mountain Basins</a></li>
+                            <li><a class="dropdown-item" href="#">Williston Basin</a></li>
                         </div>
+                    </div> -->
+
+                    <!-- Using the same version of a dropdown from the belly button challenge for now even though it's uglier... -->
+                    <div class="col-md-2">
+                        <h6>Select Basin:</h6>
                     </div>
-                    
-                    <div class="col-md-12">
+                    <div class="col-md-10">
                         <div class="well">
-                            <h5>Basin:</h5>
                             <select id="selectBasin" onchange="optionChanged(this.value)"></select>
                         </div>
                     </div>
+                    
                 </div>
 
                 <div class="row">
@@ -178,6 +188,7 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script src="https://d3js.org/d3.v7.min.js"></script>
     <script src="./static/app.js"></script>
 
 </body>
