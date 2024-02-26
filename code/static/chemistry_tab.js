@@ -1,10 +1,3 @@
-// $(".dropdown-menu li a").click(function(){
-//     $(this).parents(".dropdown").find('.btn-basin').html($(this).html() + ' <span class="caret"></span>');
-//     $(this).parents(".dropdown").find('.btn-basin').val($(this).data('value'));
-//   });
-
-// ------------------------------------------------------------------------------------------------------------------------------------
-
 let basins = [
     'Anadarko Basin',
     'Appalachian Basin',
@@ -16,7 +9,22 @@ let basins = [
     'Permian Basin',
     'Rocky Mountain Basins',
     'Williston Basin'
-]
+];
+
+let basins_no_spaces = [
+    "AnadarkoBasin",
+    "AppalachianBasin",
+    "FortWorthBasin",
+    "GulfCoastBasin",
+    "IllinoisBasin",
+    "MichiganBasin",
+    "OklahomaPlatformBasins",
+    "PermianBasin",
+    "RockyMountainBasins",
+    "WillistonBasin"
+];
+
+let elements = ["Ca", "Mg", "HCO3", "Si", "FeTot", "Ba", "Sr", "Li"];
 
 // initialize the dashboard at start up 
 function init() {
@@ -29,13 +37,13 @@ function init() {
     console.log(first_basin);
 
     // populate the associated visuals for that basin
-    generateVisuals(first_basin)
+    populateVisuals(first_basin)
 
     // set event listener for dropdown menu change = if change occurs, update charts
-    let dropdown_list = d3.select("#selDataset");  
+    let dropdown_list = d3.select("#selectBasin");  
     dropdown_list.on("change", function() {
     let selection = this.value;
-    generateVisuals(selection);
+    populateVisuals(selection);
     });
   
 };
@@ -58,6 +66,27 @@ function populateDropdownMenu(basins) {
 };
 
 // generate all visuals for selected basin
-function generateVisuals(selection) {
-    //...
+function populateVisuals(selection) {
+
+    let basin_index = basins.indexOf(selection);
+    let basin = basins_no_spaces[basin_index]
+
+    for (let e = 0; e < elements.length; e++) {
+        let element = elements[e]
+        // violin plots
+        let imgElement1 = document.getElementById(`imgElement_ViolinPlot_${element}`); // Get the reference to the img element
+        imgElement1.src = `../images/chemistry/ViolinPlot_${basin}_${element}.png`; // Set the source of the image
+        // box plots
+        let imgElement2 = document.getElementById(`imgElement_BoxPlot_${element}`); // Get the reference to the img element
+        imgElement2.src = `../images/chemistry/BoxPlot_${basin}_${element}.png`; // Set the source of the image
+    }
+
+    // piper plots
+    let imgElement3 = document.getElementById(`imgElement_Piper(Triangle)`); // Get the reference to the img element
+    imgElement3.src = `../images/chemistry/Piper(Triangle)_${basin}.png`; // Set the source of the image
+    let imgElement4 = document.getElementById(`imgElement_Piper(Contour)`); // Get the reference to the img element
+    imgElement4.src = `../images/chemistry/Piper(Contour)_${basin}.png`; // Set the source of the image
+    let imgElement5 = document.getElementById(`imgElement_Piper(Color)`); // Get the reference to the img element
+    imgElement5.src = `../images/chemistry/Piper(Color)_${basin}.png`; // Set the source of the image
+    
 };

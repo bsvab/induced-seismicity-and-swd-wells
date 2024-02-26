@@ -31,16 +31,23 @@
             <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
 
                 <!-- Banner Title Section -->
-                <div class="container-fluid banner">
-                    <h3>Home Page... TBD</h3>
-                    <p><em>Some subtitle here... TBD</em></p>
+                <div class="container-fluid banner1">
+                    <h3>Landing Page Title Banner TBD</h3>
+                    <h6><em>Subtitle TBD</em></h6>
                 </div>
 
                 <!-- Content Section -->
                 <div class="container-fluid">
                     <div class="row">
                     <div class="col-md-12">
-                        <p>Content goes here...</p>
+                        <p> </p>
+                    </div>
+                    </div>
+                </div>
+                <div class="container-fluid">
+                    <div class="row">
+                    <div class="col-md-12">
+                        <p>Content goes here... some sort of "welcome to our page" statement, etc...</p>
                     </div>
                     </div>
                 </div>
@@ -50,13 +57,17 @@
                     <div class="row">
                         <div class="col-md-6">
                             <div class="container-fluid">
-                                <h4>Induced Seismic Activity & Injection Wells | Abstract</h4>
-                                <p>Content goes here...</p>
+                                <div class="container-fluid banner2">
+                                    <h4>Induced Seismic Activity & Injection Wells</h4>
+                                </div>
+                                <p><br>Content goes here...</p>
                             </div>
                         </div>
                         <div class="col-md-6">
                             <div class="container-fluid">
-                                <h4>Produced Water Chemistry | Abstract</h4>
+                                <div class="container-fluid banner2">
+                                    <h4>Produced Water Chemistry</h4>
+                                </div>
                                 <p><br>Produced water, a byproduct of oil and gas extraction, poses environmental challenges due to its complex chemical composition and high salinity. 
                                     This project focuses on two key objectives: analyzing the chemistry of produced water with a focus on scaling elements and evaluating the 
                                     availability of lithium for potential extraction. Utilizing data from the 
@@ -86,17 +97,31 @@
             <div class="tab-pane fade" id="seismic" role="tabpanel" aria-labelledby="seismic-tab">
                 
                 <!-- Banner Title Section -->
-                <div class="container-fluid banner">
+                <div class="container-fluid banner1">
                     <h3>Induced Seismic Activity & Salt Water Disposal Well Injection Rates in the Delaware Basin</h3>
-                    <p><em>Use the interactive map below to explore class II injection well data over time.</em></p>
+                    <h6><em>Use the interactive map below to explore class II injection well data over time.</em></h6>
                 </div>
 
                 <!-- Content Section -->
                 <div class="container-fluid">
                     <div class="row">
                     <div class="col-md-12">
-                        <p>Main content goes here...</p>
+                        <p> </p>
                     </div>
+                    </div>
+                </div>
+                <div class="container-fluid">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <p>Content goes here...</p>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div id="map1">
+                                <!-- This is where the interactive map will be housed. Can write html directly or via separate js file. -->
+                            </div>
+                          </div>
                     </div>
                 </div>
 
@@ -105,80 +130,136 @@
             <!-- CHEMISTRY TAB -->
             <div class="tab-pane fade" id="chemistry" role="tabpanel" aria-labelledby="chemistry-tab">
                 
-                <!-- Banner Title Section -->
-                <div class="container-fluid banner">
+                <!-- Banner Title Section & Dropdown -->
+                <div class="container-fluid banner1">
                     <h3>Visualization of Produced Water Chemistry for Select Basins</h3>
-                    <p><em>Use the dropdown menu below to explore produced water chemistry data for the desired basin.</em></p>
+                    <div class="row">
+                        <div class="col-md-10">
+                            <h6><em>Use the dropdown menu to the right to explore produced water chemistry data one basin at a time.</em></h6>
+                        </div>
+                        <div class="col-md-2">
+                            <div class="well">
+                                <select id="selectBasin" onchange="optionChanged(this.value)"></select>
+                            </div>
+                        </div>
+                    </div>
                 </div>
 
                 <!-- Content Section -->
-                <!-- <div class="container-fluid">
+                <div class="container-fluid">
                     <div class="row">
                     <div class="col-md-12">
-                        <p>Main content goes here...</p>
+                        <p> </p>
                     </div>
                     </div>
-                </div> -->
+                </div>
 
-                <!-- Containers for Dropdown & Visuals -->
-                <div class="row">
-                    
-                    <!-- Bootstrap split button dropdown -->
-                    <!-- <div class="btn-group">
-                        <button type="button" class="btn btn-basin">Select Basin</button>
-                        <button type="button" class="btn btn-basin dropdown-toggle dropdown-toggle-split" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            <span class="sr-only">Toggle Dropdown</span>
-                        </button>
-                        <div class="dropdown-menu">
-                            <li><a class="dropdown-item" href="#">Anadarko Basin</a></li>
-                            <li><a class="dropdown-item" href="#">Appalachian Basin</a></li>
-                            <li><a class="dropdown-item" href="#">Fort Worth Basin</a></li>
-                            <li><a class="dropdown-item" href="#">Gulf Coast Basin</a></li>
-                            <li><a class="dropdown-item" href="#">Illinois Basin</a></li>
-                            <li><a class="dropdown-item" href="#">Michigan Basin</a></li>
-                            <li><a class="dropdown-item" href="#">Oklahoma Platform Basins</a></li>
-                            <li><a class="dropdown-item" href="#">Permian Basin</a></li>
-                            <li><a class="dropdown-item" href="#">Rocky Mountain Basins</a></li>
-                            <li><a class="dropdown-item" href="#">Williston Basin</a></li>
+                <!-- Containers for Visuals -->
+                <div class="container-fluid">
+                    <!-- Box & Violin Plots -->
+                    <div class="row">
+                        <div class="col-md-3">
+                            <div class="container-fluid banner2">
+                                <h6>Scaling Element: Calcium</h6>
+                            </div>
+                            <img id="imgElement_ViolinPlot_Ca" src="" alt="ViolinPlot_Ca">
+                            <img id="imgElement_BoxPlot_Ca" src="" alt="BoxPlot_Ca">
                         </div>
-                    </div> -->
-
-                    <!-- Using the same version of a dropdown from the belly button challenge for now even though it's uglier... -->
-                    <div class="col-md-2">
-                        <h6>Select Basin:</h6>
-                    </div>
-                    <div class="col-md-10">
-                        <div class="well">
-                            <select id="selectBasin" onchange="optionChanged(this.value)"></select>
+                        <div class="col-md-3">
+                            <div class="container-fluid banner2">
+                                <h6>Scaling Element: Magnesium</h6>
+                            </div>
+                            <img id="imgElement_ViolinPlot_Mg" src="" alt="ViolinPlot_Mg">
+                            <img id="imgElement_BoxPlot_Mg" src="" alt="BoxPlot_Mg">
+                        </div>
+                        <div class="col-md-3">
+                            <div class="container-fluid banner2">
+                                <h6>Scaling Element: Bicarbonate</h6>
+                            </div>
+                            <img id="imgElement_ViolinPlot_HCO3" src="" alt="ViolinPlot_HCO3">
+                            <img id="imgElement_BoxPlot_HCO3" src="" alt="BoxPlot_HCO3">
+                        </div>
+                        <div class="col-md-3">
+                            <div class="container-fluid banner2">
+                                <h6><ins>Scaling Element: Silicon</h6>
+                            </div>
+                            <img id="imgElement_ViolinPlot_Si" src="" alt="ViolinPlot_Si">
+                            <img id="imgElement_BoxPlot_Si" src="" alt="BoxPlot_Si">
                         </div>
                     </div>
-                    
+                    <div class="container-fluid">
+                        <div class="row">
+                        <div class="col-md-12">
+                            <p> </p>
+                        </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-3">
+                            <div class="container-fluid banner2">
+                                <h6>Scaling Element: Total Iron</h6>
+                            </div>
+                            <img id="imgElement_ViolinPlot_FeTot" src="" alt="ViolinPlot_FeTot">
+                            <img id="imgElement_BoxPlot_FeTot" src="" alt="BoxPlot_FeTot">
+                        </div>
+                        <div class="col-md-3">
+                            <div class="container-fluid banner2">
+                                <h6>Scaling Element: Barium</h6>
+                            </div>
+                            <img id="imgElement_ViolinPlot_Ba" src="" alt="ViolinPlot_Ba">
+                            <img id="imgElement_BoxPlot_Ba" src="" alt="BoxPlot_Ba">
+                        </div>
+                        <div class="col-md-3">
+                            <div class="container-fluid banner2">
+                                <h6>Scaling Element: Strontium</h6>
+                            </div>
+                            <img id="imgElement_ViolinPlot_Sr" src="" alt="ViolinPlot_Sr">
+                            <img id="imgElement_BoxPlot_Sr" src="" alt="BoxPlot_Sr">
+                        </div>
+                        <div class="col-md-3">
+                            <div class="container-fluid banner2">
+                                <h6>Element of Interest: Lithium</h6>
+                            </div>
+                            <img id="imgElement_ViolinPlot_Li" src="" alt="ViolinPlot_Li">
+                            <img id="imgElement_BoxPlot_Li" src="" alt="BoxPlot_Li">
+                        </div>
+                    </div>
+                    <div class="container-fluid">
+                        <div class="row">
+                        <div class="col-md-12">
+                            <p> </p>
+                        </div>
+                        </div>
+                    </div>
+                    <!-- Pipers -->
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="container-fluid banner2">
+                                <h6>Piper Plots</h6>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-4">
+                            <!-- <div class="container-fluid banner2">
+                                <h6>Triangle Piper Plot</h6>
+                            </div> -->
+                            <img id="imgElement_Piper(Triangle)" src="" alt="Piper(Triangle)">
+                        </div>
+                        <div class="col-md-4">
+                            <!-- <div class="container-fluid banner2">
+                                <h6>Contour Piper Plot</h6>
+                            </div> -->
+                            <img id="imgElement_Piper(Contour)" src="" alt="Piper(Contour)">
+                        </div>
+                        <div class="col-md-4">
+                            <!-- <div class="container-fluid banner2">
+                                <h6>Colorful Piper Plot</h6>
+                            </div> -->
+                            <img id="imgElement_Piper(Color)" src="" alt="Piper(Color)">
+                        </div>
+                    </div>
                 </div>
-
-                <div class="row">
-                    <div class="col-md-6">
-                        <div id="violin"></div>
-                    </div>
-
-                    <div class="col-md-6">
-                        <div id="boxplot"></div>
-                    </div>
-                </div>
-
-                <div class="row">
-                    <div class="col-md-4">
-                        <div id="piperStandard"></div>
-                    </div>
-
-                    <div class="col-md-4">
-                        <div id="piperContour"></div>
-                    </div>
-
-                    <div class="col-md-4">
-                        <div id="piperColorful"></div>
-                    </div>
-                </div>
-
             </div>
         </div>
     </div>
@@ -187,6 +268,7 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
     <script src="https://d3js.org/d3.v7.min.js"></script>
     <script src="./static/app.js"></script>
     <script src="./static/chemistry_tab.js"></script>
