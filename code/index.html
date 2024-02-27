@@ -92,7 +92,6 @@
                         </div>
                     </div>
                 </div>
-
             </div>
             
             <!-- SEISMIC TAB -->
@@ -120,13 +119,23 @@
                     </div>
                     <div class="row">
                         <div class="col-md-12">
+                            <!-- ////////// DO WE WANT THE BELOW CODE?? -->
+                            <!-- <div id="info">
+                                <h1>Injection Data</h1>
+                                <ul id="displayed-list"></ul>
+                            </div> -->
+                            <!-- \\\\\\\\\\ DO WE WANT THE ABOVE CODE?? -->
                             <div id="map1">
-                                <!-- This is where the interactive map will be housed. Can write html directly or via separate js file. -->
+                                <script src="./static/map1.js"></script>
+                                <script src="./static/map1_basin_outline_layer.js"></script>
+                                <script src="./static/map1_injection_layer.js"></script>
+                                <!-- <script src="./static/map1_pore_pressure_layer.js"></script> -->
+                                <!-- <script src="./static/map1_seismic_layer.js"></script> -->
+                                <script src="./static/leaflet.timeline.js"></script><!-- Leaflet.timeline Plugin JS -->
                             </div>
                           </div>
                     </div>
                 </div>
-
             </div>
 
             <!-- CHEMISTRY TAB -->
@@ -272,11 +281,20 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 
     
-    <script src="./static/home_tab.js"></script>
-    <script src="./static/seismic_tab.js"></script>
-    <script src="./static/chemistry_tab.js"></script>
+    <script src="./static/tab_home.js"></script>
+    <script src="./static/tab_seismic.js"></script>
+    <script src="./static/tab_chemistry.js"></script>
     <script src="./static/basin_outline_layer.js"></script>
     <script src="./static/pore_pressure_layer.js"></script>
 
 </body>
 </html>
+
+<!-- TEMPORARY NOTES TO SELF...
+
+from TAs when asked if one html file can call another:
+    Can pull in other .html files using iframe: <iframe src="path/to/anotherfile.html" width="100%" height="500"></iframe>
+    https://www.w3schools.com/tags/tag_iframe.ASP
+    https://codepen.io/IanLintner/pen/DqGKQZ
+
+-->

@@ -4,19 +4,22 @@ body {
     background-color: whitesmoke;
 }
 
-/* tab navigation */
+/* -------------------------------------------------------------------------------------------------------------- */
+/* NAVIGATION TABS */
+/* -------------------------------------------------------------------------------------------------------------- */
+
 .nav-tabs {
     border-bottom: 2px solid #ccc; /* Add a bottom border */
 }
-  
-/* tab links */
-.nav-tabs .nav-link {
+
+/* inactive tab links */
+.nav-tabs .nav-link { 
     color: #707070; /* Text color */ /* previously #333 */
     font-weight: bold; /* Bold font */
 }
 
 /* active tab link */
-.nav-tabs .nav-item.show .nav-link, .nav-tabs .nav-link.active {
+.nav-tabs .nav-item.show .nav-link, .nav-tabs .nav-link.active { 
     /* background-color: #f8f9fa; Background color */
     background-color: #E8E8E8; /* Background color */
     border-color: #ccc; /* Border color */
@@ -24,14 +27,21 @@ body {
     border-radius: 0; /* Remove border radius */
 }
 
-/* tab content */
 .tab-content {
     padding: 20px; /* Add padding */
 }
 
+/* -------------------------------------------------------------------------------------------------------------- */
+/* CONTAINERS */
+/* -------------------------------------------------------------------------------------------------------------- */
+
 .container {
     max-width: 100%; /* take up the full width of the viewport */
 }
+
+/* -------------------------------------------------------------------------------------------------------------- */
+/* IMAGES */
+/* -------------------------------------------------------------------------------------------------------------- */
 
 .container img {
     max-width: 48%; /* ensure images don't exceed container width */
@@ -57,9 +67,9 @@ body {
     /* margin: 3px; /* add spacing between images */
 }
 
-.well {
-    align-items: right;
-}
+/* -------------------------------------------------------------------------------------------------------------- */
+/* TITLE BANNERS */
+/* -------------------------------------------------------------------------------------------------------------- */
 
 .banner1 {
     background-color: #996600; /* color for the banner */
@@ -78,6 +88,10 @@ body {
     font-family: 'Helvetica', sans-serif
 }
 
+/* -------------------------------------------------------------------------------------------------------------- */
+/* DROPDOWNS */
+/* -------------------------------------------------------------------------------------------------------------- */
+
 .btn {
     background-color: black;
     color: white;
@@ -88,9 +102,47 @@ body {
     color: white;
 }
 
+.well {
+    align-items: right;
+}
+/* -------------------------------------------------------------------------------------------------------------- */
+/* MAP-RELATED ITEMS */
+/* -------------------------------------------------------------------------------------------------------------- */
+
+#map1 {
+    width: 100%;
+    height: 100%;
+    float: right;
+}
+
+/* #map1 {
+    position: fixed;
+    top: 0;
+    left: 20vw;
+    bottom: 0;
+    right: 0;
+} */
+
+.leaflet-bottom.leaflet-left {
+    width: 100%;
+}
+
+.leaflet-control-container .leaflet-timeline-controls {
+    box-sizing: border-box;
+    width: 100%;
+    margin: 0;
+    margin-bottom: 15px;
+}
+
 .sedimentary-basins-layer {
     fill: gray;
     fill-opacity: 0.2;
     stroke: gray;
     stroke-width: 1;
+}
+
+/* Added styles for timeline slider */
+.leaflet-bottom .leaflet-control-timeline-slider {
+    width: 100%; /* Make the slider full width */
+    left: 0; /* Align to the far left */
 }
