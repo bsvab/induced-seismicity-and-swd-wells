@@ -1,11 +1,4 @@
-# Project 3 Proposal
-
-## <p style="color:#CC6600">Topic</p>
-### Interactive Geomap Analysis of Seismic Activity and Salt Water Disposal Well Injection Rates in the Delaware Basin
-
-<ins>Team Members</ins>: <br>
-Roxana Darvari, Brittany Svab, John Cahill, Alejandro Juarez, Sarah Cain
-
+# Interactive Geomap Analysis of Seismic Activity and Salt Water Disposal Well Injection Rates in the Delaware Basin
 
 ## <p style="color:#CC6600">Executive Summary</p>
 This proposal outlines a detailed plan to investigate the relationship between induced seismic activity and salt water disposal (SWD) well injection rates in the Delaware Basin. Utilizing data from the public catalog TexNet and incorporating pore pressure data from a sophisticated gridded numerical model developed using Computer Modelling Group (CMG) software, our goal is to uncover potential correlations and deepen our understanding of the seismic risks associated with SWD well injection practices.

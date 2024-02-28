@@ -7,6 +7,9 @@
     <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet"> <!-- Bootstrap -->
     <link rel="stylesheet" type="text/css" href="static/style.css">
     <script src="https://unpkg.com/leaflet@1.6.0/dist/leaflet.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/PapaParse/5.3.0/papaparse.min.js"></script>
     <script src="https://d3js.org/d3.v7.min.js"></script>
 </head>
@@ -119,21 +122,21 @@
                     </div>
                     <div class="row">
                         <div class="col-md-12">
-                            <!-- ////////// DO WE WANT THE BELOW CODE?? -->
-                            <!-- <div id="info">
-                                <h1>Injection Data</h1>
-                                <ul id="displayed-list"></ul>
-                            </div> -->
-                            <!-- \\\\\\\\\\ DO WE WANT THE ABOVE CODE?? -->
-                            <div id="map1">
+                            <!-- Create a new container for the map and controller -->
+                            <div id="map1_container">
+                                <div id="map1"></div>
+                                <!-- Include Leaflet.timeline CSS and JS -->
+                                <link rel="stylesheet" href="./static/leaflet.timeline.css">
+                                <script src="./static/leaflet.timeline.js"></script>
+                                <!-- Map initialization script -->
                                 <script src="./static/map1.js"></script>
-                                <script src="./static/map1_basin_outline_layer.js"></script>
+                                <!-- Map layer scripts -->
+                                <!-- <script src="./static/map1_basin_outline_layer.js"></script> -->
                                 <script src="./static/map1_injection_layer.js"></script>
-                                <!-- <script src="./static/map1_pore_pressure_layer.js"></script> -->
                                 <!-- <script src="./static/map1_seismic_layer.js"></script> -->
-                                <script src="./static/leaflet.timeline.js"></script><!-- Leaflet.timeline Plugin JS -->
+                                <!-- <script src="./static/map1_pore_pressure_layer.js"></script> -->
                             </div>
-                          </div>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -192,7 +195,7 @@
                         </div>
                         <div class="col-md-3">
                             <div class="container-fluid banner2">
-                                <h6><ins>Scaling Element: Silicon</h6>
+                                <h6>Scaling Element: Silicon</h6>
                             </div>
                             <img id="imgElement_ViolinPlot_Si" src="" alt="ViolinPlot_Si">
                             <img id="imgElement_BoxPlot_Si" src="" alt="BoxPlot_Si">
@@ -275,17 +278,12 @@
         </div>
     </div>
       
-    <!-- Bootstrap JS (optional) - This is only needed if you want to use Bootstrap's JavaScript components -->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    
 
     
     <script src="./static/tab_home.js"></script>
     <script src="./static/tab_seismic.js"></script>
     <script src="./static/tab_chemistry.js"></script>
-    <script src="./static/basin_outline_layer.js"></script>
-    <script src="./static/pore_pressure_layer.js"></script>
 
 </body>
 </html>
