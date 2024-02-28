@@ -33,7 +33,7 @@
 ## <p style="color:#CC6600">3. Conclusion</p>
 ...
 
-## <p style="color:#CC6600">4. Glossary of Terms:</p> 
+## <p style="color:#CC6600">4. Glossary of Terms</p> 
 
 1.	<ins>Class II Injection Well</ins>: ...
 
@@ -41,7 +41,7 @@
 
 3.	<ins>...</ins>: ...
 
-## <p style="color:#CC6600">5. Technologies:</p> 
+## <p style="color:#CC6600">5. Technologies</p> 
 
 **NEED TO UPDATE THE BELOW LIST FOR PROJECT 3 ITEMS**
 - [Python 3.10 or higher](https://www.python.org/)
@@ -57,7 +57,10 @@
 - [Branca](https://pypi.org/project/branca/)
 - [HTML](https://html.spec.whatwg.org/multipage/)
 
-## <p style="color:#CC6600">6. Contributors:</p> 
+## <p style="color:#CC6600">6. Sources</p> 
+- ...
+
+## <p style="color:#CC6600">7. Contributors</p> 
 
 - [Roxana Darvari](https://github.com/roxanadrv)
 - [Brittany Svab](https://github.com/bsvab)
