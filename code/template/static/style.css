@@ -46,6 +46,12 @@ body {
     /* border: 2px solid #996600;  /* removed because defined under #map1 */
 }
 
+#hs_container {
+    max-width: 300px;
+    min-height: 300px; /* maintain aspect ratio */
+    margin: 5px; /* add spacing between images */
+}
+
 /* -------------------------------------------------------------------------------------------------------------- */
 /* IMAGES */
 /* -------------------------------------------------------------------------------------------------------------- */
@@ -74,6 +80,19 @@ body {
     /* margin: 3px; /* add spacing between images */
 }
 
+[id^="headshot"] {
+    border-radius: 50%; /* display image in a circle */
+    border: 3px solid #996600;
+    width: 300px; 
+    height: 300px; 
+    object-fit: contain; /* maintain aspect ratio and fit within container */
+    object-position: center; /* center the image */
+    object-fit: fill; /* maintain aspect ratio and cover container */
+    object-position: center; /* center the image */
+    min-width: 100%; /* set minimum width to fill container */
+    min-height: 100%; /* set minimum height to fill container */
+}
+
 /* -------------------------------------------------------------------------------------------------------------- */
 /* TITLE BANNERS */
 /* -------------------------------------------------------------------------------------------------------------- */
@@ -91,7 +110,16 @@ body {
     color: white; /* color for the text */
     padding-top: 15px;
     padding-bottom: 8px;
-    text-align: center; /* center align text */
+    text-align: center; 
+    font-family: 'Helvetica', sans-serif
+}
+
+.banner3 {
+    background-color: #707070; /* color for the banner */
+    color: white; /* color for the text */
+    padding-top: 10px;
+    padding-bottom: 3px;
+    text-align: left; 
     font-family: 'Helvetica', sans-serif
 }
 
@@ -137,12 +165,6 @@ body {
     margin: 0;
     margin-bottom: 15px;
 } */
-
-/* Added styles for timeline slider */
-/* .leaflet-bottom .leaflet-control-timeline-slider { */
-    /* width: 100%; Make the slider full width */
-    /* left: 0; Align to the far left */
-/* } */
 
 .sedimentary-basins-layer {
     fill: gray;

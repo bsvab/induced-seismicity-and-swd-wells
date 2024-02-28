@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Produced Water Data & Analysis</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"> <!-- Bootstrap -->
-    <link rel="stylesheet" href="static/style.css">
+    <link rel="stylesheet" href="./static/style.css">
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.6.0/dist/leaflet.css"/>
     <script src="https://unpkg.com/leaflet@1.6.0/dist/leaflet.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
@@ -28,6 +28,9 @@
             </li>
             <li class="nav-item">
                 <a class="nav-link" id="chemistry-tab" data-toggle="tab" href="#chemistry" role="tab" aria-controls="chemistry" aria-selected="false">Produced Water Chemistry</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" id="about_us-tab" data-toggle="tab" href="#about_us" role="tab" aria-controls="about_us" aria-selected="false">About Us</a>
             </li>
         </ul>
 
@@ -276,15 +279,143 @@
                     </div>
                 </div>
             </div>
+
+            <!-- ABOUT US TAB -->
+            <div class="tab-pane fade" id="about_us" role="tabpanel" aria-labelledby="about_us-tab">
+
+                <!-- Banner Title Section -->
+                <div class="container-fluid banner1">
+                    <h3>Meet the Team</h3>
+                    <!-- <h6><em>Subtitle TBD</em></h6> -->
+                </div>
+
+                <!-- Content Section -->
+                <div class="container-fluid">
+                    <div class="row">
+                    <div class="col-md-12">
+                        <p> </p>
+                    </div>
+                    </div>
+                </div>
+                <div class="container-fluid">
+                    <div class="row">
+                    <div class="col-md-12">
+                        <p>Content goes here... some sort of "welcome to our page" statement, etc...</p>
+                    </div>
+                    </div>
+                </div>
+
+                <!-- Team Containers -->
+                <div class="container-fluid">
+                    <!-- Roxana -->
+                    <div class="row">
+                        <div class="col-md-3">
+                            <div class="container-fluid" id="hs_container">
+                                <img id="headshot_roxana_darvari" src="" alt="headshot">
+                            </div>
+                        </div>
+                        <div class="col-md-9">
+                            <div class="container-fluid">
+                                <div class="row">
+                                    <div class="container-fluid banner3">
+                                        <h4>Roxana Darvari</h4>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <p>Content goes here...</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Brittany -->
+                    <div class="row">
+                        <div class="col-md-3">
+                            <div class="container-fluid" id="hs_container">
+                                <img id="headshot_brittany_svab" src="" alt="headshot">
+                            </div>
+                        </div>
+                        <div class="col-md-9">
+                            <div class="container-fluid">
+                                <div class="row">
+                                    <div class="container-fluid banner3">
+                                        <h4>Brittany Svab</h4>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <p>Content goes here...</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Alejandro -->
+                    <div class="row">
+                        <div class="col-md-3">
+                            <div class="container-fluid" id="hs_container">
+                                <img id="headshot_alejandro_juarez" src="" alt="headshot">
+                            </div>
+                        </div>
+                        <div class="col-md-9">
+                            <div class="container-fluid">
+                                <div class="row">
+                                    <div class="container-fluid banner3">
+                                        <h4>Alejandro Juarez</h4>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <p>Content goes here...</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Sarah -->
+                    <div class="row">
+                        <div class="col-md-3">
+                            <div class="container-fluid" id="hs_container">
+                                <img id="headshot_sarah_cain" src="" alt="headshot">
+                            </div>
+                        </div>
+                        <div class="col-md-9">
+                            <div class="container-fluid">
+                                <div class="row">
+                                    <div class="container-fluid banner3">
+                                        <h4>Sarah Cain</h4>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <p>Content goes here...</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- John -->
+                    <div class="row">
+                        <div class="col-md-3">
+                            <div class="container-fluid" id="hs_container">
+                                <img id="headshot_john_cahill" src="" alt="headshot">
+                            </div>
+                        </div>
+                        <div class="col-md-9">
+                            <div class="container-fluid">
+                                <div class="row">
+                                    <div class="container-fluid banner3">
+                                        <h4>John Cahill</h4>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <p>Content goes here...</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
-      
-    
-
     
     <script src="./static/tab_home.js"></script>
     <script src="./static/tab_seismic.js"></script>
     <script src="./static/tab_chemistry.js"></script>
+    <script src="./static/tab_about_us.js"></script>
 
 </body>
 </html>

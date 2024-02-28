@@ -22,7 +22,7 @@
 // }
 
 // Load GeoJSON data and create a timeline
-fetch('../data/injection_data_v2.geojson')
+fetch('.../data/injection_data_v2.geojson')
     .then(response => response.json())
     .then(data => {
         let getInterval = function (feature) {
