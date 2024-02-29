@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Choropleth Map in Leaflet</title>
+    <!-- Load Leaflet from CDN -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css"/>
+    <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+    <style>
+        #map { height: 100vh; }
+    </style>
+</head>
+<body>
+
+<div id="map"></div>
+
+<script>
+    // Define the bounds of Texas
+    var texasBounds = L.latLngBounds(
+        [25.8371, -106.6466], // Southwest coordinates of Texas
+        [36.5007, -93.5083]  // Northeast coordinates of Texas
+    );
+
+    // Create a Leaflet map centered on Texas
+    var map = L.map('map').fitBounds(texasBounds);
+
+    // Add OpenStreetMap tile layer
+    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+        attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+    }).addTo(map);
+
+    // Function to calculate color based on value
+    function getColor(value) {
+        return value >= 10000 ? '#800026' :
+               value >= 5000  ? '#BD0026' :
+               value >= 1000  ? '#E31A1C' :
+               value >= 500   ? '#FC4E2A' :
+               value >= 100   ? '#FD8D3C' :
+               value >= 50    ? '#FEB24C' :
+               value >= 10    ? '#FED976' :
+                                '#FFEDA0';
+    }
+
+    // Calculate the number of squares needed
+    var width = texasBounds.getEast() - texasBounds.getWest();
+    var height = texasBounds.getNorth() - texasBounds.getSouth();
+
+    // Calculate number of squares horizontally and vertically
+    var numHorizontalSquares = Math.ceil(width / (5 / 69)); // 1 degree latitude is approximately 69 miles
+    var numVerticalSquares = Math.ceil(height / (5 / 69));
+
+    // Calculate the dimensions of each square
+    var squareWidth = width / numHorizontalSquares;
+    var squareHeight = height / numVerticalSquares;
+
+    // Loop to create squares
+    for (var i = 0; i < numHorizontalSquares; i++) {
+        for (var j = 0; j < numVerticalSquares; j++) {
+            // Calculate coordinates for each square
+            var topLeft = L.latLng(texasBounds.getNorth() - j * squareHeight, texasBounds.getWest() + i * squareWidth);
+            var bottomRight = L.latLng(texasBounds.getNorth() - (j + 1) * squareHeight, texasBounds.getWest() + (i + 1) * squareWidth);
+            var squareBounds = L.latLngBounds(topLeft, bottomRight);
+
+            // Calculate a random value between 0 and 10000 for each square (for demonstration)
+            var value = Math.floor(Math.random() * 10001);
+            
+            // Create a rectangle for each square and add to map
+            L.rectangle(squareBounds, {color: getColor(value), weight: 0, fillOpacity: 0.4}).addTo(map);
+        }
+    }
+</script>
+
+</body>
+</html>
