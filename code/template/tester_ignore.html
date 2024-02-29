@@ -1,68 +1,207 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Leaflet Hexbin Test</title>
-  <!-- Leaflet CSS -->
-  <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
-  <!-- Leaflet JavaScript -->
-  <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
-  <!-- D3 JavaScript -->
-  <script src="https://d3js.org/d3.v7.min.js"></script>
-  <!-- Leaflet.Hexbin JavaScript -->
-  <script src="https://unpkg.com/leaflet-hexbin"></script>
-  <style>
-    #map {
-      height: 400px;
-    }
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Choropleth Map in Leaflet with Average</title>
+    <!-- Load Leaflet from CDN -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css"/>
+    <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+    <style>
+        #map { height: 100vh; }
+
+        .legend {
+            line-height: 18px;
+            color: #555;
+            background-color: white;
+            padding: 10px;
+            border-radius: 10px;
+            border-color: black;
+        }
+
+        .legend i {
+            width: 18px;
+            height: 18px;
+            float: left;
+            margin-right: 8px;
+            opacity: 0.5;
+        }
+
+        p {
+            margin: 0;
+            margin-bottom: 5px;
+        }
+
+    </style>
 </head>
 <body>
-  <div id="map"></div>
 
-  <script>
-    // Initialize Leaflet map
-    var map = L.map('map').setView([50, 8], 6);
+<div id="map"></div>
 
-    // Add base map layer
+<script>
+    // Define the bounds of Texas
+    let texasBounds = L.latLngBounds(
+        [25.8371, -106.6466], // Southwest coordinates of Texas
+        [36.5007, -93.5083]  // Northeast coordinates of Texas
+    );
+
+    // ////////////////////////////////////////////////////////////////////////////////////////////////////
+
+    // Create a Leaflet map centered on Texas
+    let map = L.map('map').fitBounds(texasBounds);
+
+    // Add OpenStreetMap tile layer
     L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-      attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+        attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
     }).addTo(map);
 
-    // Sample data
-    var posts = [
-      [50.0001, 8.0001, 10, 40],
-      [50.001, 8.001, 2, 5],
-      [50.2, 8.2, 20, 55]
-    ];
+    // \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
 
-    // Switching long lat format if needed
-    var posts_xy_switched = posts.map(function (p) {
-      return [
-        parseFloat(p[1]), // longitude
-        parseFloat(p[0]), // latitude
-        parseFloat(p[2]), // users
-        parseFloat(p[3])  // posts
-      ];
-    });
+    // ////////////////////////////////////////////////////////////////////////////////////////////////////
 
-    // Create the hexlayer
-    var hexLayer = L.hexbinLayer({ duration: 200, radiusRange: [2, 20] })
-      .radiusValue(function (d) {
-        var posts_sum = d.reduce(function (acc, obj) { return acc + obj[3]; }, 0);
-        return posts_sum;
-      })
-      .colorValue(function (d) {
-        var users_sum = d.reduce(function (acc, obj) { return acc + obj[2]; }, 0);
-        return users_sum;
-      });
+    // Function to parse CSV data
+    function parseCSV(csvData) {
+        let dataset = [];
+        // Split the CSV data into lines
+        const lines = csvData.split('\n');
+        // Iterate over each line
+        lines.forEach(line => {
+            // Split the line into comma-separated values
+            const values = line.split(',');
+            // Extract lat, lng, and value from the values array
+            const lat = parseFloat(values[4]);
+            const lng = parseFloat(values[3]);
+            const value = parseFloat(values[1]);
+            // Check if lat, lng, and value are valid numbers
+            if (!isNaN(lat) && !isNaN(lng) && !isNaN(value)) {
+                // Construct the data point object
+                const dataPoint = { lat, lng, value };
+                // Push the data point object to the dataset array
+                dataset.push(dataPoint);
+            }
+        });
+        return dataset;
+    }
 
-    // Add hexLayer to the map
-    hexLayer.addTo(map);
+    // Function to read CSV file
+    async function readCSVFile(url) {
+        const response = await fetch(url);
+        const data = await response.text();
+        return parseCSV(data);
+    }
 
-    // Add data to the hexLayer
-    hexLayer.data(posts_xy_switched);
-  </script>
+    // Call the function to read the CSV file
+    fetch('../../data/smaller_file_test_pressure_data.csv')
+        .then(response => response.text())
+        .then(data => parseCSV(data))
+        .then(dataset => {
+            // Now you have the dataset, you can use it here
+            console.log('Parsed dataset:', dataset);
+            drawMapSquares(dataset);
+        })
+        .catch(error => {
+            console.error('Error reading CSV:', error);
+        });
+    
+    // \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
+    
+    // ------------------------------------------------------------------------------------------------------------------------------------------------
+    // SQUARES
+    // ------------------------------------------------------------------------------------------------------------------------------------------------
+
+    // Function to calculate color based on value
+    function getColor(value) {
+        return value >= 10000 ? '#33000F' :
+               value >= 9000  ? '#4C0016' :
+               value >= 8000  ? '#800026' :
+               value >= 7000  ? '#bd0026' :
+               value >= 6000  ? '#e31a1c' :
+               value >= 5000  ? '#fc4e2a' :
+               value >= 4000  ? '#fd8d3c' :
+               value >= 3000  ? '#feb24c' :
+               value >= 2000  ? '#fed976' :
+               value >= 1000  ? '#ffeda0' :
+                                '#ffffcc';
+    }
+
+    // Function to draw 5 square mile map squares based on the dataset
+    function drawMapSquares(dataset) {
+        // Calculate the number of squares needed
+        let width = texasBounds.getEast() - texasBounds.getWest();
+        let height = texasBounds.getNorth() - texasBounds.getSouth();
+
+        // Calculate number of squares horizontally and vertically
+        let numHorizontalSquares = Math.ceil(width / (5 / 69)); // 1 degree latitude is approximately 69 miles
+        let numVerticalSquares = Math.ceil(height / (5 / 69));
+
+        // Calculate the dimensions of each square
+        let squareWidth = width / numHorizontalSquares;
+        let squareHeight = height / numVerticalSquares;
+
+        // Create a dictionary to store data points for each square
+        let squareData = {};
+
+        // Iterate over each data point and assign it to the corresponding square
+        dataset.forEach(point => {
+            // Calculate the square index for the data point
+            let xIndex = Math.floor((point.lng - texasBounds.getWest()) / squareWidth);
+            let yIndex = Math.floor((texasBounds.getNorth() - point.lat) / squareHeight);
+            // Create a unique key for the square
+            let key = xIndex + '_' + yIndex;
+            // Initialize array for the square if not exists
+            if (!squareData[key]) {
+                squareData[key] = [];
+            }
+            // Add the data point to the square
+            squareData[key].push(point);
+        });
+
+        // Iterate over each square and draw it on the map
+        Object.keys(squareData).forEach(key => {
+            let points = squareData[key];
+            let totalValue = points.reduce((acc, curr) => acc + curr.value, 0);
+            let averageValue = totalValue / points.length;
+            let color = getColor(averageValue);
+            // Calculate the bounds of the square
+            let xIndex = parseInt(key.split('_')[0]);
+            let yIndex = parseInt(key.split('_')[1]);
+            let topLeft = L.latLng(texasBounds.getNorth() - yIndex * squareHeight, texasBounds.getWest() + xIndex * squareWidth);
+            let bottomRight = L.latLng(texasBounds.getNorth() - (yIndex + 1) * squareHeight, texasBounds.getWest() + (xIndex + 1) * squareWidth);
+            let squareBounds = L.latLngBounds(topLeft, bottomRight);
+            // Create a rectangle for the square and add to map
+            L.rectangle(squareBounds, {color: color, weight: 0, fillOpacity: 0.5}).addTo(map);
+        });
+    }
+
+    // ------------------------------------------------------------------------------------------------------------------------------------------------
+    // LEGEND
+    // ------------------------------------------------------------------------------------------------------------------------------------------------
+
+    // create legend & add to map
+    let legend = L.control({position: 'topright'});
+
+    legend.onAdd = function (map) {
+
+        let div = L.DomUtil.create('div', 'info legend'),
+            grades = [0, 1000, 2000, 3000, 4000, 5000, 6000, 7000, 8000, 9000, 10000],
+            labels = [];
+
+        // Add title to the legend
+        div.innerHTML = '<p><ins>Pore Pressure Delta</ins></p>';
+
+        // loop through our density intervals and generate a label with a colored square for each interval
+        for (let i = 0; i < grades.length; i++) {
+            div.innerHTML +=
+                '<i style="background:' + getColor(grades[i] + 1) + '"></i> ' +
+                grades[i].toLocaleString() + (grades[i + 1] ? ' &ndash; ' + grades[i + 1].toLocaleString() + '<br>' : ' +');
+        }
+
+        return div;
+    };
+
+    legend.addTo(map);
+
+</script>
+
 </body>
 </html>
