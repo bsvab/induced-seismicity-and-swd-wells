@@ -121,6 +121,14 @@ body {
     min-height: 100%; /* set minimum height to fill container */
 }
 
+[id^="logo"] {
+    width: auto; 
+    height: 25px; 
+    object-fit: contain; /* maintain aspect ratio and fit within container */
+    object-fit: fill; /* maintain aspect ratio and cover container */
+    object-position: top; /* center the image */
+}
+
 /* -------------------------------------------------------------------------------------------------------------- */
 /* TITLE BANNERS */
 /* -------------------------------------------------------------------------------------------------------------- */
@@ -149,7 +157,7 @@ body {
     color: white; /* color for the text */
     border-radius: 10px;
     padding-top: 10px;
-    padding-bottom: 3px;
+    padding-bottom: 12px;
     text-align: left; 
     font-family: 'Helvetica', sans-serif
 }
@@ -202,4 +210,18 @@ body {
     fill-opacity: 0.2;
     stroke: gray;
     stroke-width: 1;
+}
+
+/* -------------------------------------------------------------------------------------------------------------- */
+/* ABOUT US BANNER LINKS */
+/* -------------------------------------------------------------------------------------------------------------- */
+
+/* linkedin and github links in about section */
+#about {
+    color: white;
+}
+
+#about_blurb {
+    margin-left: 5px;
+    margin-right: 5px;
 }

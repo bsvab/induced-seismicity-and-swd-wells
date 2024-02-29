@@ -34,7 +34,7 @@
 
         .leaflet-bottom.leaflet-left {
             width: 100%;
-            }
+        }
             
         .leaflet-control-container .leaflet-timeline-controls {
             box-sizing: border-box;
@@ -67,6 +67,26 @@
         attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
     }).addTo(map);
 
+    // Function to read CSV file
+    async function readCSVFile(url) {
+        const response = await fetch(url);
+        const data = await response.text();
+        return data;
+    }
+
+    // Call the function to read the CSV file
+    readCSVFile('../../data/medium_file_test_pressure_data.csv')
+        .then(data => {
+            // Now you have the CSV data, you can use it here
+            console.log('CSV data:', data);
+            const dataset = parseCSV(data);
+            console.log('Parsed dataset:', dataset);
+            drawMapSquares(dataset);
+        })
+        .catch(error => {
+            console.error('Error reading CSV:', error);
+        });
+
     // Function to parse CSV data
     function parseCSV(csvData) {
         let dataset = [];
@@ -94,26 +114,6 @@
         });
         return dataset;
     }
-
-    // Function to read CSV file
-    async function readCSVFile(url) {
-        const response = await fetch(url);
-        const data = await response.text();
-        return parseCSV(data);
-    }
-
-    // Call the function to read the CSV file
-    fetch('../../data/medium_file_test_pressure_data.csv')
-        .then(response => response.text())
-        .then(data => parseCSV(data))
-        .then(dataset => {
-            // Now you have the dataset, you can use it here
-            console.log('Parsed dataset:', dataset);
-            drawMapSquares(dataset);
-        })
-        .catch(error => {
-            console.error('Error reading CSV:', error);
-        });
 
     // Function to draw 5 square mile map squares based on the dataset
     function drawMapSquares(dataset) {
@@ -147,15 +147,19 @@
             squareData[key].push(point);
         });
 
-        // Initialize timeline dataset
-        const timelineDataset = [];
+        // Initialize timeline dataset as a GeoJSON FeatureCollection
+        const timelineDataset = {
+            type: "FeatureCollection",
+            features: []
+        };
 
         // Iterate over each square and generate timeline dataset
         Object.keys(squareData).forEach(key => {
             let points = squareData[key];
+
             // Group data points by layer
             const groupedByLayer = points.reduce((acc, dataPoint) => {
-                const layer = dataPoint.layer; // Assuming layer is identified in values[2]
+                const layer = dataPoint.layer;
                 if (!acc[layer]) {
                     acc[layer] = [];
                 }
@@ -166,6 +170,21 @@
             // Get the minimum and maximum years from the dataset
             const minYear = Math.min(...points.map(dataPoint => dataPoint.date.getFullYear()));
             const maxYear = Math.max(...points.map(dataPoint => dataPoint.date.getFullYear()));
+
+            // Create a feature for each square
+            const squareFeature = {
+                type: "Feature",
+                properties: {
+                    squareKey: key,
+                    pressures: [] // Array to store pressure values for different dates
+                },
+                geometry: {
+                    type: "Polygon",
+                    coordinates: [
+                        // Define coordinates of the square here
+                    ]
+                }
+            };
 
             // Iterate over each layer
             Object.keys(groupedByLayer).forEach(layer => {
@@ -185,7 +204,7 @@
                         }, null);
                         // Add the closest data point to the timeline dataset
                         if (closestDataPoint) {
-                            timelineDataset.push({
+                            squareFeature.properties.pressures.push({
                                 layer,
                                 year,
                                 month: month + 1, // Adding 1 to make it 1-based month
@@ -197,9 +216,11 @@
                 }
             });
 
-            console.log('Timeline dataset for square', key, ':', timelineDataset);
-            // Now you can use this timeline dataset for each square
+            // Add square feature to the timeline dataset
+            timelineDataset.features.push(squareFeature);
         });
+
+        console.log('Timeline dataset:', timelineDataset);
 
         // Initialize Leaflet timeline control
         let timelineControl = L.timelineSliderControl({
