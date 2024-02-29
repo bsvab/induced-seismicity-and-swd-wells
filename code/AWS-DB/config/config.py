@@ -1,4 +1,0 @@
-PGEND_POINT = "asdf"
-PGDATABASE_NAME = "asdf"
-PGUSER_NAME = "asdf"
-PGPASSWORD = "asdf"
