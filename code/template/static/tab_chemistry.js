@@ -75,18 +75,18 @@ function populateVisuals(selection) {
         let element = elements[e]
         // violin plots
         let imgElement1 = document.getElementById(`imgElement_ViolinPlot_${element}`); // Get the reference to the img element
-        imgElement1.src = `../images/chemistry/ViolinPlot_${basin}_${element}.png`; // Set the source of the image
+        imgElement1.src = `../../images/chemistry/ViolinPlot_${basin}_${element}.png`; // Set the source of the image
         // box plots
         let imgElement2 = document.getElementById(`imgElement_BoxPlot_${element}`); // Get the reference to the img element
-        imgElement2.src = `../images/chemistry/BoxPlot_${basin}_${element}.png`; // Set the source of the image
+        imgElement2.src = `../../images/chemistry/BoxPlot_${basin}_${element}.png`; // Set the source of the image
     }
 
     // piper plots
     let imgElement3 = document.getElementById(`imgElement_Piper(Triangle)`); // Get the reference to the img element
-    imgElement3.src = `../images/chemistry/Piper(Triangle)_${basin}.png`; // Set the source of the image
+    imgElement3.src = `../../images/chemistry/Piper(Triangle)_${basin}.png`; // Set the source of the image
     let imgElement4 = document.getElementById(`imgElement_Piper(Contour)`); // Get the reference to the img element
-    imgElement4.src = `../images/chemistry/Piper(Contour)_${basin}.png`; // Set the source of the image
+    imgElement4.src = `../../images/chemistry/Piper(Contour)_${basin}.png`; // Set the source of the image
     let imgElement5 = document.getElementById(`imgElement_Piper(Color)`); // Get the reference to the img element
-    imgElement5.src = `../images/chemistry/Piper(Color)_${basin}.png`; // Set the source of the image
+    imgElement5.src = `../../images/chemistry/Piper(Color)_${basin}.png`; // Set the source of the image
     
 };

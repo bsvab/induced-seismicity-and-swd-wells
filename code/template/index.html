@@ -4,8 +4,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Produced Water Data & Analysis</title>
-    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet"> <!-- Bootstrap -->
-    <link rel="stylesheet" type="text/css" href="static/style.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"> <!-- Bootstrap -->
+    <link rel="stylesheet" href="./static/style.css">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.6.0/dist/leaflet.css"/>
     <script src="https://unpkg.com/leaflet@1.6.0/dist/leaflet.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
@@ -27,6 +28,12 @@
             </li>
             <li class="nav-item">
                 <a class="nav-link" id="chemistry-tab" data-toggle="tab" href="#chemistry" role="tab" aria-controls="chemistry" aria-selected="false">Produced Water Chemistry</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" id="about_us-tab" data-toggle="tab" href="#about_us" role="tab" aria-controls="about_us" aria-selected="false">About Us</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" id="glossary-tab" data-toggle="tab" href="#glossary" role="tab" aria-controls="glossary" aria-selected="false">Glossary of Terms</a>
             </li>
         </ul>
 
@@ -117,26 +124,28 @@
                 <div class="container-fluid">
                     <div class="row">
                         <div class="col-md-12">
-                            <p>Content goes here...</p>
+                            <p>Click play to let the animation run through all available dates, or drag the timeline to a particular date and view clickover information while the navigation is paused.</p>
                         </div>
                     </div>
                     <div class="row">
-                        <div class="col-md-12">
+                        <iframe id="map1" src="map1.html" height="700" width=100% title="map1"></iframe>
+                        
+                        <!-- <div class="col-md-12"> -->
                             <!-- Create a new container for the map and controller -->
-                            <div id="map1_container">
-                                <div id="map1"></div>
+                            <!-- <div id="map1_container"> -->
+                                <!-- <div id="map1"></div> -->
                                 <!-- Include Leaflet.timeline CSS and JS -->
-                                <link rel="stylesheet" href="./static/leaflet.timeline.css">
-                                <script src="./static/leaflet.timeline.js"></script>
+                                <!-- <link rel="stylesheet" href="./static/leaflet.timeline.css"> -->
+                                <!-- <script src="./static/leaflet.timeline.js"></script> -->
                                 <!-- Map initialization script -->
-                                <script src="./static/map1.js"></script>
+                                <!-- <script src="./static/map1.js"></script> -->
                                 <!-- Map layer scripts -->
                                 <!-- <script src="./static/map1_basin_outline_layer.js"></script> -->
-                                <script src="./static/map1_injection_layer.js"></script>
+                                <!-- <script src="./static/map1_injection_layer.js"></script> -->
                                 <!-- <script src="./static/map1_seismic_layer.js"></script> -->
                                 <!-- <script src="./static/map1_pore_pressure_layer.js"></script> -->
-                            </div>
-                        </div>
+                            <!-- </div> -->
+                        <!-- </div> -->
                     </div>
                 </div>
             </div>
@@ -275,15 +284,193 @@
                     </div>
                 </div>
             </div>
+
+            <!-- ABOUT US TAB -->
+            <div class="tab-pane fade" id="about_us" role="tabpanel" aria-labelledby="about_us-tab">
+
+                <!-- Banner Title Section -->
+                <div class="container-fluid banner1">
+                    <h3>Meet the Team</h3>
+                    <!-- <h6><em>Subtitle TBD</em></h6> -->
+                </div>
+
+                <!-- Content Section -->
+                <div class="container-fluid">
+                    <div class="row">
+                    <div class="col-md-12">
+                        <p> </p>
+                    </div>
+                    </div>
+                </div>
+                <div class="container-fluid">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <p> </p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Team Containers -->
+                <div class="container-fluid">
+                    <!-- Roxana -->
+                    <div class="row">
+                        <div class="col-md-3">
+                            <div class="container-fluid" id="hs_container">
+                                <img id="headshot_roxana_darvari" src="" alt="headshot">
+                            </div>
+                        </div>
+                        <div class="col-md-9">
+                            <div class="container-fluid">
+                                <div class="row">
+                                    <div class="container-fluid banner3">
+                                        <h4>Roxana Darvari</h4>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <p><br>Content goes here...</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <p> </p>
+                        </div>
+                    </div>
+                    <!-- Brittany -->
+                    <div class="row">
+                        <div class="col-md-3">
+                            <div class="container-fluid" id="hs_container">
+                                <img id="headshot_brittany_svab" src="" alt="headshot">
+                            </div>
+                        </div>
+                        <div class="col-md-9">
+                            <div class="container-fluid">
+                                <div class="row">
+                                    <div class="container-fluid banner3">
+                                        <h4>Brittany Svab</h4>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <p><br>Content goes here...</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <p> </p>
+                        </div>
+                    </div>
+                    <!-- Alejandro -->
+                    <div class="row">
+                        <div class="col-md-3">
+                            <div class="container-fluid" id="hs_container">
+                                <img id="headshot_alejandro_juarez" src="" alt="headshot">
+                            </div>
+                        </div>
+                        <div class="col-md-9">
+                            <div class="container-fluid">
+                                <div class="row">
+                                    <div class="container-fluid banner3">
+                                        <h4>Alejandro Juarez</h4>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <p><br>Content goes here...</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <p> </p>
+                        </div>
+                    </div>
+                    <!-- Sarah -->
+                    <div class="row">
+                        <div class="col-md-3">
+                            <div class="container-fluid" id="hs_container">
+                                <img id="headshot_sarah_cain" src="" alt="headshot">
+                            </div>
+                        </div>
+                        <div class="col-md-9">
+                            <div class="container-fluid">
+                                <div class="row">
+                                    <div class="container-fluid banner3">
+                                        <h4>Sarah Cain</h4>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <p><br>Content goes here...</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <p> </p>
+                        </div>
+                    </div>
+                    <!-- John -->
+                    <div class="row">
+                        <div class="col-md-3">
+                            <div class="container-fluid" id="hs_container">
+                                <img id="headshot_john_cahill" src="" alt="headshot">
+                            </div>
+                        </div>
+                        <div class="col-md-9">
+                            <div class="container-fluid">
+                                <div class="row">
+                                    <div class="container-fluid banner3">
+                                        <h4>John Cahill</h4>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <p><br>Content goes here...</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <p> </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- HOME TAB -->
+            <div class="tab-pane fade" id="glossary" role="tabpanel" aria-labelledby="glossary-tab">
+
+                <!-- Banner Title Section -->
+                <div class="container-fluid banner1">
+                    <h3>Glossary of Terms</h3>
+                    <!-- <h6><em>Subtitle TBD</em></h6> -->
+                </div>
+
+                <!-- Content Section -->
+                <div class="container-fluid">
+                    <div class="row">
+                    <div class="col-md-12">
+                        <p> </p>
+                    </div>
+                    </div>
+                </div>
+                <div class="container-fluid">
+                    <div class="row">
+                    <div class="col-md-12">
+                        <p>Content goes here...</p>
+                    </div>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
-      
-    
-
     
     <script src="./static/tab_home.js"></script>
     <script src="./static/tab_seismic.js"></script>
     <script src="./static/tab_chemistry.js"></script>
+    <script src="./static/tab_about_us.js"></script>
 
 </body>
 </html>

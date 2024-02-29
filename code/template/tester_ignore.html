@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Leaflet Hexbin Test</title>
+  <!-- Leaflet CSS -->
+  <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+  <!-- Leaflet JavaScript -->
+  <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+  <!-- D3 JavaScript -->
+  <script src="https://d3js.org/d3.v7.min.js"></script>
+  <!-- Leaflet.Hexbin JavaScript -->
+  <script src="https://unpkg.com/leaflet-hexbin"></script>
+  <style>
+    #map {
+      height: 400px;
+    }
+  </style>
+</head>
+<body>
+  <div id="map"></div>
+
+  <script>
+    // Initialize Leaflet map
+    var map = L.map('map').setView([50, 8], 6);
+
+    // Add base map layer
+    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+      attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+    }).addTo(map);
+
+    // Sample data
+    var posts = [
+      [50.0001, 8.0001, 10, 40],
+      [50.001, 8.001, 2, 5],
+      [50.2, 8.2, 20, 55]
+    ];
+
+    // Switching long lat format if needed
+    var posts_xy_switched = posts.map(function (p) {
+      return [
+        parseFloat(p[1]), // longitude
+        parseFloat(p[0]), // latitude
+        parseFloat(p[2]), // users
+        parseFloat(p[3])  // posts
+      ];
+    });
+
+    // Create the hexlayer
+    var hexLayer = L.hexbinLayer({ duration: 200, radiusRange: [2, 20] })
+      .radiusValue(function (d) {
+        var posts_sum = d.reduce(function (acc, obj) { return acc + obj[3]; }, 0);
+        return posts_sum;
+      })
+      .colorValue(function (d) {
+        var users_sum = d.reduce(function (acc, obj) { return acc + obj[2]; }, 0);
+        return users_sum;
+      });
+
+    // Add hexLayer to the map
+    hexLayer.addTo(map);
+
+    // Add data to the hexLayer
+    hexLayer.data(posts_xy_switched);
+  </script>
+</body>
+</html>

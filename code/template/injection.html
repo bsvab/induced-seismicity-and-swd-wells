@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Injection Data Visualization</title>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.6.0/dist/leaflet.css"/>
+    <script src="https://unpkg.com/leaflet@1.6.0/dist/leaflet.js"></script>
+    <!-- <link rel="stylesheet" href="./static/leaflet.timeline.css"/> -->
+    <!-- <script src="./static/leaflet.timeline.js"></script> -->
+    <style>
+        /* @import url(https://fonts.googleapis.com/css?family=Open + Sans); */
+        html,
+        body {
+          margin: 0;
+          padding: 0;
+          font-family: "Open Sans", sans-serif;
+        }
+        #map1 {
+          position: fixed;
+          top: 0;
+          left: 0;
+          bottom: 0;
+          right: 0;
+        }
+        .leaflet-bottom.leaflet-left {
+          width: 100%;
+        }
+        .leaflet-control-container .leaflet-timeline-controls {
+          box-sizing: border-box;
+          width: 100%;
+          margin: 0;
+          margin-bottom: 15px;
+        }
+      </style>
+</head>
+<body>
+
+<div id="map1"></div>
+
+    <!-- Leaflet JS -->
+    <!-- <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script> -->
+    <!-- Leaflet.timeline Plugin JS -->
+    <script src="./static/leaflet.timeline.js"></script>
+    <link rel="stylesheet" href="./static/leaflet.timeline.css"/>
+    <!-- JS file for Data Visualization -->
+    <script src="./static/map1.js"></script>
+    <script src="./static/map1_injection_layer.js"></script>
+
+</body>
+</html>

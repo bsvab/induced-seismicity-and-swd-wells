@@ -1,5 +1,6 @@
 body {
     padding: 0;
+    padding-top: 40px; /* keeps it from overlapping with navigation tabs */
     margin: 0;
     background-color: whitesmoke;
 }
@@ -9,6 +10,12 @@ body {
 /* -------------------------------------------------------------------------------------------------------------- */
 
 .nav-tabs {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 1000; /* Ensure it's above other elements */
+    background-color: whitesmoke;
     border-bottom: 2px solid #ccc; /* Add a bottom border */
 }
 
@@ -28,6 +35,7 @@ body {
 }
 
 .tab-content {
+    padding-top: 60px;
     padding: 20px; /* Add padding */
 }
 
@@ -41,36 +49,76 @@ body {
 
 #map1_container {
     max-width: 100%;
-    height: 600px; 
-    margin: 3px; 
+    /* height: 600px;  */
+    /* margin: 3px; */
+    /* border: 2px solid #996600;  /* removed because defined under #map1 */
+}
+
+#hs_container {
+    max-width: 300px;
+    min-height: 300px; /* maintain aspect ratio */
+    margin: 5px; /* add spacing between images */
 }
 
 /* -------------------------------------------------------------------------------------------------------------- */
 /* IMAGES */
 /* -------------------------------------------------------------------------------------------------------------- */
 
-.container img {
-    max-width: 48%; /* ensure images don't exceed container width */
+.container [id^="imgElement_BoxPlot"] {
+    max-width: 47%; /* ensure images don't exceed container width */
     height: auto; /* maintain aspect ratio */
     margin: 3px; /* add spacing between images */
+    object-position: center; /* center the image */
+    float: center;
+    border-radius: 5px;
+}
+
+.container [id^="imgElement_ViolinPlot"] {
+    max-width: 47%; /* ensure images don't exceed container width */
+    height: auto; /* maintain aspect ratio */
+    margin: 3px; /* add spacing between images */
+    object-position: center; /* center the image */
+    float: center;
+    border-radius: 5px;
 }
 
 .container #imgElement_Piper\(Triangle\) {
     max-width: 95%; /* ensure images don't exceed container width */
     height: auto; /* maintain aspect ratio */
     /* margin: 3px; /* add spacing between images */
+    object-position: left; /* center the image */
+    float: left;
+    border-radius: 5px;
 }
 
 .container #imgElement_Piper\(Contour\) {
     max-width: 100%; /* ensure images don't exceed container width */
     height: auto; /* maintain aspect ratio */
     /* margin: 3px; /* add spacing between images */
+    object-position: center; /* center the image */
+    float: center;
+    border-radius: 5px;
 }
 
 .container #imgElement_Piper\(Color\) {
     max-width: 94%; /* ensure images don't exceed container width */
     height: auto; /* maintain aspect ratio */
     /* margin: 3px; /* add spacing between images */
+    object-position: right; /* center the image */
+    float: right;
+    border-radius: 5px;
+}
+
+[id^="headshot"] {
+    border-radius: 50%; /* display image in a circle */
+    border: 3px solid #996600;
+    width: 300px; 
+    height: 300px; 
+    object-fit: contain; /* maintain aspect ratio and fit within container */
+    object-fit: fill; /* maintain aspect ratio and cover container */
+    object-position: center; /* center the image */
+    min-width: 100%; /* set minimum width to fill container */
+    min-height: 100%; /* set minimum height to fill container */
 }
 
 /* -------------------------------------------------------------------------------------------------------------- */
@@ -80,6 +128,7 @@ body {
 .banner1 {
     background-color: #996600; /* color for the banner */
     color: white; /* color for the text */
+    border-radius: 10px;
     padding: 10px; /* add padding to the banner */
     text-align: left; /* left align text */
     font-family: 'Helvetica', sans-serif
@@ -88,9 +137,20 @@ body {
 .banner2 {
     background-color: #707070; /* color for the banner */
     color: white; /* color for the text */
+    border-radius: 10px;
     padding-top: 15px;
     padding-bottom: 8px;
-    text-align: center; /* center align text */
+    text-align: center; 
+    font-family: 'Helvetica', sans-serif
+}
+
+.banner3 {
+    background-color: #707070; /* color for the banner */
+    color: white; /* color for the text */
+    border-radius: 10px;
+    padding-top: 10px;
+    padding-bottom: 3px;
+    text-align: left; 
     font-family: 'Helvetica', sans-serif
 }
 
@@ -98,7 +158,7 @@ body {
 /* DROPDOWNS */
 /* -------------------------------------------------------------------------------------------------------------- */
 
-.btn {
+/* .btn {
     background-color: black;
     color: white;
 }
@@ -106,28 +166,25 @@ body {
 .dropdown-toggle {
     background-color: black;
     color: white;
-}
+} */
 
 .well {
     align-items: right;
+    float: right;
 }
 /* -------------------------------------------------------------------------------------------------------------- */
 /* MAP-RELATED ITEMS */
 /* -------------------------------------------------------------------------------------------------------------- */
 
-/* #map1 {
+#map1 {
+    /* position: relative;
     width: 100%;
-    height: 100%;
-    float: right;
-} */
-
-/* #map1 {
-    position: fixed;
-    top: 0;
-    left: 20vw;
-    bottom: 0;
-    right: 0;
-} */
+    height: 700px;
+    float: center; */
+    border: 3px solid #996600;
+    border-radius: 8px;
+    overflow: hidden;
+}
 
 /* .leaflet-bottom.leaflet-left {
     width: 100%;
@@ -145,10 +202,4 @@ body {
     fill-opacity: 0.2;
     stroke: gray;
     stroke-width: 1;
-}
-
-/* Added styles for timeline slider */
-.leaflet-bottom .leaflet-control-timeline-slider {
-    width: 100%; /* Make the slider full width */
-    left: 0; /* Align to the far left */
 }
