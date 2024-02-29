@@ -112,7 +112,7 @@ body {
 [id^="headshot"] {
     border-radius: 50%; /* display image in a circle */
     border: 3px solid #996600;
-    width: 300px; 
+    width: auto; 
     height: 300px; 
     object-fit: contain; /* maintain aspect ratio and fit within container */
     object-fit: fill; /* maintain aspect ratio and cover container */
