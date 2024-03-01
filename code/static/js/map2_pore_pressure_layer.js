@@ -2,7 +2,7 @@
 
 // Function to fetch data from Flask route
 async function fetchDataFromFlask() {
-    const response = await fetch('/data');
+    const response = await fetch('/pressure_data');
     const data = await response.json();
     return data;
 }
