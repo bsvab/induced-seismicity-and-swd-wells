@@ -17,14 +17,17 @@ app = Flask(__name__)
 def index():
     return render_template('index.html')
 
+# Route to map1
 @app.route('/map1')
 def map1():
     return render_template('map1.html')
 
+# Route to map2
 @app.route('/map2')
 def map2():
     return render_template('map2.html')
 
+# Connection to database
 def get_db_connection():
     conn = psycopg2.connect(
         host=PGEND_POINT,

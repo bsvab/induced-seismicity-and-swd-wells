@@ -87,23 +87,23 @@
                                     <h4>Produced Water Chemistry</h4>
                                 </div>
                                 <p><br>Produced water, a byproduct of oil and gas extraction, poses environmental challenges due to its complex chemical composition and high salinity. 
-                                    This project focuses on two key objectives: analyzing the chemistry of produced water with a focus on scaling elements and evaluating the 
-                                    availability of lithium for potential extraction. Utilizing data from the 
-                                    <a href="https://data.usgs.gov/datacatalog/data/USGS:59d25d63e4b05fe04cc235f9" target="_blank">United States Geological Survey (USGS)</a>, a comprehensive methodology 
-                                    for data cleaning and filtering is employed to ensure accuracy.
-                                    <br><br>
-                                    The analysis encompasses key elements such as Sodium, Calcium, Chloride, Sulfate, and Magnesium, with a focus on Total Dissolved Solids (TDS) 
-                                    greater than 35,000 ppm. Applying natural chemical balance conditions refines the dataset, and stringent charge balance criteria are employed 
-                                    for reliability. Missing data are addressed with tailored strategies respecting chemical properties.
-                                    <br><br>
-                                    Visualizations include box and violin plots showcasing elemental concentrations across geological basins, Piper plots for water type 
-                                    classification, and interactive maps revealing scaling element and lithium concentration clusters. The methodology ensures a clear representation 
-                                    of scaling element and lithium distribution and facilitates insights into spatial patterns. Furthermore, the project introduces a linear regression 
-                                    analysis on lithium concentration versus depth to investigate whether a relationship is present.
-                                    <br><br>
-                                    In conclusion, this research provides a nuanced understanding of produced water chemistry, supports sustainable water management, aligns with DOE 
-                                    goals, and explores the potential for resource recovery. The methodologies presented are adaptable, promoting transparency and fostering 
-                                    environmentally responsible practices in the oil and gas industry.</p>
+                                This project focuses on two key objectives: analyzing the chemistry of produced water with a focus on scaling elements and evaluating the 
+                                availability of lithium for potential extraction. Utilizing data from the 
+                                <a href="https://data.usgs.gov/datacatalog/data/USGS:59d25d63e4b05fe04cc235f9" target="_blank">United States Geological Survey (USGS)</a>, a comprehensive methodology 
+                                for data cleaning and filtering is employed to ensure accuracy.
+                                <br><br>
+                                The analysis encompasses key elements such as Sodium, Calcium, Chloride, Sulfate, and Magnesium, with a focus on Total Dissolved Solids (TDS) 
+                                greater than 35,000 ppm. Applying natural chemical balance conditions refines the dataset, and stringent charge balance criteria are employed 
+                                for reliability. Missing data are addressed with tailored strategies respecting chemical properties.
+                                <br><br>
+                                Visualizations include box and violin plots showcasing elemental concentrations across geological basins, Piper plots for water type 
+                                classification, and interactive maps revealing scaling element and lithium concentration clusters. The methodology ensures a clear representation 
+                                of scaling element and lithium distribution and facilitates insights into spatial patterns. Furthermore, the project introduces a linear regression 
+                                analysis on lithium concentration versus depth to investigate whether a relationship is present.
+                                <br><br>
+                                In conclusion, this research provides a nuanced understanding of produced water chemistry, supports sustainable water management, aligns with DOE 
+                                goals, and explores the potential for resource recovery. The methodologies presented are adaptable, promoting transparency and fostering 
+                                environmentally responsible practices in the oil and gas industry.</p>
                             </div>
                         </div>
                     </div>
@@ -173,6 +173,10 @@
                         <!-- how to write iframe to source file via Flask... -->
                         <iframe id="map2" src="{{ url_for('map2') }}" height="650" width=100% title="map2"></iframe>
                     </div>
+                </div>
+                <div class="container-fluid">
+                    <p><br>If you are interested in exploring the code behind these visuals, or the data that is feeding them, please check out our github repository:  
+                    <a href="https://github.com/bsvab/induced-seismic-activity-&-injection-wells" target="_blank">https://github.com/bsvab/induced-seismic-activity-&-injection-wells</a>. 
                 </div>
             </div>
 
@@ -308,6 +312,10 @@
                             <img id="imgElement_Piper(Color)" src="" alt="Piper(Color)">
                         </div>
                     </div>
+                </div>
+                <div class="container-fluid">
+                    <p><br>If you are interested in exploring the code behind these visuals, or the data that is feeding them, please check out our github repository:  
+                    <a href="https://github.com/bsvab/produced-water-chemistry" target="_blank">www.github.com/bsvab/produced-water-chemistry</a>.
                 </div>
             </div>
 
@@ -525,22 +533,45 @@
                 <div class="container-fluid">
                     <div class="row">
                         <div class="col-md-12">
-                            <p>Content goes here...</p>
+                            <p> </p>
                         </div>
                     </div>
                     <div class="row">
                         <span class="larger"><b><ins>Basin (Geological Basin)</ins>:</b></span><span>A large-scale geological depression, often circular or elliptical in shape, where layers of sediment accumulate over time. Basins are critical in petroleum geology as they are often the sites of significant accumulations of oil and natural gas. These structures are formed by tectonic actions such as subsidence of the Earth's crust and can vary widely in size and complexity.<br><br></span>
+                    </div>
+                    <div class="row">
                         <span class="larger"><b><ins>Charge Balance</ins>:</b></span><span>In geochemistry, this refers to the state where the sum of the charges from all the cations (positively charged ions) and anions (negatively charged ions) in a solution are balanced. It's important for understanding the chemical stability of mineral waters and produced waters.<br><br></span>
+                    </div>
+                    <div class="row">
                         <span class="larger"><b><ins>Concentration</ins>:</b></span><span>The abundance of a constituent divided by the total volume of a mixture. In geochemistry, concentration is a fundamental concept used to quantify the level of a particular element or compound in a geological sample. It is critical for understanding the composition and quality of groundwater, surface water, and produced water.<br><br></span>
+                    </div>
+                    <div class="row">
                         <span class="larger"><b><ins>Formation (Geological Formation in Oil and Gas Reservoirs)</ins>:</b></span>&nbsp;&nbsp; <span>In the context of oil and gas exploration and production, a geological formation is a distinct layer of sedimentary rock with consistent characteristics that distinguish it from adjacent strata. These formations are critical in identifying potential reservoirs of hydrocarbons. They often contain organic material that, over geological time, has been transformed into oil and gas. The properties of a formation, such as porosity, permeability, and thickness, are key factors in determining the viability and productivity of an oil or gas reservoir. In oil and gas terminology, formations are usually named after the geographic location where they were first studied or identified. Understanding the geological formations is essential for successful drilling and extraction operations, as it guides the placement of wells and informs predictions about the presence and recoverability of oil and gas deposits.<br><br></span>
+                    </div>
+                    <div class="row">
                         <span class="larger"><b><ins>Major Elements</ins>:</b></span><span>These are the elements found in high concentrations in geological samples. They are significant in geochemical investigations as they influence the chemical and physical properties of rocks and fluids.<br><br></span>
+                    </div>
+                    <div class="row">
                         <span class="larger"><b><ins>Molarity</ins>:</b></span><span>A unit of concentration in chemistry, representing the number of moles of a solute dissolved in one liter of solution. It is a standard measure for quantifying the concentration of elements or compounds in a solution, crucial in geochemical analyses to determine the precise chemical makeup of water samples, including produced water.<br><br></span>
+                    </div>
+                    <div class="row">
                         <span class="larger"><b><ins>Piper Plot</ins>:</b></span><span>A graphical representation used in hydrochemistry to illustrate the chemical composition of water samples. The plot is divided into three fields: two triangular fields that show the major cations (calcium, magnesium, sodium, and potassium) and anions (carbonate, bicarbonate, sulfate, and chloride) respectively, and a central diamond-shaped field that provides a comprehensive view of water chemistry. Piper plots are instrumental in understanding the geochemical evolution of water, identifying water types, and assessing water-rock interaction processes.<br><br></span>
+                    </div>
+                    <div class="row">
                         <span class="larger"><b><ins>Produced Water</ins>:</b></span><span>This refers to the water that is brought to the surface during oil and gas extraction. It often contains various organic and inorganic substances and is typically considered a byproduct of the hydrocarbon extraction process.<br><br></span>
+                    </div>
+                    <div class="row">
                         <span class="larger"><b><ins>Scaling Elements in Produced Water Treatment</ins>:</b></span><span>In the context of produced water treatment, scaling elements refer to minerals like calcium, magnesium, barium, and strontium, which can precipitate out of produced water under certain conditions. These precipitates can form scale that coats and clogs pipes and equipment, causing significant operational challenges in treatment processes. Managing scaling elements is crucial for efficient and cost-effective treatment of produced water.<br><br></span>
+                    </div>
+                    <div class="row">
                         <span class="larger"><b><ins>Total Dissolved Solid (TDS)</ins>:</b></span><span>A measure of the combined content of all inorganic and organic substances contained in a liquid. In water quality analysis and geochemistry, TDS is used to indicate the general quality of the water.<br><br></span>
+                    </div>
+                    <div class="row">
                         <span class="larger"><b><ins>Violin Plot</ins>:</b></span><span>A method of data visualization that combines a box plot with a kernel density plot. In environmental and geochemical studies, violin plots can illustrate the distribution and probability density of data, particularly useful for comparing multiple data sets.<br><br></span>
+                    </div>
+                    <div class="row">
                         <span class="larger"><b><ins>Well Depth</ins>:</b></span><span>The vertical distance measured from the surface to the bottom of a well. This is a critical factor in geological and hydrological studies as it can influence the characteristics of the water or oil extracted.<br><br></span>
+                    </div>
                         <!-- <span class="larger"><b><ins>TERM</ins>:</b></span><span>DEFINITION<br><br></span>
                         <span class="larger"><b><ins>TERM</ins>:</b></span><span>DEFINITION<br><br></span>
                         <span class="larger"><b><ins>TERM</ins>:</b></span><span>DEFINITION<br><br></span>
