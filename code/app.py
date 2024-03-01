@@ -27,6 +27,16 @@ def map1():
 def map2():
     return render_template('map2.html')
 
+@app.route('/team_image_urls')
+def get_team_image_urls():
+    team = ["roxana_darvari", "brittany_svab", "alejandro_juarez", "sarah_cain", "john_cahill"]
+    team_image_urls = {}
+    for person in team:
+        filename = f"images/team/{person}.png"
+        team_image_urls[person] = url_for('static', filename=filename)
+    print(team_image_urls)  # Log the generated image URLs
+    return jsonify(team_image_urls)
+
 # Connection to database
 def get_db_connection():
     conn = psycopg2.connect(
