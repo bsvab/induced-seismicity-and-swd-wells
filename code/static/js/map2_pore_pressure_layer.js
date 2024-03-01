@@ -41,7 +41,7 @@ function getColor(value) {
            value >= 2000  ? '#fed976' :
            value >= 1000  ? '#ffeda0' :
                             '#ffffcc' ;
-}
+};
 
 // Function to draw 5 square mile map squares based on the dataset
 function drawMapSquares(dataset) {
