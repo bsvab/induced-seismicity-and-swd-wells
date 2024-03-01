@@ -194,6 +194,16 @@ body {
     overflow: hidden;
 }
 
+#map2 {
+    /* position: relative;
+    width: 100%;
+    height: 700px;
+    float: center; */
+    border: 3px solid #996600;
+    border-radius: 8px;
+    overflow: hidden;
+}
+
 /* .leaflet-bottom.leaflet-left {
     width: 100%;
 } */

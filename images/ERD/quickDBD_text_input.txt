@@ -1,2 +1,0 @@
-# Input the text below to generate an ERD image using https://www.quickdatabasediagrams.com/
-

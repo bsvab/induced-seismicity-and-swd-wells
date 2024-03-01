@@ -5,7 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Produced Water Data & Analysis</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"> <!-- Bootstrap -->
-    <link rel="stylesheet" href="./static/style.css">
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.6.0/dist/leaflet.css"/>
     <script src="https://unpkg.com/leaflet@1.6.0/dist/leaflet.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
@@ -13,6 +12,13 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/PapaParse/5.3.0/papaparse.min.js"></script>
     <script src="https://d3js.org/d3.v7.min.js"></script>
+
+    <!-- file source links to render locally... -->
+    <!-- <link rel="stylesheet" href="../static/css/style.css"> -->
+
+    <!-- file source links to render via Flask app... -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+
 </head>
 <body>
     
@@ -116,9 +122,9 @@
                 <!-- Content Section -->
                 <div class="container-fluid">
                     <div class="row">
-                    <div class="col-md-12">
-                        <p> </p>
-                    </div>
+                        <div class="col-md-12">
+                            <p> </p>
+                        </div>
                     </div>
                 </div>
                 <div class="container-fluid">
@@ -128,8 +134,12 @@
                         </div>
                     </div>
                     <div class="row">
-                        <iframe id="map1" src="map1.html" height="650" width=100% title="map1"></iframe>
-                        
+                        <!-- how to write iframe to source file locally... -->
+                        <!-- <iframe id="map1" src="./static/map1.html" height="650" width=100% title="map1"></iframe> -->
+
+                        <!-- how to write iframe to source file via Flask... -->
+                        <iframe id="map1" src="{{ url_for('map1') }}" height="650" width=100% title="map1"></iframe>
+
                         <!-- <div class="col-md-12"> -->
                             <!-- Create a new container for the map and controller -->
                             <!-- <div id="map1_container"> -->
@@ -146,6 +156,22 @@
                                 <!-- <script src="./static/map1_pore_pressure_layer.js"></script> -->
                             <!-- </div> -->
                         <!-- </div> -->
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <p> </p>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <p>Select date from dropdown to view pore pressure data in Layer 13.</p> <!-- replace "Layer 13" with actual name of layer...-->
+                        </div>
+                    </div>
+                    <div class="row">
+                        <!-- how to write iframe to source file locally... -->
+                        <!-- <iframe id="map2" src="./static/map2.html" height="650" width=100% title="map2"></iframe> -->
+                        <!-- how to write iframe to source file via Flask... -->
+                        <iframe id="map2" src="{{ url_for('map2') }}" height="650" width=100% title="map2"></iframe>
                     </div>
                 </div>
             </div>
@@ -324,8 +350,8 @@
                                 <div class="row">
                                     <div class="container-fluid banner3">
                                         <h3>Roxana Darvari</h3>
-                                        <img id="logo" src="../../images/team/linkedin_logo_white_21.png" alt="linkedin"> <a id="about" href="https://www.linkedin.com/in/roxana-darvari-p-e-49646284/" target="_blank">www.linkedin.com/in/roxana-darvari-p-e-49646284</a> &nbsp; &nbsp;
-                                        <img id="logo" src="../../images/team/github_logo_white.png" alt="github"> <a id="about" href="https://github.com/roxanadrv" target="_blank">www.github.com/roxanadrv</a>
+                                        <img id="logo_li" src="" alt="linkedin"> <a id="about" href="https://www.linkedin.com/in/roxana-darvari-p-e-49646284/" target="_blank">www.linkedin.com/in/roxana-darvari-p-e-49646284</a> &nbsp; &nbsp;
+                                        <img id="logo_gh" src="" alt="github"> <a id="about" href="https://github.com/roxanadrv" target="_blank">www.github.com/roxanadrv</a>
                                     </div>
                                 </div>
                                 <div class="row" id="about_blurb">
@@ -356,8 +382,8 @@
                                 <div class="row">
                                     <div class="container-fluid banner3">
                                         <h3>Brittany Svab</h3> 
-                                        <img id="logo" src="../../images/team/linkedin_logo_white_21.png" alt="linkedin"> <a id="about" href="https://www.linkedin.com/in/bsvab/" target="_blank">www.linkedin.com/in/bsvab</a> &nbsp; &nbsp;
-                                        <img id="logo" src="../../images/team/github_logo_white.png" alt="github"> <a id="about" href="https://github.com/bsvab" target="_blank">www.github.com/bsvab</a>
+                                        <img id="logo_li" src="" alt="linkedin"> <a id="about" href="https://www.linkedin.com/in/bsvab/" target="_blank">www.linkedin.com/in/bsvab</a> &nbsp; &nbsp;
+                                        <img id="logo_gh" src="" alt="github"> <a id="about" href="https://github.com/bsvab" target="_blank">www.github.com/bsvab</a>
                                     </div>
                                 </div>
                                 <div class="row" id="about_blurb">
@@ -393,8 +419,8 @@
                                 <div class="row">
                                     <div class="container-fluid banner3">
                                         <h3>Alejandro Juarez</h3>
-                                        <img id="logo" src="../../images/team/linkedin_logo_white_21.png" alt="linkedin"> <a id="about" href="https://www.linkedin.com/in/alejandro-juarez-4a0778194" target="_blank">www.linkedin.com/in/alejandro-juarez-4a0778194</a> &nbsp; &nbsp;
-                                        <img id="logo" src="../../images/team/github_logo_white.png" alt="github"> <a id="about" href="https://github.com/ajuarez2112" target="_blank">www.github.com/ajuarez2112</a>
+                                        <img id="logo_li" src="" alt="linkedin"> <a id="about" href="https://www.linkedin.com/in/alejandro-juarez-4a0778194" target="_blank">www.linkedin.com/in/alejandro-juarez-4a0778194</a> &nbsp; &nbsp;
+                                        <img id="logo_gh" src="" alt="github"> <a id="about" href="https://github.com/ajuarez2112" target="_blank">www.github.com/ajuarez2112</a>
                                     </div>
                                 </div>
                                 <div class="row" id="about_blurb">
@@ -425,8 +451,8 @@
                                 <div class="row">
                                     <div class="container-fluid banner3">
                                         <h3>Sarah Cain</h3>
-                                        <img id="logo" src="../../images/team/linkedin_logo_white_21.png" alt="linkedin"> <a id="about" href="https://www.linkedin.com/in/sarah-cain-3ab0a7277/" target="_blank">www.linkedin.com/in/sarah-cain-3ab0a7277</a> &nbsp; &nbsp;
-                                        <img id="logo" src="../../images/team/github_logo_white.png" alt="github"> <a id="about" href="https://github.com/thesarahcain" target="_blank">www.github.com/thesarahcain</a>
+                                        <img id="logo_li" src="" alt="linkedin"> <a id="about" href="https://www.linkedin.com/in/sarah-cain-3ab0a7277/" target="_blank">www.linkedin.com/in/sarah-cain-3ab0a7277</a> &nbsp; &nbsp;
+                                        <img id="logo_gh" src="" alt="github"> <a id="about" href="https://github.com/thesarahcain" target="_blank">www.github.com/thesarahcain</a>
                                     </div>
                                 </div>
                                 <div class="row" id="about_blurb">
@@ -457,8 +483,8 @@
                                 <div class="row">
                                     <div class="container-fluid banner3">
                                         <h3>John Cahill</h3>
-                                        <img id="logo" src="../../images/team/linkedin_logo_white_21.png" alt="linkedin"> <a id="about" href="https://www.linkedin.com/in/john-cahill-6a784571/" target="_blank">www.linkedin.com/in/john-cahill-6a784571</a> &nbsp; &nbsp;
-                                        <img id="logo" src="../../images/team/github_logo_white.png" alt="github"> <a id="about" href="https://github.com/ithilien12358" target="_blank">www.github.com/ithilien12358</a>
+                                        <img id="logo_li" src="" alt="linkedin"> <a id="about" href="https://www.linkedin.com/in/john-cahill-6a784571/" target="_blank">www.linkedin.com/in/john-cahill-6a784571</a> &nbsp; &nbsp;
+                                        <img id="logo_gh" src="" alt="github"> <a id="about" href="https://github.com/ithilien12358" target="_blank">www.github.com/ithilien12358</a>
                                     </div>
                                 </div>
                                 <div class="row" id="about_blurb">
@@ -515,6 +541,7 @@
                         <span class="larger"><b><ins>Total Dissolved Solid (TDS)</ins>:</b></span><span>A measure of the combined content of all inorganic and organic substances contained in a liquid. In water quality analysis and geochemistry, TDS is used to indicate the general quality of the water.<br><br></span>
                         <span class="larger"><b><ins>Violin Plot</ins>:</b></span><span>A method of data visualization that combines a box plot with a kernel density plot. In environmental and geochemical studies, violin plots can illustrate the distribution and probability density of data, particularly useful for comparing multiple data sets.<br><br></span>
                         <span class="larger"><b><ins>Well Depth</ins>:</b></span><span>The vertical distance measured from the surface to the bottom of a well. This is a critical factor in geological and hydrological studies as it can influence the characteristics of the water or oil extracted.<br><br></span>
+                        <!-- <span class="larger"><b><ins>TERM</ins>:</b></span><span>DEFINITION<br><br></span>
                         <span class="larger"><b><ins>TERM</ins>:</b></span><span>DEFINITION<br><br></span>
                         <span class="larger"><b><ins>TERM</ins>:</b></span><span>DEFINITION<br><br></span>
                         <span class="larger"><b><ins>TERM</ins>:</b></span><span>DEFINITION<br><br></span>
@@ -523,27 +550,25 @@
                         <span class="larger"><b><ins>TERM</ins>:</b></span><span>DEFINITION<br><br></span>
                         <span class="larger"><b><ins>TERM</ins>:</b></span><span>DEFINITION<br><br></span>
                         <span class="larger"><b><ins>TERM</ins>:</b></span><span>DEFINITION<br><br></span>
-                        <span class="larger"><b><ins>TERM</ins>:</b></span><span>DEFINITION<br><br></span>
-                        <span class="larger"><b><ins>TERM</ins>:</b></span><span>DEFINITION<br><br></span>
+                        <span class="larger"><b><ins>TERM</ins>:</b></span><span>DEFINITION<br><br></span> -->
                     </div>
                 </div>
             </div>
         </div>
     </div>
     
-    <script src="./static/tab_home.js"></script>
-    <script src="./static/tab_seismic.js"></script>
-    <script src="./static/tab_chemistry.js"></script>
-    <script src="./static/tab_about_us.js"></script>
+    <!-- file source links to render locally... -->
+    <!-- <script src="../static/js/tab_home.js"></script> -->
+    <!-- <script src="../static/js/tab_seismic.js"></script> -->
+    <!-- <script src="../static/js/tab_chemistry.js"></script> -->
+    <!-- <script src="../static/js/tab_about_us.js"></script> -->
+
+    <!-- file source links to render via Flask app... -->
+    <script src="{{ url_for('static', filename='js/tab_home.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/tab_seismic.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/tab_chemistry.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/tab_about_us.js') }}"></script>
+
 
 </body>
 </html>
-
-<!-- TEMPORARY NOTES TO SELF...
-
-from TAs when asked if one html file can call another:
-    Can pull in other .html files using iframe: <iframe src="path/to/anotherfile.html" width="100%" height="500"></iframe>
-    https://www.w3schools.com/tags/tag_iframe.ASP
-    https://codepen.io/IanLintner/pen/DqGKQZ
-
--->
