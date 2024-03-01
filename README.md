@@ -146,9 +146,28 @@ In conclusion, our visualized analysis presents a compelling narrative on the in
 - [Folium](https://pypi.org/project/folium/)
 - [Branca](https://pypi.org/project/branca/)
 - [HTML](https://html.spec.whatwg.org/multipage/)
+- [Leaflet](https://leafletjs.com/) 
+- [Bootstrap 4.5.2](https://getbootstrap.com/)
+- [jQuery 3.5.1](https://jquery.com/)
+- [Popper.js 1.16.0](https://popper.js.org/)
+- [D3.js v7](https://d3js.org/)
+- [PapaParse 5.3.0](https://www.papaparse.com/)
+- [Amazon RDS](https://aws.amazon.com/rds/)
+- [Psycopg2](https://www.psycopg.org/docs/)
+- [SQLAlchemy](https://www.sqlalchemy.org/)
 
 ## <p style="color:#CC6600">6. Sources</p> 
-- ...
+- **TexNet Seismic Data**: Detailed seismic activity data provided by the TexNet Seismological Network. [Visit TexNet](https://www.beg.utexas.edu/texnet-cisr/texnet)
+- **USGS Produced Water Data**: Information on the chemical composition of produced water from the United States Geological Survey. [USGS Produced Water Data](https://www.usgs.gov/)
+- **Injection Data API**: Real-time and historical data on fluid injection volumes accessed through the provided API endpoint. [Injection Data Source](https://injection.texnet.beg.utexas.edu/api/Export)
+- **Leaflet.js Documentation**: For implementing interactive maps in the web application. [Leaflet.js](https://leafletjs.com/)
+- **PapaParse Documentation**: Used for parsing CSV data within the web application. [PapaParse](https://www.papaparse.com/)
+- **D3.js Library**: For creating sophisticated visualizations based on the project data. [D3.js](https://d3js.org/)
+- **Bootstrap Framework**: For designing responsive and mobile-first web pages. [Bootstrap](https://getbootstrap.com/)
+- **Python Documentation**: Reference for Python programming language used in data analysis and backend development. [Python](https://www.python.org/doc/)
+- **Pandas Documentation**: Utilized for data manipulation and analysis. [Pandas](https://pandas.pydata.org/pandas-docs/stable/index.html)
+- **GeoPandas Documentation**: For working with geospatial data in Python. [GeoPandas](https://geopandas.org/en/stable/)
+- **Amazon RDS Documentation**: For database services used to store and manage the project data. [Amazon RDS](https://aws.amazon.com/rds/)
 
 ## <p style="color:#CC6600">7. Contributors</p> 
 
