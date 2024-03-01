@@ -75,7 +75,7 @@
     }
 
     // Call the function to read the CSV file
-    readCSVFile('../../data/medium_file_test_pressure_data.csv')
+    readCSVFile('../../data/smaller_file_test_pressure_data.csv')
         .then(data => {
             // Now you have the CSV data, you can use it here
             console.log('CSV data:', data);
@@ -104,8 +104,8 @@
             const dateParts = values[0].split('/'); // Split date string into parts
             // Check if lat, lng, value, layer, and date are valid
             if (!isNaN(lat) && !isNaN(lng) && !isNaN(value) && dateParts.length === 3) {
-                // Construct the date object
-                const date = new Date(parseInt(dateParts[2]), parseInt(dateParts[0]) - 1, parseInt(dateParts[1])); // Month is 0-indexed
+                // Construct the date object (Year, month, day)
+                const date = new Date(parseInt(dateParts[2]), parseInt(dateParts[0]) - 1, parseInt(dateParts[1]));
                 // Construct the data point object
                 const dataPoint = { lat, lng, value, layer, date };
                 // Push the data point object to the dataset array
@@ -134,17 +134,20 @@
 
         // Iterate over each data point and assign it to the corresponding square
         dataset.forEach(point => {
-            // Calculate the square index for the data point
-            let xIndex = Math.floor((point.lng - texasBounds.getWest()) / squareWidth);
-            let yIndex = Math.floor((texasBounds.getNorth() - point.lat) / squareHeight);
-            // Create a unique key for the square
-            let key = xIndex + '_' + yIndex;
-            // Initialize array for the square if not exists
-            if (!squareData[key]) {
-                squareData[key] = [];
+            // Filter data points for 'Layer_13'
+            if (point.layer === 'Layer_13') {
+                // Calculate the square index for the data point
+                let xIndex = Math.floor((point.lng - texasBounds.getWest()) / squareWidth);
+                let yIndex = Math.floor((texasBounds.getNorth() - point.lat) / squareHeight);
+                // Create a unique key for the square
+                let key = xIndex + '_' + yIndex;
+                // Initialize array for the square if not exists
+                if (!squareData[key]) {
+                    squareData[key] = [];
+                }
+                // Add the data point to the square
+                squareData[key].push(point);
             }
-            // Add the data point to the square
-            squareData[key].push(point);
         });
 
         // Initialize timeline dataset as a GeoJSON FeatureCollection
@@ -156,16 +159,6 @@
         // Iterate over each square and generate timeline dataset
         Object.keys(squareData).forEach(key => {
             let points = squareData[key];
-
-            // Group data points by layer
-            const groupedByLayer = points.reduce((acc, dataPoint) => {
-                const layer = dataPoint.layer;
-                if (!acc[layer]) {
-                    acc[layer] = [];
-                }
-                acc[layer].push(dataPoint);
-                return acc;
-            }, {});
 
             // Get the minimum and maximum years from the dataset
             const minYear = Math.min(...points.map(dataPoint => dataPoint.date.getFullYear()));
@@ -186,35 +179,28 @@
                 }
             };
 
-            // Iterate over each layer
-            Object.keys(groupedByLayer).forEach(layer => {
-                // Iterate over each year
-                for (let year = minYear; year <= maxYear; year++) {
-                    // Iterate over each month
-                    for (let month = 0; month < 12; month++) { // 0 represents January, 11 represents December
-                        // Find the closest data point to the first of the month and year
-                        const closestDataPoint = points.reduce((closest, dataPoint) => {
-                            const date = dataPoint.date;
-                            if (date.getFullYear() === year && date.getMonth() === month) {
-                                if (!closest || Math.abs(date.getDate() - 1) < Math.abs(closest.date.getDate() - 1)) {
-                                    return dataPoint;
-                                }
-                            }
-                            return closest;
-                        }, null);
-                        // Add the closest data point to the timeline dataset
-                        if (closestDataPoint) {
-                            squareFeature.properties.pressures.push({
-                                layer,
-                                year,
-                                month: month + 1, // Adding 1 to make it 1-based month
-                                date: new Date(year, month, 1),
-                                value: closestDataPoint.value
-                            });
-                        }
+            // Iterate over each year
+            for (let year = minYear; year <= maxYear; year++) {
+                // Iterate over each month
+                for (let month = 0; month < 12; month++) { // 0 represents January, 11 represents December
+                    // Find the latest data point within the month
+                    const latestDataPoint = points.filter(dataPoint => {
+                        const date = dataPoint.date;
+                        return date.getFullYear() === year && date.getMonth() === month;
+                    }).sort((a, b) => b.date - a.date)[0]; // Sort descending and get the first (latest) element
+
+                    // Add the latest data point to the timeline dataset
+                    if (latestDataPoint) {
+                        squareFeature.properties.pressures.push({
+                            layer: latestDataPoint.layer,
+                            year,
+                            month: month + 1, // Adding 1 to make it 1-based month
+                            date: new Date(year, month, 1),
+                            value: latestDataPoint.value
+                        });
                     }
                 }
-            });
+            }
 
             // Add square feature to the timeline dataset
             timelineDataset.features.push(squareFeature);
