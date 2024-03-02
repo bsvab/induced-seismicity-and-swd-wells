@@ -189,7 +189,7 @@ let dropdown = L.control({position: 'topright'});
 // Function to populate the dropdown with available month/year dates
 function populateDropdown() {
     console.log("Populating dropdown...");
-    let dropdownContent = '<select id="dateDropdown">';
+    let dropdownContent = '<select id="dateDropdownContainer">';
     
     // Assuming timeline_pressure_13 is available and contains data
     console.log("Timeline data:", timeline_pressure_13);
