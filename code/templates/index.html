@@ -597,109 +597,12 @@
     <!-- file source links to render via Flask app... -->
     <script src="{{ url_for('static', filename='js/tab_home.js') }}"></script>
     <script src="{{ url_for('static', filename='js/tab_seismic.js') }}"></script>
-    <!-- <script src="{{ url_for('static', filename='js/tab_chemistry.js') }}"></script> --> <!-- THIS JS CODE MUST BE DIRECTLY IN THE HTML IN ORDER FOR FLASK TO RENDER, IT IS INCLUDED IN SCRIPT TAG BELOW -->
+    <script src="{{ url_for('static', filename='js/tab_chemistry.js') }}"></script> <!-- THIS JS CODE MUST BE DIRECTLY IN THE HTML IN ORDER FOR FLASK TO RENDER, IT IS INCLUDED IN SCRIPT TAG BELOW -->
     <!-- <script src="{{ url_for('static', filename='js/tab_about_us.js') }}"></script> --> <!-- THIS JS CODE MUST BE DIRECTLY IN THE HTML IN ORDER FOR FLASK TO RENDER, IT IS INCLUDED IN SCRIPT TAG BELOW -->
 
     <script>
-        let basins = [
-            'Anadarko Basin',
-            'Appalachian Basin',
-            'Fort Worth Basin',
-            'Gulf Coast Basin',
-            'Illinois Basin',
-            'Michigan Basin',
-            'Oklahoma Platform Basins',
-            'Permian Basin',
-            'Rocky Mountain Basins',
-            'Williston Basin'
-        ];
+        // CHEM STUFF HERE??
 
-        let basins_no_spaces = [
-            "AnadarkoBasin",
-            "AppalachianBasin",
-            "FortWorthBasin",
-            "GulfCoastBasin",
-            "IllinoisBasin",
-            "MichiganBasin",
-            "OklahomaPlatformBasins",
-            "PermianBasin",
-            "RockyMountainBasins",
-            "WillistonBasin"
-        ];
-
-        let elements = ["Ca", "Mg", "HCO3", "Si", "FeTot", "Ba", "Sr", "Li"];
-
-        // initialize the dashboard at start up 
-        function init() {
-        
-            // populate the dropdown menu
-            populateDropdownMenu(basins)
-
-            // Set the first basin from the list as the initial selection from the dropdown list
-            let first_basin = basins[0];
-            console.log(first_basin);
-
-            // populate the associated visuals for that basin
-            populateVisuals(first_basin)
-
-            // set event listener for dropdown menu change = if change occurs, update charts
-            let dropdown_list = d3.select("#selectBasin");  
-            dropdown_list.on("change", function() {
-            let selection = this.value;
-            populateVisuals(selection);
-            });
-        
-        };
-        
-        // call the initialize function
-        init();
-        
-        // get sample names and populate the dropdown list
-        function populateDropdownMenu(basins) {
-            
-            // select the dropdown menu
-            let dropdown_list = d3.select("#selectBasin");
-            
-            basins.forEach(basin => {
-                dropdown_list.append("option")
-                    .text(basin)
-                    .attr("value", basin);
-            });
-            
-        };
-
-        // use below function to source images via Flask...
-        // generate all visuals for selected basin
-        function populateVisuals(selection) {
-            let basin_index = basins.indexOf(selection);
-            let basin = basins_no_spaces[basin_index];
-
-            for (let e = 0; e < elements.length; e++) {
-                let element = elements[e];
-                let filename1 = `images/chemistry/ViolinPlot_${basin}_${element}.png`;
-                // violin plots
-                let imgElement1 = document.getElementById(`imgElement_ViolinPlot_${element}`);
-                imgElement1.src = `{{ url_for('static', filename='${filename1}') }}`;
-
-                // box plots
-                let imgElement2 = document.getElementById(`imgElement_BoxPlot_${element}`);
-                let filename2 = `images/chemistry/BoxPlot_${basin}_${element}.png`;
-                imgElement2.src = `{{ url_for('static', filename='${filename2}') }}`;
-            }
-
-            // piper plots
-            let imgElement3 = document.getElementById('imgElement_Piper(Triangle)');
-            let filename3 = `images/chemistry/Piper(Triangle)_${basin}.png`;
-            imgElement3.src = `{{ url_for('static', filename='${filename3}') }}`;
-
-            let imgElement4 = document.getElementById('imgElement_Piper(Contour)');
-            let filename4 = `images/chemistry/Piper(Contour)_${basin}.png`;
-            imgElement4.src = `{{ url_for('static', filename='${filename4}') }}`;
-
-            let imgElement5 = document.getElementById('imgElement_Piper(Color)');
-            let filename5 = `images/chemistry/Piper(Color)_${basin}.png`;
-            imgElement5.src = `{{ url_for('static', filename='${filename5}') }}`;
-        }
 
     </script>
 
@@ -713,29 +616,6 @@
         
         // call the initialize function
         init();
-
-        // code to use if sourcing images via Flask...
-        // generate all headshots
-        // function populateHeadshots(team) {
-        //     for (let p = 0; p < team.length; p++) {
-        //         let person = team[p];
-                
-        //         // Get all elements with class 'headshot_${person}'
-        //         let imgElements1 = document.querySelectorAll(`.headshot_${person}`);
-
-        //         // Loop through all elements with the specified class
-        //         imgElements1.forEach(function(imgElement) {
-        //             let filename = `images/team/${person}.png`;
-        //             let flask_src = `{{ url_for('static', filename='${filename}') }}`
-        //             imgElement.src = flask_src; // Set the source of each image
-
-        //             imgElement.onerror = function() {
-        //                 // If image doesn't exist, set source to the default image
-        //                 imgElement.src = "{{ url_for('static', filename='images/team/headshot_icon.png') }}";
-        //             };
-        //         });
-        //     }
-        // }
 
         function populateHeadshots() {
             // Make an AJAX request to fetch image URLs
