@@ -6,11 +6,11 @@ L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
     attribution: '© OpenStreetMap contributors'
 }).addTo(map2);
 
-// Add timeline slider
-let timelineControl = L.timelineSliderControl({
-    formatOutput: function (date) {
-        return new Date(date).toDateString();
-    }
-});
+// // Add timeline slider
+// let timelineControl = L.timelineSliderControl({
+//     formatOutput: function (date) {
+//         return new Date(date).toDateString();
+//     }
+// });
 
-timelineControl.addTo(map2);
+// timelineControl.addTo(map2);
