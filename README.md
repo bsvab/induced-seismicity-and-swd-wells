@@ -77,24 +77,16 @@ The project's methodology for managing the diverse datasets required for our ana
 Our project's cornerstone is the development of a Flask application, acting as the crucial conduit between our comprehensive database hosted on Amazon Web Services (AWS) and the dynamic geomap featured on our web application. This Flask app is meticulously engineered to fetch, process, and present seismic activity, injection volume, and pore pressure data. It is designed to facilitate user access to real-time, interactive visualizations, enabling an in-depth exploration of the intricate relationships among these critical environmental and geological variables.
 
 ### <p style="color:gray">2.3 Visualizations</p>
-The methodology for integrating the injection layer into our geomap involves a series of carefully orchestrated steps that leverage both the front-end capabilities outlined in the index.html file and the back-end functionality facilitated by our Flask app:
-
-1. **Database Connection**: Our Flask app establishes a direct connection to the project's database hosted on Amazon Web Services (AWS). This database contains comprehensive data on injection volumes, seismic activities, and pore pressure changes.
-
-2. **Data Retrieval and Processing**: Upon user interaction with the geomap, specifically through the "Induced Seismic Activity & Injection Wells" tab, the Flask app queries the AWS database for injection data. This data includes crucial information such as the dates of injection activities and the volumes of fluid injected, which are essential for visualizing the injection layer.
-
-3. **GeoJSON Data Preparation**: The retrieved data is processed and converted into GeoJSON format, a widely used format compatible with web-based mapping solutions. This conversion is handled dynamically by the Flask app, ensuring that the data is readily usable by the front-end mapping library (Leaflet.js) for visualization.
-
-4. **Front-End Visualization**:
-   - The prepared GeoJSON data is fetched by the front-end JavaScript code embedded within the index.html file, specifically within the scripts designated for the geomap visualization.
-   - A timeline visualization is created using the Leaflet.js library, allowing users to observe the temporal progression of injection activities across the Delaware Basin. This interactive timeline is integral to the "Induced Seismic Activity & Injection Wells" tab, providing a dynamic and engaging way for users to explore how injection volumes correlate with seismic events over time.
-
-5. **Interactive User Experience**:
-   - The injection layer is enhanced with interactive elements, such as circle markers representing injection events, whose sizes are proportional to the volume of fluid injected. Users can interact with these markers to reveal detailed information about each injection event, including the volume injected.
-   - This interactive layer, coupled with the timeline control, enables users to navigate through different time periods, offering a comprehensive and intuitive exploration of injection data in relation to seismic activity.
-
-By integrating the injection layer within the broader context of our web application, as detailed in the index.html file, we provide a cohesive and informative user experience. This approach not only facilitates a deeper understanding of the data but also showcases the potential of web technologies in environmental and geological analysis. Through the seamless interplay between the Flask app, AWS-hosted database, and front-end visualization tools, our project stands as a testament to the power of interdisciplinary collaboration in addressing complex environmental challenges.
-
+The methodology for incorporating seismic, injection, and pressure data into our interactive geomap involves several integral steps, leveraging both the front-end capabilities provided through the web application and the back-end functionalities enabled by our Flask app:
+1. **Seamless Data Retrieval**: Initially, the Flask app establishes secure connections to our AWS-hosted database, which is meticulously curated to include up-to-date and historically relevant data on seismic activities, injection volumes, and pore pressure measurements. This setup ensures that the database serves as a reliable and scalable source of information for our analysis.
+2. **Dynamic Data Processing**: Upon user interaction, such as selecting specific tabs or initiating queries on the web application, the Flask app dynamically retrieves relevant datasets. It processes these datasets to fit the visualization requirements of the geomap, including converting data into GeoJSON format for geographic rendering and calculating necessary metrics that highlight the relationships between seismic events, injection practices, and subsurface pore pressure changes.
+3. **Interactive Geomap Visualization**:
+    - For **seismic activity data**, the app visualizes earthquake epicenters, magnitudes, and depths, allowing users to discern patterns and correlations with injection sites and pore pressure changes over time.
+    - **Injection volume data** is represented through markers whose sizes reflect the volume of fluid injected, providing insights into the scale of SWD operations within the Delaware Basin. This visualization underscores temporal and spatial trends in injection practices.
+    - **Pore pressure data** is integrated to illustrate how subsurface pressures vary across different geological layers and time periods, offering clues about the potential impact of fluid injections on the subsurface stress regime and seismicity.
+4. **Enhanced User Engagement**: The geomap is equipped with interactive features, such as pop-ups and sliders, enabling users to delve into specific details of each dataset. For instance, clicking on an injection marker might reveal the total volume injected and the corresponding time frame, while seismic markers could display information about the earthquake's magnitude, depth, and exact date.
+5. **Comprehensive Visualization Controls**: A timeline slider control is incorporated into the geomap, facilitating the chronological exploration of seismic events, injection activities, and pore pressure changes. This feature allows users to visually track the progression and potential causality between SWD well injections and seismic activities, alongside corresponding pore pressure fluctuations.
+By harnessing the Flask app's capabilities to render these complex datasets interactively, our project not only demystifies the connections between induced seismicity, SWD practices, and subsurface dynamics but also promotes an engaging and educational experience for users. This comprehensive approach to data integration and visualization exemplifies our commitment to leveraging advanced technologies and methodologies to address critical environmental and geological questions, providing stakeholders, researchers, and the public with valuable insights into the sustainable management of natural resources and hazard mitigation.
 
 ## <p style="color:#CC6600">3. Conclusion</p>
 Through our project's analysis, incorporating injection data, seismic data, and pore pressure data, all visualized comprehensively, we have identified significant patterns that illuminate the relationship between SWD well operations and seismic activities in West Texas, particularly in the Delaware Basin. Our findings underscore the intricate connections between injection into SWD and the resultant seismic events, highlighting several key observations:
@@ -156,18 +148,18 @@ In conclusion, our visualized analysis presents a compelling narrative on the in
 - [Psycopg2](https://www.psycopg.org/docs/)
 - [SQLAlchemy](https://www.sqlalchemy.org/)
 
-## <p style="color:#CC6600">6. Sources</p> 
-- **TexNet Seismic Data**: Detailed seismic activity data provided by the TexNet Seismological Network. [Visit TexNet](https://www.beg.utexas.edu/texnet-cisr/texnet)
-- **USGS Produced Water Data**: Information on the chemical composition of produced water from the United States Geological Survey. [USGS Produced Water Data](https://www.usgs.gov/)
-- **Injection Data API**: Real-time and historical data on fluid injection volumes accessed through the provided API endpoint. [Injection Data Source](https://injection.texnet.beg.utexas.edu/api/Export)
-- **Leaflet.js Documentation**: For implementing interactive maps in the web application. [Leaflet.js](https://leafletjs.com/)
-- **PapaParse Documentation**: Used for parsing CSV data within the web application. [PapaParse](https://www.papaparse.com/)
-- **D3.js Library**: For creating sophisticated visualizations based on the project data. [D3.js](https://d3js.org/)
-- **Bootstrap Framework**: For designing responsive and mobile-first web pages. [Bootstrap](https://getbootstrap.com/)
-- **Python Documentation**: Reference for Python programming language used in data analysis and backend development. [Python](https://www.python.org/doc/)
-- **Pandas Documentation**: Utilized for data manipulation and analysis. [Pandas](https://pandas.pydata.org/pandas-docs/stable/index.html)
-- **GeoPandas Documentation**: For working with geospatial data in Python. [GeoPandas](https://geopandas.org/en/stable/)
-- **Amazon RDS Documentation**: For database services used to store and manage the project data. [Amazon RDS](https://aws.amazon.com/rds/)
+## <p style="color:#CC6600">6. Data Sources</p> 
+- [TexNet Seismic Data](https://www.beg.utexas.edu/texnet-cisr/texnet)
+- [USGS Produced Water Data](https://www.usgs.gov/)
+- [Injection Data API](https://injection.texnet.beg.utexas.edu/api/Export)
+- [Leaflet.js Documentation](https://leafletjs.com/)
+- [PapaParse Documentation](https://www.papaparse.com/)
+- [D3.js Library](https://d3js.org/)
+- [Bootstrap Framework](https://getbootstrap.com/)
+- [Python Documentation](https://www.python.org/doc/)
+- [Pandas Documentation](https://pandas.pydata.org/pandas-docs/stable/index.html)
+- [GeoPandas Documentation](https://geopandas.org/en/stable/)
+- [Amazon RDS Documentation](https://aws.amazon.com/rds/)
 
 ## <p style="color:#CC6600">7. Contributors</p> 
 

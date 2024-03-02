@@ -1,4 +1,4 @@
-# FLASK APP HERE
+
 from flask import Flask, jsonify, render_template, url_for, send_from_directory
 import psycopg2
 import psycopg2.extras
