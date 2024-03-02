@@ -165,17 +165,6 @@ In conclusion, our visualized analysis presents a compelling narrative on the in
 - [TexNet Seismic Data](https://www.beg.utexas.edu/texnet-cisr/texnet)
 - [USGS Produced Water Data](https://www.usgs.gov/)
 - [Injection Data API](https://injection.texnet.beg.utexas.edu/api/Export)
-<<<<<<< HEAD
-- [Leaflet.js Documentation](https://leafletjs.com/)
-- [PapaParse Documentation](https://www.papaparse.com/)
-- [D3.js Library](https://d3js.org/)
-- [Bootstrap Framework](https://getbootstrap.com/)
-- [Python Documentation](https://www.python.org/doc/)
-- [Pandas Documentation](https://pandas.pydata.org/pandas-docs/stable/index.html)
-- [GeoPandas Documentation](https://geopandas.org/en/stable/)
-- [Amazon RDS Documentation](https://aws.amazon.com/rds/)
-=======
->>>>>>> bc4ec2f56ed2620d34b2040a437df1815b0a2027
 
 ## <p style="color:#CC6600">7. Contributors</p> 
 
