@@ -51,6 +51,21 @@ def map1():
 def map2():
     return render_template('map2.html')
 
+# Route to TEST MAP1
+@app.route('/test_map1')
+def test_map1():
+    return render_template('tester_ignore_with_time.html')
+
+# Route to TEST MAP2
+@app.route('/test_map2')
+def test_map2():
+    return render_template('tester_ignore_with_time_1.html')
+
+# Route to TEST MAP3
+@app.route('/test_map3')
+def test_map3():
+    return render_template('tester_ignore_flask.html')
+
 @app.route('/team_image_urls')
 def get_team_image_urls():
     team = ['roxana_darvari', 'brittany_svab', 'alejandro_juarez', 'sarah_cain', 'john_cahill']
@@ -200,12 +215,46 @@ def injection_data():
     except Exception as e:
         return jsonify({'error': str(e)})
 
-@app.route('/pressure_data')
+# @app.route('/pressure_data')
+# def pressure_data():
+#     try:
+#         conn = get_db_connection()
+#         cursor = conn.cursor(cursor_factory=psycopg2.extras.DictCursor)
+#         query = 'SELECT * FROM pressure_data'  
+#         cursor.execute(query)
+#         rows = cursor.fetchall()
+#         features = []
+#         for row in rows:
+#             # Construct a GeoJSON feature for each row
+#             feature = {
+#                 "type": "Feature",
+#                 "geometry": {
+#                     "type": "Point",
+#                     "coordinates": [row["longitude"], row["latitude"]]
+#                 },
+#                 "properties": {
+#                     "Layer": row["layer"],
+#                     "Date": row["time"],
+#                     "Pressure Delta": row["pressure"]   # REPLACE WITH NEW COLUMN NAME WHEN AVAILABLE
+#                 }
+#             }
+#             features.append(feature)
+#         geojson = {
+#             "type": "FeatureCollection",
+#             "features": features
+#         }
+#         cursor.close()
+#         conn.close()
+#         return jsonify(geojson)
+#     except Exception as e:
+#         return jsonify({'error': str(e)})
+    
+@app.route('/pressure_data_13')
 def pressure_data():
     try:
         conn = get_db_connection()
         cursor = conn.cursor(cursor_factory=psycopg2.extras.DictCursor)
-        query = 'SELECT *, lat, lon FROM pressure_data'  
+        query = 'SELECT * FROM pressure_data_13'  
         cursor.execute(query)
         rows = cursor.fetchall()
         features = []
@@ -215,9 +264,14 @@ def pressure_data():
                 "type": "Feature",
                 "geometry": {
                     "type": "Point",
-                    "coordinates": [row['lon'], row['lat']]
+                    "coordinates": [row["longitude"], row["latitude"]]
                 },
-                "properties": dict(row)
+                "properties": {
+                    "Layer": row["layer"],
+                    "Date": row["time"],
+                    "Pressure": row["pressure"],
+                    "Pressure Delta": row["delta"]
+                }
             }
             features.append(feature)
         geojson = {

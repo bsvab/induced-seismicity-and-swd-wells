@@ -136,26 +136,8 @@
                     <div class="row">
                         <!-- how to write iframe to source file locally... -->
                         <!-- <iframe id="map1" src="./static/map1.html" height="650" width=100% title="map1"></iframe> -->
-
                         <!-- how to write iframe to source file via Flask... -->
                         <iframe id="map1" src="{{ url_for('map1') }}" height="650" width=100% title="map1"></iframe>
-
-                        <!-- <div class="col-md-12"> -->
-                            <!-- Create a new container for the map and controller -->
-                            <!-- <div id="map1_container"> -->
-                                <!-- <div id="map1"></div> -->
-                                <!-- Include Leaflet.timeline CSS and JS -->
-                                <!-- <link rel="stylesheet" href="./static/leaflet.timeline.css"> -->
-                                <!-- <script src="./static/leaflet.timeline.js"></script> -->
-                                <!-- Map initialization script -->
-                                <!-- <script src="./static/map1.js"></script> -->
-                                <!-- Map layer scripts -->
-                                <!-- <script src="./static/map1_basin_outline_layer.js"></script> -->
-                                <!-- <script src="./static/map1_injection_layer.js"></script> -->
-                                <!-- <script src="./static/map1_seismic_layer.js"></script> -->
-                                <!-- <script src="./static/map1_pore_pressure_layer.js"></script> -->
-                            <!-- </div> -->
-                        <!-- </div> -->
                     </div>
                     <div class="row">
                         <div class="col-md-12">
@@ -599,12 +581,6 @@
     <script src="{{ url_for('static', filename='js/tab_seismic.js') }}"></script>
     <script src="{{ url_for('static', filename='js/tab_chemistry.js') }}"></script> <!-- THIS JS CODE MUST BE DIRECTLY IN THE HTML IN ORDER FOR FLASK TO RENDER, IT IS INCLUDED IN SCRIPT TAG BELOW -->
     <!-- <script src="{{ url_for('static', filename='js/tab_about_us.js') }}"></script> --> <!-- THIS JS CODE MUST BE DIRECTLY IN THE HTML IN ORDER FOR FLASK TO RENDER, IT IS INCLUDED IN SCRIPT TAG BELOW -->
-
-    <script>
-        // CHEM STUFF HERE??
-
-
-    </script>
 
     <script>
         let team = ["roxana_darvari", "brittany_svab", "alejandro_juarez", "sarah_cain", "john_cahill"]
