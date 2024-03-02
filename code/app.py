@@ -1,16 +1,8 @@
-<<<<<<< HEAD
-=======
-# FLASK APP HERE
->>>>>>> 8133d13d00d89fa6048cf1b25be8c40ae679844b
-
 from flask import Flask, jsonify, render_template, url_for, send_from_directory
 import psycopg2
 import psycopg2.extras
 import pandas as pd
-<<<<<<< HEAD
 import os
-=======
->>>>>>> 8133d13d00d89fa6048cf1b25be8c40ae679844b
 
 from config import PGEND_POINT
 from config import PGDATABASE_NAME
@@ -24,23 +16,16 @@ app = Flask(__name__)
 def index():
     return render_template('index.html')
 
-<<<<<<< HEAD
-=======
 # Route to map1
->>>>>>> 8133d13d00d89fa6048cf1b25be8c40ae679844b
 @app.route('/map1')
 def map1():
     return render_template('map1.html')
 
-<<<<<<< HEAD
-=======
 # Route to map2
->>>>>>> 8133d13d00d89fa6048cf1b25be8c40ae679844b
 @app.route('/map2')
 def map2():
     return render_template('map2.html')
 
-<<<<<<< HEAD
 @app.route('/team_image_urls')
 def get_team_image_urls():
     team = ["roxana_darvari", "brittany_svab", "alejandro_juarez", "sarah_cain", "john_cahill"]
@@ -50,11 +35,7 @@ def get_team_image_urls():
         team_image_urls[person] = url_for('static', filename=filename)
     print(team_image_urls)  # Log the generated image URLs
     return jsonify(team_image_urls)
-
-
-=======
 # Connection to database
->>>>>>> 8133d13d00d89fa6048cf1b25be8c40ae679844b
 def get_db_connection():
     conn = psycopg2.connect(
         host=PGEND_POINT,
@@ -65,15 +46,14 @@ def get_db_connection():
     )
     return conn
 
-<<<<<<< HEAD
-=======
+
 # Route to earthquake data
->>>>>>> 8133d13d00d89fa6048cf1b25be8c40ae679844b
+
 @app.route('/earthquake_data')
 def earthquake_data():
     try:
         conn = get_db_connection()
-<<<<<<< HEAD
+
         cursor = conn.cursor(cursor_factory=psycopg2.extras.DictCursor)
         query = 'SELECT *, lat, lon FROM earthquakes'  
         cursor.execute(query)
@@ -100,7 +80,7 @@ def earthquake_data():
     except Exception as e:
         return jsonify({'error': str(e)})
 
-=======
+
         earthquakes_df = pd.read_sql_query('SELECT * FROM earthquakes', conn)
         conn.close()
         # Convert the DataFrame to a list of dictionaries for easier processing in the template
@@ -111,12 +91,11 @@ def earthquake_data():
         return jsonify({'error': str(e)})
 
 # Route to injection data
->>>>>>> 8133d13d00d89fa6048cf1b25be8c40ae679844b
 @app.route('/injection_data')
 def injection_data():
     try:
         conn = get_db_connection()
-<<<<<<< HEAD
+
         cursor = conn.cursor(cursor_factory=psycopg2.extras.DictCursor)
         # Update your query here with column aliases
         cursor.execute('''
@@ -151,7 +130,6 @@ def injection_data():
     except Exception as e:
         return jsonify({'error': str(e)})
 
-=======
         injections_df = pd.read_sql_query('SELECT * FROM injection_volumes', conn)
         conn.close()
         # Convert the DataFrame to a list of dictionaries for easier processing in the template
@@ -162,12 +140,11 @@ def injection_data():
         return jsonify({'error': str(e)})
 
 # Route to pressure data
->>>>>>> 8133d13d00d89fa6048cf1b25be8c40ae679844b
 @app.route('/pressure_data')
 def pressure_data():
     try:
         conn = get_db_connection()
-<<<<<<< HEAD
+
         cursor = conn.cursor(cursor_factory=psycopg2.extras.DictCursor)
         query = 'SELECT *, lat, lon FROM pressure_data'  
         cursor.execute(query)
@@ -191,14 +168,14 @@ def pressure_data():
         cursor.close()
         conn.close()
         return jsonify(geojson)
-=======
+
         pressure_df = pd.read_sql_query('SELECT * FROM pressure_data', conn)
         conn.close()
         # Convert the DataFrame to a list of dictionaries for easier processing in the template
         pressure = pressure_df.to_dict(orient='records')
         print(pressure)
         return jsonify(pressure)
->>>>>>> 8133d13d00d89fa6048cf1b25be8c40ae679844b
+
     except Exception as e:
         return jsonify({'error': str(e)})
 
