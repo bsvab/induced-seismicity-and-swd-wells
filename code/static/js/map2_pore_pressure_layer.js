@@ -106,13 +106,14 @@ function drawMapSquares(geojson) {
 function generateSquareTimeline(points, squareWidth, squareHeight) {
     // Group data points by month/year
     const groupedByMonthYear = points.reduce((acc, { delta, date }) => {
-        const year = date.getFullYear();
-        const month = date.getMonth();
-        const key = `${year}-${month}`;
+        const parse_date = new Date(date)
+        const year = parse_date.getUTCFullYear();
+        const month = parse_date.getUTCMonth();
+        const key = `${year}-${month + 1}`;
         if (!acc[key]) {
-            acc[key] = { deltas: [], date: date };
+            acc[key] = { deltas: [], date: new Date(Date.UTC(year, month)) };
         }
-        acc[key].deltas.push(delta);
+        acc[key].deltas.push(Number(delta));
         return acc;
     }, {});
 
@@ -126,8 +127,8 @@ function generateSquareTimeline(points, squareWidth, squareHeight) {
     Object.keys(groupedByMonthYear).forEach(key => {
         const { deltas, date } = groupedByMonthYear[key];
         const averageDelta = deltas.reduce((sum, delta) => sum + delta, 0) / deltas.length;
-        const year = date.getFullYear();
-        const month = date.getMonth() + 1; // Adding 1 to month to make it 1-based
+        const year = date.getUTCFullYear();
+        const month = date.getUTCMonth() + 1; // Adding 1 to month to make it 1-based
 
         // Assign color based on average delta value
         const color = getColor(averageDelta);
@@ -152,8 +153,8 @@ function generateSquareTimeline(points, squareWidth, squareHeight) {
             properties: {
                 start: `${year}-${month}-01`, // Adding 1 to month to make it 1-based
                 end: `${year}-${month}-01`, // Same as start for monthly data
-                layer: "Layer_13", // Adjust as needed based on data structure
-                pressure_delta: averageDelta, // Adjust as needed based on data structure
+                layer: "Layer_13",
+                pressure_delta: averageDelta, 
                 color: color // Assign color based on average delta value
             },
             geometry: {
