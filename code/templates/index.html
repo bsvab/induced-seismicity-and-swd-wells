@@ -136,26 +136,8 @@
                     <div class="row">
                         <!-- how to write iframe to source file locally... -->
                         <!-- <iframe id="map1" src="./static/map1.html" height="650" width=100% title="map1"></iframe> -->
-
                         <!-- how to write iframe to source file via Flask... -->
                         <iframe id="map1" src="{{ url_for('map1') }}" height="650" width=100% title="map1"></iframe>
-
-                        <!-- <div class="col-md-12"> -->
-                            <!-- Create a new container for the map and controller -->
-                            <!-- <div id="map1_container"> -->
-                                <!-- <div id="map1"></div> -->
-                                <!-- Include Leaflet.timeline CSS and JS -->
-                                <!-- <link rel="stylesheet" href="./static/leaflet.timeline.css"> -->
-                                <!-- <script src="./static/leaflet.timeline.js"></script> -->
-                                <!-- Map initialization script -->
-                                <!-- <script src="./static/map1.js"></script> -->
-                                <!-- Map layer scripts -->
-                                <!-- <script src="./static/map1_basin_outline_layer.js"></script> -->
-                                <!-- <script src="./static/map1_injection_layer.js"></script> -->
-                                <!-- <script src="./static/map1_seismic_layer.js"></script> -->
-                                <!-- <script src="./static/map1_pore_pressure_layer.js"></script> -->
-                            <!-- </div> -->
-                        <!-- </div> -->
                     </div>
                     <div class="row">
                         <div class="col-md-12">
@@ -164,7 +146,7 @@
                     </div>
                     <div class="row">
                         <div class="col-md-12">
-                            <p>Select date from dropdown to view pore pressure data in Layer 13.</p> <!-- replace "Layer 13" with actual name of layer...-->
+                            <p>Select a date from the dropdown in the top right corner of the map to view the change in pore pressure data from 2017-01-01 to the selected date in Layer 13. The date format in the dropdown reflects YYYY-MM-DD.</p> <!-- replace "Layer 13" with actual name of layer...-->
                         </div>
                     </div>
                     <div class="row">
@@ -350,7 +332,7 @@
                     <div class="row">
                         <div class="col-md-3">
                             <div class="container-fluid" id="hs_container">
-                                <img id="headshot_roxana_darvari" src="" alt="headshot">
+                                <img class="headshot_roxana_darvari" src="" alt="headshot">
                             </div>
                         </div>
                         <div class="col-md-9">
@@ -358,12 +340,23 @@
                                 <div class="row">
                                     <div class="container-fluid banner3">
                                         <h3>Roxana Darvari</h3>
-                                        <img id="logo_li" src="" alt="linkedin"> <a id="about" href="https://www.linkedin.com/in/roxana-darvari-p-e-49646284/" target="_blank">www.linkedin.com/in/roxana-darvari-p-e-49646284</a> &nbsp; &nbsp;
-                                        <img id="logo_gh" src="" alt="github"> <a id="about" href="https://github.com/roxanadrv" target="_blank">www.github.com/roxanadrv</a>
+                                        <img class="logo_li" src="" alt="linkedin"> <a id="about" href="https://www.linkedin.com/in/roxana-darvari-p-e-49646284/" target="_blank">www.linkedin.com/in/roxana-darvari-p-e-49646284</a> &nbsp; &nbsp;
+                                        <img class="logo_gh" src="" alt="github"> <a id="about" href="https://github.com/roxanadrv" target="_blank">www.github.com/roxanadrv</a>
                                     </div>
                                 </div>
                                 <div class="row" id="about_blurb">
-                                    <p><br>Content goes here...</p>
+                                    <p><br>With over 15 years of experience in environmental and water resources engineering, 
+                                        my career has been dedicated to advancing sustainable water management practices and 
+                                        environmental solutions. My work has primarily focused on analyzing produced water samples
+                                        to identify critical elements, which has significantly contributed to enhancing
+                                        environmental sustainability and project efficiency.
+                                        My expertise extends to conducting geochemical analysis of produced water, uncovering vital 
+                                        data such as the presence of Lithium. This analysis has been pivotal in improving water management
+                                        strategies and understanding environmental impacts in the industry.
+                                        I have been enhancing my skills in data analysis and visualization through training in Python, Java Script, SQL, 
+                                        and Tableau. This has equipped me to integrate my engineering experience with my growing 
+                                        data analytics proficiency to address environmental challenges more effectively, ensuring the sustainable 
+                                        use of water resources.</p>
                                 </div>
                             </div>
                         </div>
@@ -382,7 +375,7 @@
                     <div class="row">
                         <div class="col-md-3">
                             <div class="container-fluid" id="hs_container">
-                                <img id="headshot_brittany_svab" src="" alt="headshot">
+                                <img class="headshot_brittany_svab" src="" alt="headshot">
                             </div>
                         </div>
                         <div class="col-md-9">
@@ -390,8 +383,8 @@
                                 <div class="row">
                                     <div class="container-fluid banner3">
                                         <h3>Brittany Svab</h3> 
-                                        <img id="logo_li" src="" alt="linkedin"> <a id="about" href="https://www.linkedin.com/in/bsvab/" target="_blank">www.linkedin.com/in/bsvab</a> &nbsp; &nbsp;
-                                        <img id="logo_gh" src="" alt="github"> <a id="about" href="https://github.com/bsvab" target="_blank">www.github.com/bsvab</a>
+                                        <img class="logo_li" src="" alt="linkedin"> <a id="about" href="https://www.linkedin.com/in/bsvab/" target="_blank">www.linkedin.com/in/bsvab</a> &nbsp; &nbsp;
+                                        <img class="logo_gh" src="" alt="github"> <a id="about" href="https://github.com/bsvab" target="_blank">www.github.com/bsvab</a>
                                     </div>
                                 </div>
                                 <div class="row" id="about_blurb">
@@ -419,7 +412,7 @@
                     <div class="row">
                         <div class="col-md-3">
                             <div class="container-fluid" id="hs_container">
-                                <img id="headshot_alejandro_juarez" src="" alt="headshot">
+                                <img class="headshot_alejandro_juarez" src="" alt="headshot">
                             </div>
                         </div>
                         <div class="col-md-9">
@@ -427,8 +420,8 @@
                                 <div class="row">
                                     <div class="container-fluid banner3">
                                         <h3>Alejandro Juarez</h3>
-                                        <img id="logo_li" src="" alt="linkedin"> <a id="about" href="https://www.linkedin.com/in/alejandro-juarez-4a0778194" target="_blank">www.linkedin.com/in/alejandro-juarez-4a0778194</a> &nbsp; &nbsp;
-                                        <img id="logo_gh" src="" alt="github"> <a id="about" href="https://github.com/ajuarez2112" target="_blank">www.github.com/ajuarez2112</a>
+                                        <img class="logo_li" src="" alt="linkedin"> <a id="about" href="https://www.linkedin.com/in/alejandro-juarez-4a0778194" target="_blank">www.linkedin.com/in/alejandro-juarez-4a0778194</a> &nbsp; &nbsp;
+                                        <img class="logo_gh" src="" alt="github"> <a id="about" href="https://github.com/ajuarez2112" target="_blank">www.github.com/ajuarez2112</a>
                                     </div>
                                 </div>
                                 <div class="row" id="about_blurb">
@@ -451,7 +444,7 @@
                     <div class="row">
                         <div class="col-md-3">
                             <div class="container-fluid" id="hs_container">
-                                <img id="headshot_sarah_cain" src="" alt="headshot">
+                                <img class="headshot_sarah_cain" src="" alt="headshot">
                             </div>
                         </div>
                         <div class="col-md-9">
@@ -459,8 +452,8 @@
                                 <div class="row">
                                     <div class="container-fluid banner3">
                                         <h3>Sarah Cain</h3>
-                                        <img id="logo_li" src="" alt="linkedin"> <a id="about" href="https://www.linkedin.com/in/sarah-cain-3ab0a7277/" target="_blank">www.linkedin.com/in/sarah-cain-3ab0a7277</a> &nbsp; &nbsp;
-                                        <img id="logo_gh" src="" alt="github"> <a id="about" href="https://github.com/thesarahcain" target="_blank">www.github.com/thesarahcain</a>
+                                        <img class="logo_li" src="" alt="linkedin"> <a id="about" href="https://www.linkedin.com/in/sarah-cain-3ab0a7277/" target="_blank">www.linkedin.com/in/sarah-cain-3ab0a7277</a> &nbsp; &nbsp;
+                                        <img class="logo_gh" src="" alt="github"> <a id="about" href="https://github.com/thesarahcain" target="_blank">www.github.com/thesarahcain</a>
                                     </div>
                                 </div>
                                 <div class="row" id="about_blurb">
@@ -483,7 +476,7 @@
                     <div class="row">
                         <div class="col-md-3">
                             <div class="container-fluid" id="hs_container">
-                                <img id="headshot_john_cahill" src="" alt="headshot">
+                                <img class="headshot_john_cahill" src="" alt="headshot">
                             </div>
                         </div>
                         <div class="col-md-9">
@@ -491,8 +484,8 @@
                                 <div class="row">
                                     <div class="container-fluid banner3">
                                         <h3>John Cahill</h3>
-                                        <img id="logo_li" src="" alt="linkedin"> <a id="about" href="https://www.linkedin.com/in/john-cahill-6a784571/" target="_blank">www.linkedin.com/in/john-cahill-6a784571</a> &nbsp; &nbsp;
-                                        <img id="logo_gh" src="" alt="github"> <a id="about" href="https://github.com/ithilien12358" target="_blank">www.github.com/ithilien12358</a>
+                                        <img class="logo_li" src="" alt="linkedin"> <a id="about" href="https://www.linkedin.com/in/john-cahill-6a784571/" target="_blank">www.linkedin.com/in/john-cahill-6a784571</a> &nbsp; &nbsp;
+                                        <img class="logo_gh" src="" alt="github"> <a id="about" href="https://github.com/ithilien12358" target="_blank">www.github.com/ithilien12358</a>
                                     </div>
                                 </div>
                                 <div class="row" id="about_blurb">
@@ -597,111 +590,8 @@
     <!-- file source links to render via Flask app... -->
     <script src="{{ url_for('static', filename='js/tab_home.js') }}"></script>
     <script src="{{ url_for('static', filename='js/tab_seismic.js') }}"></script>
-    <!-- <script src="{{ url_for('static', filename='js/tab_chemistry.js') }}"></script> --> <!-- THIS JS CODE MUST BE DIRECTLY IN THE HTML IN ORDER FOR FLASK TO RENDER, IT IS INCLUDED IN SCRIPT TAG BELOW -->
+    <script src="{{ url_for('static', filename='js/tab_chemistry.js') }}"></script> <!-- THIS JS CODE MUST BE DIRECTLY IN THE HTML IN ORDER FOR FLASK TO RENDER, IT IS INCLUDED IN SCRIPT TAG BELOW -->
     <!-- <script src="{{ url_for('static', filename='js/tab_about_us.js') }}"></script> --> <!-- THIS JS CODE MUST BE DIRECTLY IN THE HTML IN ORDER FOR FLASK TO RENDER, IT IS INCLUDED IN SCRIPT TAG BELOW -->
-
-    <script>
-        let basins = [
-            'Anadarko Basin',
-            'Appalachian Basin',
-            'Fort Worth Basin',
-            'Gulf Coast Basin',
-            'Illinois Basin',
-            'Michigan Basin',
-            'Oklahoma Platform Basins',
-            'Permian Basin',
-            'Rocky Mountain Basins',
-            'Williston Basin'
-        ];
-
-        let basins_no_spaces = [
-            "AnadarkoBasin",
-            "AppalachianBasin",
-            "FortWorthBasin",
-            "GulfCoastBasin",
-            "IllinoisBasin",
-            "MichiganBasin",
-            "OklahomaPlatformBasins",
-            "PermianBasin",
-            "RockyMountainBasins",
-            "WillistonBasin"
-        ];
-
-        let elements = ["Ca", "Mg", "HCO3", "Si", "FeTot", "Ba", "Sr", "Li"];
-
-        // initialize the dashboard at start up 
-        function init() {
-        
-            // populate the dropdown menu
-            populateDropdownMenu(basins)
-
-            // Set the first basin from the list as the initial selection from the dropdown list
-            let first_basin = basins[0];
-            console.log(first_basin);
-
-            // populate the associated visuals for that basin
-            populateVisuals(first_basin)
-
-            // set event listener for dropdown menu change = if change occurs, update charts
-            let dropdown_list = d3.select("#selectBasin");  
-            dropdown_list.on("change", function() {
-            let selection = this.value;
-            populateVisuals(selection);
-            });
-        
-        };
-        
-        // call the initialize function
-        init();
-        
-        // get sample names and populate the dropdown list
-        function populateDropdownMenu(basins) {
-            
-            // select the dropdown menu
-            let dropdown_list = d3.select("#selectBasin");
-            
-            basins.forEach(basin => {
-                dropdown_list.append("option")
-                    .text(basin)
-                    .attr("value", basin);
-            });
-            
-        };
-
-        // use below function to source images via Flask...
-        // generate all visuals for selected basin
-        function populateVisuals(selection) {
-            let basin_index = basins.indexOf(selection);
-            let basin = basins_no_spaces[basin_index];
-
-            for (let e = 0; e < elements.length; e++) {
-                let element = elements[e];
-                let filename1 = `images/chemistry/ViolinPlot_${basin}_${element}.png`;
-                // violin plots
-                let imgElement1 = document.getElementById(`imgElement_ViolinPlot_${element}`);
-                imgElement1.src = `{{ url_for('static', filename='${filename1}') }}`;
-
-                // box plots
-                let imgElement2 = document.getElementById(`imgElement_BoxPlot_${element}`);
-                let filename2 = `images/chemistry/BoxPlot_${basin}_${element}.png`;
-                imgElement2.src = `{{ url_for('static', filename='${filename2}') }}`;
-            }
-
-            // piper plots
-            let imgElement3 = document.getElementById('imgElement_Piper(Triangle)');
-            let filename3 = `images/chemistry/Piper(Triangle)_${basin}.png`;
-            imgElement3.src = `{{ url_for('static', filename='${filename3}') }}`;
-
-            let imgElement4 = document.getElementById('imgElement_Piper(Contour)');
-            let filename4 = `images/chemistry/Piper(Contour)_${basin}.png`;
-            imgElement4.src = `{{ url_for('static', filename='${filename4}') }}`;
-
-            let imgElement5 = document.getElementById('imgElement_Piper(Color)');
-            let filename5 = `images/chemistry/Piper(Color)_${basin}.png`;
-            imgElement5.src = `{{ url_for('static', filename='${filename5}') }}`;
-        }
-
-    </script>
 
     <script>
         let team = ["roxana_darvari", "brittany_svab", "alejandro_juarez", "sarah_cain", "john_cahill"]
@@ -714,28 +604,46 @@
         // call the initialize function
         init();
 
-        // code to use if sourcing images via Flask...
-        // generate all headshots
-        function populateHeadshots(team) {
-            for (let p = 0; p < team.length; p++) {
-                let person = team[p];
-                
-                let imgElement1 = document.getElementById(`headshot_${person}`); // Get the reference to the img element
-                let filename1 = `images/team/${person}.png`;
-                imgElement1.src = `{{ url_for('static', filename='${filename1}') }}`; // Set the source of the image
-
-                imgElement1.onerror = function() {
-                    // If image doesn't exist, set source to the default image
-                    imgElement1.src = "{{ url_for('static', filename='images/team/headshot_icon.png') }}";
-                };
-            }
+        function populateHeadshots() {
+            // Make an AJAX request to fetch image URLs
+            fetch('/team_image_urls')
+                .then(response => response.json())
+                .then(imageUrls => {
+                    // Iterate through the imageUrls dictionary
+                    Object.keys(imageUrls).forEach(person => {
+                        let imgElements = document.querySelectorAll(`.headshot_${person}`);
+                        // Set the source of each image
+                        imgElements.forEach(imgElement => {
+                            imgElement.src = imageUrls[person];
+                            console.log(imageUrls[person]);
+                            imgElement.onerror = function() {
+                                // Log the error
+                                console.error(`Error loading image for ${person}: ${imageUrls[person]}`);
+                                // If image doesn't exist, set source to the default image
+                                imgElement.src = "{{ url_for('static', filename='images/team/headshot_icon.png') }}";
+                            };
+                        });
+                    });
+                })
+                .catch(error => console.error('Error fetching image URLs:', error));
         }
 
-        let imgElement2 = document.getElementById('logo_li'); // Get the reference to the img element
-        imgElement2.src = "{{ url_for('static', filename='images/team/linkedin_logo_white_21.png') }}"; // Set the source of the image
+        // let imgElement2 = document.getElementById('logo_li'); // Get the reference to the img element
+        // imgElement2.src = "{{ url_for('static', filename='images/team/linkedin_logo_white_21.png') }}"; // Set the source of the image
 
-        let imgElement3 = document.getElementById('logo_gh'); // Get the reference to the img element
-        imgElement3.src = "{{ url_for('static', filename='images/team/github_logo_white.png') }}"; // Set the source of the image
+        let imgElements2 = document.querySelectorAll('.logo_li'); // Get all elements with class 'logo_li'
+        imgElements2.forEach(function(imgElement) {
+            imgElement.src = "{{ url_for('static', filename='images/team/linkedin_logo_white_21.png') }}"; // Set the source of each image
+        });
+
+        // let imgElement3 = document.getElementById('logo_gh'); // Get the reference to the img element
+        // imgElement3.src = "{{ url_for('static', filename='images/team/github_logo_white.png') }}"; // Set the source of the image
+
+        let imgElements3 = document.querySelectorAll('.logo_gh'); // Get all elements with class 'logo_gh'
+        imgElements3.forEach(function(imgElement) {
+            imgElement.src = "{{ url_for('static', filename='images/team/github_logo_white.png') }}"; // Set the source of each image
+        });
+
     </script>
 
 

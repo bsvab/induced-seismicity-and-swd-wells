@@ -1,5 +1,5 @@
 // Initialize the map
-let map2 = L.map('map2').setView([31.9686, -99.9018], 6);
+let map2 = L.map('map2').setView([31.9686, -99.9018], 7);
 
 // Add OpenStreetMap tiles to the map
 L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
@@ -12,4 +12,5 @@ L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
 //         return new Date(date).toDateString();
 //     }
 // });
-// 2timelineControl.addTo(map2);
+
+// timelineControl.addTo(map2);
