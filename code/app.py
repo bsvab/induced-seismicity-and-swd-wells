@@ -14,7 +14,31 @@ app = Flask(__name__)
 # Route to index
 @app.route('/')
 def index():
-    return render_template('index.html')
+    basins = [
+        'Anadarko Basin',
+        'Appalachian Basin',
+        'Fort Worth Basin',
+        'Gulf Coast Basin',
+        'Illinois Basin',
+        'Michigan Basin',
+        'Oklahoma Platform Basins',
+        'Permian Basin',
+        'Rocky Mountain Basins',
+        'Williston Basin'
+    ]
+    basins_no_spaces = [
+        "AnadarkoBasin",
+        "AppalachianBasin",
+        "FortWorthBasin",
+        "GulfCoastBasin",
+        "IllinoisBasin",
+        "MichiganBasin",
+        "OklahomaPlatformBasins",
+        "PermianBasin",
+        "RockyMountainBasins",
+        "WillistonBasin"
+    ]
+    return render_template('index.html', basins=basins, basins_no_spaces=basins_no_spaces)
 
 # Route to map1
 @app.route('/map1')
@@ -26,6 +50,7 @@ def map1():
 def map2():
     return render_template('map2.html')
 
+<<<<<<< HEAD
 @app.route('/team_image_urls')
 def get_team_image_urls():
     team = ["roxana_darvari", "brittany_svab", "alejandro_juarez", "sarah_cain", "john_cahill"]
@@ -35,6 +60,93 @@ def get_team_image_urls():
         team_image_urls[person] = url_for('static', filename=filename)
     print(team_image_urls)  # Log the generated image URLs
     return jsonify(team_image_urls)
+=======
+# Route to TEST MAP1
+@app.route('/test_map1')
+def test_map1():
+    return render_template('tester_ignore_with_time.html')
+
+# Route to TEST MAP2
+@app.route('/test_map2')
+def test_map2():
+    return render_template('tester_ignore_with_time_1.html')
+
+# Route to TEST MAP3
+@app.route('/test_map3')
+def test_map3():
+    return render_template('tester_ignore_flask.html')
+
+@app.route('/team_image_urls')
+def get_team_image_urls():
+    team = ['roxana_darvari', 'brittany_svab', 'alejandro_juarez', 'sarah_cain', 'john_cahill']
+    team_image_urls = {}
+    for person in team:
+        filename = f'images/team/{person}.png'
+        team_image_urls[person] = url_for('static', filename=filename)
+    print(team_image_urls)  # Log the generated image URLs
+    return jsonify(team_image_urls)
+
+@app.route('/chemistry_image_urls')
+def get_chemistry_image_urls():
+    basins = [
+        'Anadarko Basin',
+        'Appalachian Basin',
+        'Fort Worth Basin',
+        'Gulf Coast Basin',
+        'Illinois Basin',
+        'Michigan Basin',
+        'Oklahoma Platform Basins',
+        'Permian Basin',
+        'Rocky Mountain Basins',
+        'Williston Basin'
+    ]
+    elements = ["Ca", "Mg", "HCO3", "Si", "FeTot", "Ba", "Sr", "Li"]
+    basins_no_spaces = [
+        "AnadarkoBasin",
+        "AppalachianBasin",
+        "FortWorthBasin",
+        "GulfCoastBasin",
+        "IllinoisBasin",
+        "MichiganBasin",
+        "OklahomaPlatformBasins",
+        "PermianBasin",
+        "RockyMountainBasins",
+        "WillistonBasin"
+    ]
+
+    chemistry_boxplot_image_urls = {}
+    chemistry_violinplot_image_urls = {}
+    for basin in basins:
+        basin_index = basins.index(basin)
+        basin_no_spaces = basins_no_spaces[basin_index]
+        for element in elements:
+            boxplot_filename = f"images/chemistry/BoxPlot_{basin_no_spaces}_{element}.png"
+            violinplot_filename = f"images/chemistry/ViolinPlot_{basin_no_spaces}_{element}.png"
+            chemistry_boxplot_image_urls[f"{basin}_{element}"] = url_for('static', filename=boxplot_filename)
+            chemistry_violinplot_image_urls[f"{basin}_{element}"] = url_for('static', filename=violinplot_filename)
+
+    chemistry_piperplot_image_urls = {}
+    for basin in basins:
+        basin_no_spaces = basins_no_spaces[basins.index(basin)]
+        piper_triangle_filename = f"images/chemistry/Piper(Triangle)_{basin_no_spaces}.png"
+        piper_contour_filename = f"images/chemistry/Piper(Contour)_{basin_no_spaces}.png"
+        piper_color_filename = f"images/chemistry/Piper(Color)_{basin_no_spaces}.png"
+        chemistry_piperplot_image_urls[basin] = {
+            "piper_triangle": url_for('static', filename=piper_triangle_filename),
+            "piper_contour": url_for('static', filename=piper_contour_filename),
+            "piper_color": url_for('static', filename=piper_color_filename)
+        }
+    
+    return jsonify({
+        "chemistry_boxplot_image_urls": chemistry_boxplot_image_urls,
+        "chemistry_violinplot_image_urls": chemistry_violinplot_image_urls,
+        "chemistry_piperplot_image_urls": chemistry_piperplot_image_urls
+    })
+
+
+
+
+>>>>>>> bc4ec2f56ed2620d34b2040a437df1815b0a2027
 # Connection to database
 def get_db_connection():
     conn = psycopg2.connect(
@@ -46,14 +158,20 @@ def get_db_connection():
     )
     return conn
 
+<<<<<<< HEAD
 
 # Route to earthquake data
 
+=======
+>>>>>>> bc4ec2f56ed2620d34b2040a437df1815b0a2027
 @app.route('/earthquake_data')
 def earthquake_data():
     try:
         conn = get_db_connection()
+<<<<<<< HEAD
 
+=======
+>>>>>>> bc4ec2f56ed2620d34b2040a437df1815b0a2027
         cursor = conn.cursor(cursor_factory=psycopg2.extras.DictCursor)
         query = 'SELECT *, lat, lon FROM earthquakes'  
         cursor.execute(query)
@@ -75,6 +193,7 @@ def earthquake_data():
             "features": features
         }
         cursor.close()
+<<<<<<< HEAD
         conn.close()
         return jsonify(geojson)
     except Exception as e:
@@ -82,20 +201,21 @@ def earthquake_data():
 
 
         earthquakes_df = pd.read_sql_query('SELECT * FROM earthquakes', conn)
+=======
+>>>>>>> bc4ec2f56ed2620d34b2040a437df1815b0a2027
         conn.close()
-        # Convert the DataFrame to a list of dictionaries for easier processing in the template
-        earthquakes = earthquakes_df.to_dict(orient='records')
-        print(earthquakes)
-        return jsonify(earthquakes)
+        return jsonify(geojson)
     except Exception as e:
         return jsonify({'error': str(e)})
 
-# Route to injection data
 @app.route('/injection_data')
 def injection_data():
     try:
         conn = get_db_connection()
+<<<<<<< HEAD
 
+=======
+>>>>>>> bc4ec2f56ed2620d34b2040a437df1815b0a2027
         cursor = conn.cursor(cursor_factory=psycopg2.extras.DictCursor)
         # Update your query here with column aliases
         cursor.execute('''
@@ -125,28 +245,66 @@ def injection_data():
             "features": features
         }
         cursor.close()
+<<<<<<< HEAD
         conn.close()
         return jsonify(geojson)
     except Exception as e:
         return jsonify({'error': str(e)})
 
         injections_df = pd.read_sql_query('SELECT * FROM injection_volumes', conn)
+=======
+>>>>>>> bc4ec2f56ed2620d34b2040a437df1815b0a2027
         conn.close()
-        # Convert the DataFrame to a list of dictionaries for easier processing in the template
-        injections = injections_df.to_dict(orient='records')
-        print(injections)
-        return jsonify(injections)
+        return jsonify(geojson)
     except Exception as e:
         return jsonify({'error': str(e)})
 
-# Route to pressure data
-@app.route('/pressure_data')
+# @app.route('/pressure_data')
+# def pressure_data():
+#     try:
+#         conn = get_db_connection()
+#         cursor = conn.cursor(cursor_factory=psycopg2.extras.DictCursor)
+#         query = 'SELECT * FROM pressure_data'  
+#         cursor.execute(query)
+#         rows = cursor.fetchall()
+#         features = []
+#         for row in rows:
+#             # Construct a GeoJSON feature for each row
+#             feature = {
+#                 "type": "Feature",
+#                 "geometry": {
+#                     "type": "Point",
+#                     "coordinates": [row["longitude"], row["latitude"]]
+#                 },
+#                 "properties": {
+#                     "Layer": row["layer"],
+#                     "Date": row["time"],
+#                     "Pressure Delta": row["pressure"]   # REPLACE WITH NEW COLUMN NAME WHEN AVAILABLE
+#                 }
+#             }
+#             features.append(feature)
+#         geojson = {
+#             "type": "FeatureCollection",
+#             "features": features
+#         }
+#         cursor.close()
+#         conn.close()
+#         return jsonify(geojson)
+#     except Exception as e:
+#         return jsonify({'error': str(e)})
+    
+@app.route('/pressure_data_13')
 def pressure_data():
     try:
         conn = get_db_connection()
+<<<<<<< HEAD
 
         cursor = conn.cursor(cursor_factory=psycopg2.extras.DictCursor)
         query = 'SELECT *, lat, lon FROM pressure_data'  
+=======
+        cursor = conn.cursor(cursor_factory=psycopg2.extras.DictCursor)
+        query = 'SELECT * FROM pressure_data_13'  
+>>>>>>> bc4ec2f56ed2620d34b2040a437df1815b0a2027
         cursor.execute(query)
         rows = cursor.fetchall()
         features = []
@@ -156,9 +314,20 @@ def pressure_data():
                 "type": "Feature",
                 "geometry": {
                     "type": "Point",
+<<<<<<< HEAD
                     "coordinates": [row['lon'], row['lat']]
                 },
                 "properties": dict(row)
+=======
+                    "coordinates": [row["longitude"], row["latitude"]]
+                },
+                "properties": {
+                    "Layer": row["layer"],
+                    "Date": row["time"],
+                    "Pressure": row["pressure"],
+                    "Pressure Delta": row["delta"]
+                }
+>>>>>>> bc4ec2f56ed2620d34b2040a437df1815b0a2027
             }
             features.append(feature)
         geojson = {
@@ -166,6 +335,7 @@ def pressure_data():
             "features": features
         }
         cursor.close()
+<<<<<<< HEAD
         conn.close()
         return jsonify(geojson)
 
@@ -176,6 +346,10 @@ def pressure_data():
         print(pressure)
         return jsonify(pressure)
 
+=======
+        conn.close()
+        return jsonify(geojson)
+>>>>>>> bc4ec2f56ed2620d34b2040a437df1815b0a2027
     except Exception as e:
         return jsonify({'error': str(e)})
 

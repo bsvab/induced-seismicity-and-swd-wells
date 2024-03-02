@@ -109,7 +109,7 @@ body {
     border-radius: 5px;
 }
 
-[id^="headshot"] {
+[class^="headshot"] {
     border-radius: 50%; /* display image in a circle */
     border: 3px solid #996600;
     width: auto; 
@@ -121,7 +121,7 @@ body {
     min-height: 100%; /* set minimum height to fill container */
 }
 
-[id^="logo"] {
+[class^="logo"] {
     width: auto; 
     height: 25px; 
     object-fit: contain; /* maintain aspect ratio and fit within container */

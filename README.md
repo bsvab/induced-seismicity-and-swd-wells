@@ -125,33 +125,47 @@ In conclusion, our visualized analysis presents a compelling narrative on the in
 
 ## <p style="color:#CC6600">5. Technologies</p> 
 
-**NEED TO UPDATE THE BELOW LIST FOR PROJECT 3 ITEMS**
-- [Python 3.10 or higher](https://www.python.org/)
-- [Pandas](https://pandas.pydata.org/)
-- [NumPy](https://www.numpy.org)
-- [Matplotlib](https://matplotlib.org/)
-- [SciPy](https://www.scipy.org/scipylib)
-- [Scikit-learn](https://scikit-learn.org/stable/index.html)
-- [WQChartPy](https://github.com/jyangfsu/WQChartPy/tree/main?tab=readme-ov-file) 
-- [Seaborn](https://seaborn.pydata.org/#) 
-- [GeoPandas](https://geopandas.org/en/stable/#) 
-- [Folium](https://pypi.org/project/folium/)
-- [Branca](https://pypi.org/project/branca/)
-- [HTML](https://html.spec.whatwg.org/multipage/)
-- [Leaflet](https://leafletjs.com/) 
-- [Bootstrap 4.5.2](https://getbootstrap.com/)
-- [jQuery 3.5.1](https://jquery.com/)
-- [Popper.js 1.16.0](https://popper.js.org/)
-- [D3.js v7](https://d3js.org/)
-- [PapaParse 5.3.0](https://www.papaparse.com/)
-- [Amazon RDS](https://aws.amazon.com/rds/)
-- [Psycopg2](https://www.psycopg.org/docs/)
-- [SQLAlchemy](https://www.sqlalchemy.org/)
+- <ins>Produced Water Chemistry</ins>
+    - Languages 
+        - [Python 3.10 or higher](https://www.python.org/)
+        - [HTML](https://html.spec.whatwg.org/multipage/)
+    - Libraries / Modules / Plugins
+        - [Pandas](https://pandas.pydata.org/)
+        - [NumPy](https://www.numpy.org)
+        - [Matplotlib](https://matplotlib.org/)
+        - [SciPy](https://www.scipy.org/scipylib)
+        - [Scikit-learn](https://scikit-learn.org/stable/index.html)
+        - [WQChartPy](https://github.com/jyangfsu/WQChartPy/tree/main?tab=readme-ov-file) 
+        - [Seaborn](https://seaborn.pydata.org/#) 
+        - [GeoPandas](https://geopandas.org/en/stable/#) 
+        - [Folium](https://pypi.org/project/folium/)
+        - [Branca](https://pypi.org/project/branca/)
+- <ins>Induced Seismic Activity & Injection Wells</ins>
+    - Languages 
+        - [Python 3.10 or higher](https://www.python.org/)
+        - [HTML](https://html.spec.whatwg.org/multipage/)
+        - [Javascript](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference)
+        - [CSS](https://developer.mozilla.org/en-US/docs/Web/CSS)
+        - [SQL(via PostgreSQL)](https://www.postgresql.org/docs/current/sql.html)
+    - Libraries / Modules / Plugins
+        - [Leaflet](https://leafletjs.com/) 
+        - [Bootstrap 4.5.2](https://getbootstrap.com/)
+        - [jQuery 3.5.1](https://jquery.com/)
+        - [Popper.js 1.16.0](https://popper.js.org/)
+        - [D3.js v7](https://d3js.org/)
+        - [PapaParse 5.3.0](https://www.papaparse.com/)
+        - [Pandas](https://pandas.pydata.org/)
+        - [Psycopg2](https://www.psycopg.org/docs/)
+        - [SQLAlchemy](https://www.sqlalchemy.org/)
+    - Other Tools
+        - [PostgreSQL](https://www.postgresql.org/docs/)
+        - [Amazon RDS](https://aws.amazon.com/rds/)
 
 ## <p style="color:#CC6600">6. Data Sources</p> 
 - [TexNet Seismic Data](https://www.beg.utexas.edu/texnet-cisr/texnet)
 - [USGS Produced Water Data](https://www.usgs.gov/)
 - [Injection Data API](https://injection.texnet.beg.utexas.edu/api/Export)
+<<<<<<< HEAD
 - [Leaflet.js Documentation](https://leafletjs.com/)
 - [PapaParse Documentation](https://www.papaparse.com/)
 - [D3.js Library](https://d3js.org/)
@@ -160,11 +174,13 @@ In conclusion, our visualized analysis presents a compelling narrative on the in
 - [Pandas Documentation](https://pandas.pydata.org/pandas-docs/stable/index.html)
 - [GeoPandas Documentation](https://geopandas.org/en/stable/)
 - [Amazon RDS Documentation](https://aws.amazon.com/rds/)
+=======
+>>>>>>> bc4ec2f56ed2620d34b2040a437df1815b0a2027
 
 ## <p style="color:#CC6600">7. Contributors</p> 
 
 - [Roxana Darvari](https://github.com/roxanadrv)
 - [Brittany Svab](https://github.com/bsvab)
-- [John Cahill](https://github.com/ithilien12358)
 - [Alejandro Juarez](https://github.com/ajuarez2112)
 - [Sarah Cain](https://github.com/thesarahcain)
+- [John Cahill](https://github.com/ithilien12358)

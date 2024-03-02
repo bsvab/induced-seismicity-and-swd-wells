@@ -4,7 +4,7 @@ body {
     font-family: "Open Sans", sans-serif;
 }
 
-#map1 {
+#map2 {
     position: fixed;
     top: 0;
     left: 0;
@@ -16,7 +16,7 @@ body {
 /* LEAFLET.TIMELINE-RELATED ITEMS */
 /* -------------------------------------------------------------------------------------------------------------- */
 
-.leaflet-bottom.leaflet-left {
+/* .leaflet-bottom.leaflet-left {
     width: 100%;
 }
 
@@ -25,7 +25,7 @@ body {
     width: 100%;
     margin: 0;
     margin-bottom: 15px;
-}
+} */
 
 /* -------------------------------------------------------------------------------------------------------------- */
 /* PORE PRESSURE LEGEND-RELATED ITEMS */

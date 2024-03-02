@@ -48,5 +48,9 @@ fetchDataFromFlask()
     })
     .catch(error => {
         console.error('Error fetching data:', error);
+<<<<<<< HEAD
     });
 
+=======
+    });
+>>>>>>> bc4ec2f56ed2620d34b2040a437df1815b0a2027
