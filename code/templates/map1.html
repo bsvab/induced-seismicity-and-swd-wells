@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Injection Data Visualization</title>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.6.0/dist/leaflet.css"/>
+    <script src="https://unpkg.com/leaflet@1.6.0/dist/leaflet.js"></script>
+    
+    <!-- file source links to render locally... -->
+    <!-- <link rel="stylesheet" href="./static/css/map1.css"/> -->
+
+    <!-- file source links to render via Flask app... -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/map1.css') }}">
+
+</head>
+<body>
+
+<div id="map1"></div>
+
+    <!-- leaflet.timeline plugin - file source links to render locally...-->
+    <!-- <script src="../static/js/leaflet.timeline.js"></script> -->
+    <!-- <link rel="stylesheet" href="../static/css/leaflet.timeline.css"/> -->
+
+    <!-- leaflet.timeline plugin - file source links to render via Flask app...-->
+    <script src="{{ url_for('static', filename='js/leaflet.timeline.js') }}"></script>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/leaflet.timeline.css') }}">
+
+    
+    <!-- map initialization file and layer files - file source links to render locally... -->
+    <!-- <script src="../static/js/map1.js"></script> -->
+    <!-- <script src="../static/js/map1_injection_layer.js"></script> -->
+    <!-- <script src="../static/js/map1_seismic_layer.js"></script> -->
+    <!-- <script src="../static/js/map1_pore_pressure_layer.js"></script> -->
+    <!-- <script src="../static/js/map1_basin_outline_layer.js"></script> -->
+
+    <!-- map initialization file and layer files - file source links to render via Flask app... -->
+    <script src="{{ url_for('static', filename='js/map1.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/map1_injection_layer.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/map1_seismic_layer.js') }}"></script>
+    <!-- <script src="{{ url_for('static', filename='js/map1_pore_pressure_layer.js') }}"></script> -->
+    <!-- <script src="{{ url_for('static', filename='js/map1_basin_outline_layer.js') }}"></script> -->
+
+</body>
+</html>

@@ -5,7 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Produced Water Data & Analysis</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"> <!-- Bootstrap -->
-    <link rel="stylesheet" href="./static/style.css">
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.6.0/dist/leaflet.css"/>
     <script src="https://unpkg.com/leaflet@1.6.0/dist/leaflet.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
@@ -13,6 +12,13 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/PapaParse/5.3.0/papaparse.min.js"></script>
     <script src="https://d3js.org/d3.v7.min.js"></script>
+
+    <!-- file source links to render locally... -->
+    <!-- <link rel="stylesheet" href="../static/css/style.css"> -->
+
+    <!-- file source links to render via Flask app... -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+
 </head>
 <body>
     
@@ -81,23 +87,23 @@
                                     <h4>Produced Water Chemistry</h4>
                                 </div>
                                 <p><br>Produced water, a byproduct of oil and gas extraction, poses environmental challenges due to its complex chemical composition and high salinity. 
-                                    This project focuses on two key objectives: analyzing the chemistry of produced water with a focus on scaling elements and evaluating the 
-                                    availability of lithium for potential extraction. Utilizing data from the 
-                                    <a href="https://data.usgs.gov/datacatalog/data/USGS:59d25d63e4b05fe04cc235f9">United States Geological Survey (USGS)</a>, a comprehensive methodology 
-                                    for data cleaning and filtering is employed to ensure accuracy.
-                                    <br><br>
-                                    The analysis encompasses key elements such as Sodium, Calcium, Chloride, Sulfate, and Magnesium, with a focus on Total Dissolved Solids (TDS) 
-                                    greater than 35,000 ppm. Applying natural chemical balance conditions refines the dataset, and stringent charge balance criteria are employed 
-                                    for reliability. Missing data are addressed with tailored strategies respecting chemical properties.
-                                    <br><br>
-                                    Visualizations include box and violin plots showcasing elemental concentrations across geological basins, Piper plots for water type 
-                                    classification, and interactive maps revealing scaling element and lithium concentration clusters. The methodology ensures a clear representation 
-                                    of scaling element and lithium distribution and facilitates insights into spatial patterns. Furthermore, the project introduces a linear regression 
-                                    analysis on lithium concentration versus depth to investigate whether a relationship is present.
-                                    <br><br>
-                                    In conclusion, this research provides a nuanced understanding of produced water chemistry, supports sustainable water management, aligns with DOE 
-                                    goals, and explores the potential for resource recovery. The methodologies presented are adaptable, promoting transparency and fostering 
-                                    environmentally responsible practices in the oil and gas industry.</p>
+                                This project focuses on two key objectives: analyzing the chemistry of produced water with a focus on scaling elements and evaluating the 
+                                availability of lithium for potential extraction. Utilizing data from the 
+                                <a href="https://data.usgs.gov/datacatalog/data/USGS:59d25d63e4b05fe04cc235f9" target="_blank">United States Geological Survey (USGS)</a>, a comprehensive methodology 
+                                for data cleaning and filtering is employed to ensure accuracy.
+                                <br><br>
+                                The analysis encompasses key elements such as Sodium, Calcium, Chloride, Sulfate, and Magnesium, with a focus on Total Dissolved Solids (TDS) 
+                                greater than 35,000 ppm. Applying natural chemical balance conditions refines the dataset, and stringent charge balance criteria are employed 
+                                for reliability. Missing data are addressed with tailored strategies respecting chemical properties.
+                                <br><br>
+                                Visualizations include box and violin plots showcasing elemental concentrations across geological basins, Piper plots for water type 
+                                classification, and interactive maps revealing scaling element and lithium concentration clusters. The methodology ensures a clear representation 
+                                of scaling element and lithium distribution and facilitates insights into spatial patterns. Furthermore, the project introduces a linear regression 
+                                analysis on lithium concentration versus depth to investigate whether a relationship is present.
+                                <br><br>
+                                In conclusion, this research provides a nuanced understanding of produced water chemistry, supports sustainable water management, aligns with DOE 
+                                goals, and explores the potential for resource recovery. The methodologies presented are adaptable, promoting transparency and fostering 
+                                environmentally responsible practices in the oil and gas industry.</p>
                             </div>
                         </div>
                     </div>
@@ -116,9 +122,9 @@
                 <!-- Content Section -->
                 <div class="container-fluid">
                     <div class="row">
-                    <div class="col-md-12">
-                        <p> </p>
-                    </div>
+                        <div class="col-md-12">
+                            <p> </p>
+                        </div>
                     </div>
                 </div>
                 <div class="container-fluid">
@@ -128,8 +134,12 @@
                         </div>
                     </div>
                     <div class="row">
-                        <iframe id="map1" src="map1.html" height="650" width=100% title="map1"></iframe>
-                        
+                        <!-- how to write iframe to source file locally... -->
+                        <!-- <iframe id="map1" src="./static/map1.html" height="650" width=100% title="map1"></iframe> -->
+
+                        <!-- how to write iframe to source file via Flask... -->
+                        <iframe id="map1" src="{{ url_for('map1') }}" height="650" width=100% title="map1"></iframe>
+
                         <!-- <div class="col-md-12"> -->
                             <!-- Create a new container for the map and controller -->
                             <!-- <div id="map1_container"> -->
@@ -147,6 +157,26 @@
                             <!-- </div> -->
                         <!-- </div> -->
                     </div>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <p> </p>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <p>Select date from dropdown to view pore pressure data in Layer 13.</p> <!-- replace "Layer 13" with actual name of layer...-->
+                        </div>
+                    </div>
+                    <div class="row">
+                        <!-- how to write iframe to source file locally... -->
+                        <!-- <iframe id="map2" src="./static/map2.html" height="650" width=100% title="map2"></iframe> -->
+                        <!-- how to write iframe to source file via Flask... -->
+                        <iframe id="map2" src="{{ url_for('map2') }}" height="650" width=100% title="map2"></iframe>
+                    </div>
+                </div>
+                <div class="container-fluid">
+                    <p><br>If you are interested in exploring the code behind these visuals, or the data that is feeding them, please check out our github repository:  
+                    <a href="https://github.com/bsvab/induced-seismic-activity-&-injection-wells" target="_blank">https://github.com/bsvab/induced-seismic-activity-&-injection-wells</a>. 
                 </div>
             </div>
 
@@ -283,6 +313,10 @@
                         </div>
                     </div>
                 </div>
+                <div class="container-fluid">
+                    <p><br>If you are interested in exploring the code behind these visuals, or the data that is feeding them, please check out our github repository:  
+                    <a href="https://github.com/bsvab/produced-water-chemistry" target="_blank">www.github.com/bsvab/produced-water-chemistry</a>.
+                </div>
             </div>
 
             <!-- ABOUT US TAB -->
@@ -324,8 +358,8 @@
                                 <div class="row">
                                     <div class="container-fluid banner3">
                                         <h3>Roxana Darvari</h3>
-                                        <img id="logo" src="../../images/team/linkedin_logo_white_21.png" alt="linkedin"> <a id="about" href="https://www.linkedin.com/in/roxana-darvari-p-e-49646284/" target="_blank">www.linkedin.com/in/roxana-darvari-p-e-49646284</a> &nbsp; &nbsp;
-                                        <img id="logo" src="../../images/team/github_logo_white.png" alt="github"> <a id="about" href="https://github.com/roxanadrv" target="_blank">www.github.com/roxanadrv</a>
+                                        <img id="logo_li" src="" alt="linkedin"> <a id="about" href="https://www.linkedin.com/in/roxana-darvari-p-e-49646284/" target="_blank">www.linkedin.com/in/roxana-darvari-p-e-49646284</a> &nbsp; &nbsp;
+                                        <img id="logo_gh" src="" alt="github"> <a id="about" href="https://github.com/roxanadrv" target="_blank">www.github.com/roxanadrv</a>
                                     </div>
                                 </div>
                                 <div class="row" id="about_blurb">
@@ -366,8 +400,8 @@
                                 <div class="row">
                                     <div class="container-fluid banner3">
                                         <h3>Brittany Svab</h3> 
-                                        <img id="logo" src="../../images/team/linkedin_logo_white_21.png" alt="linkedin"> <a id="about" href="https://www.linkedin.com/in/bsvab/" target="_blank">www.linkedin.com/in/bsvab</a> &nbsp; &nbsp;
-                                        <img id="logo" src="../../images/team/github_logo_white.png" alt="github"> <a id="about" href="https://github.com/bsvab" target="_blank">www.github.com/bsvab</a>
+                                        <img id="logo_li" src="" alt="linkedin"> <a id="about" href="https://www.linkedin.com/in/bsvab/" target="_blank">www.linkedin.com/in/bsvab</a> &nbsp; &nbsp;
+                                        <img id="logo_gh" src="" alt="github"> <a id="about" href="https://github.com/bsvab" target="_blank">www.github.com/bsvab</a>
                                     </div>
                                 </div>
                                 <div class="row" id="about_blurb">
@@ -403,8 +437,8 @@
                                 <div class="row">
                                     <div class="container-fluid banner3">
                                         <h3>Alejandro Juarez</h3>
-                                        <img id="logo" src="../../images/team/linkedin_logo_white_21.png" alt="linkedin"> <a id="about" href="" target="_blank">MISSING LINK</a> &nbsp; &nbsp;
-                                        <img id="logo" src="../../images/team/github_logo_white.png" alt="github"> <a id="about" href="https://github.com/ajuarez2112" target="_blank">www.github.com/ajuarez2112</a>
+                                        <img id="logo_li" src="" alt="linkedin"> <a id="about" href="https://www.linkedin.com/in/alejandro-juarez-4a0778194" target="_blank">www.linkedin.com/in/alejandro-juarez-4a0778194</a> &nbsp; &nbsp;
+                                        <img id="logo_gh" src="" alt="github"> <a id="about" href="https://github.com/ajuarez2112" target="_blank">www.github.com/ajuarez2112</a>
                                     </div>
                                 </div>
                                 <div class="row" id="about_blurb">
@@ -435,8 +469,8 @@
                                 <div class="row">
                                     <div class="container-fluid banner3">
                                         <h3>Sarah Cain</h3>
-                                        <img id="logo" src="../../images/team/linkedin_logo_white_21.png" alt="linkedin"> <a id="about" href="https://www.linkedin.com/in/sarah-cain-3ab0a7277/" target="_blank">www.linkedin.com/in/sarah-cain-3ab0a7277</a> &nbsp; &nbsp;
-                                        <img id="logo" src="../../images/team/github_logo_white.png" alt="github"> <a id="about" href="https://github.com/thesarahcain" target="_blank">www.github.com/thesarahcain</a>
+                                        <img id="logo_li" src="" alt="linkedin"> <a id="about" href="https://www.linkedin.com/in/sarah-cain-3ab0a7277/" target="_blank">www.linkedin.com/in/sarah-cain-3ab0a7277</a> &nbsp; &nbsp;
+                                        <img id="logo_gh" src="" alt="github"> <a id="about" href="https://github.com/thesarahcain" target="_blank">www.github.com/thesarahcain</a>
                                     </div>
                                 </div>
                                 <div class="row" id="about_blurb">
@@ -467,8 +501,8 @@
                                 <div class="row">
                                     <div class="container-fluid banner3">
                                         <h3>John Cahill</h3>
-                                        <img id="logo" src="../../images/team/linkedin_logo_white_21.png" alt="linkedin"> <a id="about" href="https://www.linkedin.com/in/john-cahill-6a784571/" target="_blank">www.linkedin.com/in/john-cahill-6a784571</a> &nbsp; &nbsp;
-                                        <img id="logo" src="../../images/team/github_logo_white.png" alt="github"> <a id="about" href="https://github.com/ithilien12358" target="_blank">www.github.com/ithilien12358</a>
+                                        <img id="logo_li" src="" alt="linkedin"> <a id="about" href="https://www.linkedin.com/in/john-cahill-6a784571/" target="_blank">www.linkedin.com/in/john-cahill-6a784571</a> &nbsp; &nbsp;
+                                        <img id="logo_gh" src="" alt="github"> <a id="about" href="https://github.com/ithilien12358" target="_blank">www.github.com/ithilien12358</a>
                                     </div>
                                 </div>
                                 <div class="row" id="about_blurb">
@@ -509,22 +543,46 @@
                 <div class="container-fluid">
                     <div class="row">
                         <div class="col-md-12">
-                            <p>Content goes here...</p>
+                            <p> </p>
                         </div>
                     </div>
                     <div class="row">
                         <span class="larger"><b><ins>Basin (Geological Basin)</ins>:</b></span><span>A large-scale geological depression, often circular or elliptical in shape, where layers of sediment accumulate over time. Basins are critical in petroleum geology as they are often the sites of significant accumulations of oil and natural gas. These structures are formed by tectonic actions such as subsidence of the Earth's crust and can vary widely in size and complexity.<br><br></span>
+                    </div>
+                    <div class="row">
                         <span class="larger"><b><ins>Charge Balance</ins>:</b></span><span>In geochemistry, this refers to the state where the sum of the charges from all the cations (positively charged ions) and anions (negatively charged ions) in a solution are balanced. It's important for understanding the chemical stability of mineral waters and produced waters.<br><br></span>
+                    </div>
+                    <div class="row">
                         <span class="larger"><b><ins>Concentration</ins>:</b></span><span>The abundance of a constituent divided by the total volume of a mixture. In geochemistry, concentration is a fundamental concept used to quantify the level of a particular element or compound in a geological sample. It is critical for understanding the composition and quality of groundwater, surface water, and produced water.<br><br></span>
+                    </div>
+                    <div class="row">
                         <span class="larger"><b><ins>Formation (Geological Formation in Oil and Gas Reservoirs)</ins>:</b></span>&nbsp;&nbsp; <span>In the context of oil and gas exploration and production, a geological formation is a distinct layer of sedimentary rock with consistent characteristics that distinguish it from adjacent strata. These formations are critical in identifying potential reservoirs of hydrocarbons. They often contain organic material that, over geological time, has been transformed into oil and gas. The properties of a formation, such as porosity, permeability, and thickness, are key factors in determining the viability and productivity of an oil or gas reservoir. In oil and gas terminology, formations are usually named after the geographic location where they were first studied or identified. Understanding the geological formations is essential for successful drilling and extraction operations, as it guides the placement of wells and informs predictions about the presence and recoverability of oil and gas deposits.<br><br></span>
+                    </div>
+                    <div class="row">
                         <span class="larger"><b><ins>Major Elements</ins>:</b></span><span>These are the elements found in high concentrations in geological samples. They are significant in geochemical investigations as they influence the chemical and physical properties of rocks and fluids.<br><br></span>
+                    </div>
+                    <div class="row">
                         <span class="larger"><b><ins>Molarity</ins>:</b></span><span>A unit of concentration in chemistry, representing the number of moles of a solute dissolved in one liter of solution. It is a standard measure for quantifying the concentration of elements or compounds in a solution, crucial in geochemical analyses to determine the precise chemical makeup of water samples, including produced water.<br><br></span>
+                    </div>
+                    <div class="row">
                         <span class="larger"><b><ins>Piper Plot</ins>:</b></span><span>A graphical representation used in hydrochemistry to illustrate the chemical composition of water samples. The plot is divided into three fields: two triangular fields that show the major cations (calcium, magnesium, sodium, and potassium) and anions (carbonate, bicarbonate, sulfate, and chloride) respectively, and a central diamond-shaped field that provides a comprehensive view of water chemistry. Piper plots are instrumental in understanding the geochemical evolution of water, identifying water types, and assessing water-rock interaction processes.<br><br></span>
+                    </div>
+                    <div class="row">
                         <span class="larger"><b><ins>Produced Water</ins>:</b></span><span>This refers to the water that is brought to the surface during oil and gas extraction. It often contains various organic and inorganic substances and is typically considered a byproduct of the hydrocarbon extraction process.<br><br></span>
+                    </div>
+                    <div class="row">
                         <span class="larger"><b><ins>Scaling Elements in Produced Water Treatment</ins>:</b></span><span>In the context of produced water treatment, scaling elements refer to minerals like calcium, magnesium, barium, and strontium, which can precipitate out of produced water under certain conditions. These precipitates can form scale that coats and clogs pipes and equipment, causing significant operational challenges in treatment processes. Managing scaling elements is crucial for efficient and cost-effective treatment of produced water.<br><br></span>
+                    </div>
+                    <div class="row">
                         <span class="larger"><b><ins>Total Dissolved Solid (TDS)</ins>:</b></span><span>A measure of the combined content of all inorganic and organic substances contained in a liquid. In water quality analysis and geochemistry, TDS is used to indicate the general quality of the water.<br><br></span>
+                    </div>
+                    <div class="row">
                         <span class="larger"><b><ins>Violin Plot</ins>:</b></span><span>A method of data visualization that combines a box plot with a kernel density plot. In environmental and geochemical studies, violin plots can illustrate the distribution and probability density of data, particularly useful for comparing multiple data sets.<br><br></span>
+                    </div>
+                    <div class="row">
                         <span class="larger"><b><ins>Well Depth</ins>:</b></span><span>The vertical distance measured from the surface to the bottom of a well. This is a critical factor in geological and hydrological studies as it can influence the characteristics of the water or oil extracted.<br><br></span>
+                    </div>
+                        <!-- <span class="larger"><b><ins>TERM</ins>:</b></span><span>DEFINITION<br><br></span>
                         <span class="larger"><b><ins>TERM</ins>:</b></span><span>DEFINITION<br><br></span>
                         <span class="larger"><b><ins>TERM</ins>:</b></span><span>DEFINITION<br><br></span>
                         <span class="larger"><b><ins>TERM</ins>:</b></span><span>DEFINITION<br><br></span>
@@ -533,27 +591,163 @@
                         <span class="larger"><b><ins>TERM</ins>:</b></span><span>DEFINITION<br><br></span>
                         <span class="larger"><b><ins>TERM</ins>:</b></span><span>DEFINITION<br><br></span>
                         <span class="larger"><b><ins>TERM</ins>:</b></span><span>DEFINITION<br><br></span>
-                        <span class="larger"><b><ins>TERM</ins>:</b></span><span>DEFINITION<br><br></span>
-                        <span class="larger"><b><ins>TERM</ins>:</b></span><span>DEFINITION<br><br></span>
+                        <span class="larger"><b><ins>TERM</ins>:</b></span><span>DEFINITION<br><br></span> -->
                     </div>
                 </div>
             </div>
         </div>
     </div>
     
-    <script src="./static/tab_home.js"></script>
-    <script src="./static/tab_seismic.js"></script>
-    <script src="./static/tab_chemistry.js"></script>
-    <script src="./static/tab_about_us.js"></script>
+    <!-- file source links to render locally... -->
+    <!-- <script src="../static/js/tab_home.js"></script> -->
+    <!-- <script src="../static/js/tab_seismic.js"></script> -->
+    <!-- <script src="../static/js/tab_chemistry.js"></script> -->
+    <!-- <script src="../static/js/tab_about_us.js"></script> -->
+
+    <!-- file source links to render via Flask app... -->
+    <script src="{{ url_for('static', filename='js/tab_home.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/tab_seismic.js') }}"></script>
+    <!-- <script src="{{ url_for('static', filename='js/tab_chemistry.js') }}"></script> --> <!-- THIS JS CODE MUST BE DIRECTLY IN THE HTML IN ORDER FOR FLASK TO RENDER, IT IS INCLUDED IN SCRIPT TAG BELOW -->
+    <!-- <script src="{{ url_for('static', filename='js/tab_about_us.js') }}"></script> --> <!-- THIS JS CODE MUST BE DIRECTLY IN THE HTML IN ORDER FOR FLASK TO RENDER, IT IS INCLUDED IN SCRIPT TAG BELOW -->
+
+    <script>
+        let basins = [
+            'Anadarko Basin',
+            'Appalachian Basin',
+            'Fort Worth Basin',
+            'Gulf Coast Basin',
+            'Illinois Basin',
+            'Michigan Basin',
+            'Oklahoma Platform Basins',
+            'Permian Basin',
+            'Rocky Mountain Basins',
+            'Williston Basin'
+        ];
+
+        let basins_no_spaces = [
+            "AnadarkoBasin",
+            "AppalachianBasin",
+            "FortWorthBasin",
+            "GulfCoastBasin",
+            "IllinoisBasin",
+            "MichiganBasin",
+            "OklahomaPlatformBasins",
+            "PermianBasin",
+            "RockyMountainBasins",
+            "WillistonBasin"
+        ];
+
+        let elements = ["Ca", "Mg", "HCO3", "Si", "FeTot", "Ba", "Sr", "Li"];
+
+        // initialize the dashboard at start up 
+        function init() {
+        
+            // populate the dropdown menu
+            populateDropdownMenu(basins)
+
+            // Set the first basin from the list as the initial selection from the dropdown list
+            let first_basin = basins[0];
+            console.log(first_basin);
+
+            // populate the associated visuals for that basin
+            populateVisuals(first_basin)
+
+            // set event listener for dropdown menu change = if change occurs, update charts
+            let dropdown_list = d3.select("#selectBasin");  
+            dropdown_list.on("change", function() {
+            let selection = this.value;
+            populateVisuals(selection);
+            });
+        
+        };
+        
+        // call the initialize function
+        init();
+        
+        // get sample names and populate the dropdown list
+        function populateDropdownMenu(basins) {
+            
+            // select the dropdown menu
+            let dropdown_list = d3.select("#selectBasin");
+            
+            basins.forEach(basin => {
+                dropdown_list.append("option")
+                    .text(basin)
+                    .attr("value", basin);
+            });
+            
+        };
+
+        // use below function to source images via Flask...
+        // generate all visuals for selected basin
+        function populateVisuals(selection) {
+            let basin_index = basins.indexOf(selection);
+            let basin = basins_no_spaces[basin_index];
+
+            for (let e = 0; e < elements.length; e++) {
+                let element = elements[e];
+                let filename1 = `images/chemistry/ViolinPlot_${basin}_${element}.png`;
+                // violin plots
+                let imgElement1 = document.getElementById(`imgElement_ViolinPlot_${element}`);
+                imgElement1.src = `{{ url_for('static', filename='${filename1}') }}`;
+
+                // box plots
+                let imgElement2 = document.getElementById(`imgElement_BoxPlot_${element}`);
+                let filename2 = `images/chemistry/BoxPlot_${basin}_${element}.png`;
+                imgElement2.src = `{{ url_for('static', filename='${filename2}') }}`;
+            }
+
+            // piper plots
+            let imgElement3 = document.getElementById('imgElement_Piper(Triangle)');
+            let filename3 = `images/chemistry/Piper(Triangle)_${basin}.png`;
+            imgElement3.src = `{{ url_for('static', filename='${filename3}') }}`;
+
+            let imgElement4 = document.getElementById('imgElement_Piper(Contour)');
+            let filename4 = `images/chemistry/Piper(Contour)_${basin}.png`;
+            imgElement4.src = `{{ url_for('static', filename='${filename4}') }}`;
+
+            let imgElement5 = document.getElementById('imgElement_Piper(Color)');
+            let filename5 = `images/chemistry/Piper(Color)_${basin}.png`;
+            imgElement5.src = `{{ url_for('static', filename='${filename5}') }}`;
+        }
+
+    </script>
+
+    <script>
+        let team = ["roxana_darvari", "brittany_svab", "alejandro_juarez", "sarah_cain", "john_cahill"]
+
+        // initialize at start up 
+        function init() {
+            populateHeadshots(team);
+        };
+        
+        // call the initialize function
+        init();
+
+        // code to use if sourcing images via Flask...
+        // generate all headshots
+        function populateHeadshots(team) {
+            for (let p = 0; p < team.length; p++) {
+                let person = team[p];
+                
+                let imgElement1 = document.getElementById(`headshot_${person}`); // Get the reference to the img element
+                let filename1 = `images/team/${person}.png`;
+                imgElement1.src = `{{ url_for('static', filename='${filename1}') }}`; // Set the source of the image
+
+                imgElement1.onerror = function() {
+                    // If image doesn't exist, set source to the default image
+                    imgElement1.src = "{{ url_for('static', filename='images/team/headshot_icon.png') }}";
+                };
+            }
+        }
+
+        let imgElement2 = document.getElementById('logo_li'); // Get the reference to the img element
+        imgElement2.src = "{{ url_for('static', filename='images/team/linkedin_logo_white_21.png') }}"; // Set the source of the image
+
+        let imgElement3 = document.getElementById('logo_gh'); // Get the reference to the img element
+        imgElement3.src = "{{ url_for('static', filename='images/team/github_logo_white.png') }}"; // Set the source of the image
+    </script>
+
 
 </body>
 </html>
-
-<!-- TEMPORARY NOTES TO SELF...
-
-from TAs when asked if one html file can call another:
-    Can pull in other .html files using iframe: <iframe src="path/to/anotherfile.html" width="100%" height="500"></iframe>
-    https://www.w3schools.com/tags/tag_iframe.ASP
-    https://codepen.io/IanLintner/pen/DqGKQZ
-
--->
