@@ -30,7 +30,7 @@
                 <a class="nav-link active" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true">Home</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" id="seismic-tab" data-toggle="tab" href="#seismic" role="tab" aria-controls="seismic" aria-selected="false">Induced Seismic Activity & Injection Wells</a>
+                <a class="nav-link" id="seismic-tab" data-toggle="tab" href="#seismic" role="tab" aria-controls="seismic" aria-selected="false">Induced Seismicity & Disposal Wells</a>
             </li>
             <li class="nav-item">
                 <a class="nav-link" id="chemistry-tab" data-toggle="tab" href="#chemistry" role="tab" aria-controls="chemistry" aria-selected="false">Produced Water Chemistry</a>
@@ -50,8 +50,8 @@
 
                 <!-- Banner Title Section -->
                 <div class="container-fluid banner1">
-                    <h3>Landing Page Title Banner TBD</h3>
-                    <h6><em>Subtitle TBD</em></h6>
+                    <h3>An Exploration of Data Involving Produced Water Treatment & Disposal Wells</h3>
+                    <h6><em>Join us in analyzing data related to the chemical composition of produced water and the induced seismicity related to the salt water disposal wells. </em></h6>
                 </div>
 
                 <!-- Content Section -->
@@ -65,7 +65,12 @@
                 <div class="container-fluid">
                     <div class="row">
                     <div class="col-md-12">
-                        <p>Content goes here... some sort of "welcome to our page" statement, etc...</p>
+                        <p>Welcome to our site!
+                            <br><br>
+                            ...
+                            <br><br>
+                            We hope you find this platform to be informative, functional, and aesthetically pleasing in it's presentation of the data.
+                        </p>
                     </div>
                     </div>
                 </div>
@@ -75,35 +80,60 @@
                     <div class="row">
                         <div class="col-md-6">
                             <div class="container-fluid">
-                                <div class="container-fluid banner2">
-                                    <h4>Induced Seismic Activity & Injection Wells</h4>
+                                <div class="row">
+                                    <div class="container-fluid banner2">
+                                        <h4>Induced Seismicity & Disposal Wells</h4>
+                                    </div>
                                 </div>
-                                <p><br>Content goes here...</p>
+                                <div class="row" id="margin5px">
+                                    <p><br>This web-based project provides an interactive and comprehensive exploration of the relationship between induced seismic activity, saltwater 
+                                        disposal (SWD) well injection volumes, and subsurface pore pressure changes within the Delaware Basin in West Texas. Utilizing publicly accessible 
+                                        data from TexNet and employing advanced numerical models, the project aims to illuminate the complex interactions that contribute to induced 
+                                        seismicity. The website features interactive tabs that allow users to delve into various aspects of the study, including seismic activity in 
+                                        relation to SWD wells, produced water chemistry, and a detailed glossary of terms for educational purposes.
+                                        <br><br>
+                                        The project employs a structured Extract, Transform, Load (ETL) methodology for data preparation, leveraging technologies such as Python's Pandas 
+                                        and Pyproj libraries for data manipulation and transformation, and Amazon RDS for database storage. The extracted data sets—comprising pressure 
+                                        data from text files, injection volume data from APIs, and seismic event data from APIs are meticulously processed to ensure accuracy and usability.
+                                        <br><br>
+                                        The core of the website is an interactive geomap analysis tool, hosted within an iframe, which visualizes the temporal and spatial dynamics of 
+                                        SWD practices, pore pressure alterations, and seismic events. This tool, alongside additional visualizations of produced water chemistry, aims to 
+                                        engage and inform stakeholders, researchers, and the general public about the environmental and operational implications of SWD wells.
+                                        <br><br>
+                                        Through this digital platform, we endeavor to provide a narrative that connects SWD well operations with seismic activity and water chemistry, 
+                                        offering insights into sustainable practices and risk mitigation strategies in the context of oil and gas extraction. The project underscores the 
+                                        importance of integrating scientific research with interactive data visualization to foster a broader understanding of induced seismicity and its 
+                                        associated challenges.</p>
+                                </div>
                             </div>
                         </div>
                         <div class="col-md-6">
                             <div class="container-fluid">
-                                <div class="container-fluid banner2">
-                                    <h4>Produced Water Chemistry</h4>
+                                <div class="row">
+                                    <div class="container-fluid banner2">
+                                        <h4>Produced Water Chemistry</h4>
+                                    </div>
                                 </div>
-                                <p><br>Produced water, a byproduct of oil and gas extraction, poses environmental challenges due to its complex chemical composition and high salinity. 
-                                This project focuses on two key objectives: analyzing the chemistry of produced water with a focus on scaling elements and evaluating the 
-                                availability of lithium for potential extraction. Utilizing data from the 
-                                <a href="https://data.usgs.gov/datacatalog/data/USGS:59d25d63e4b05fe04cc235f9" target="_blank">United States Geological Survey (USGS)</a>, a comprehensive methodology 
-                                for data cleaning and filtering is employed to ensure accuracy.
-                                <br><br>
-                                The analysis encompasses key elements such as Sodium, Calcium, Chloride, Sulfate, and Magnesium, with a focus on Total Dissolved Solids (TDS) 
-                                greater than 35,000 ppm. Applying natural chemical balance conditions refines the dataset, and stringent charge balance criteria are employed 
-                                for reliability. Missing data are addressed with tailored strategies respecting chemical properties.
-                                <br><br>
-                                Visualizations include box and violin plots showcasing elemental concentrations across geological basins, Piper plots for water type 
-                                classification, and interactive maps revealing scaling element and lithium concentration clusters. The methodology ensures a clear representation 
-                                of scaling element and lithium distribution and facilitates insights into spatial patterns. Furthermore, the project introduces a linear regression 
-                                analysis on lithium concentration versus depth to investigate whether a relationship is present.
-                                <br><br>
-                                In conclusion, this research provides a nuanced understanding of produced water chemistry, supports sustainable water management, aligns with DOE 
-                                goals, and explores the potential for resource recovery. The methodologies presented are adaptable, promoting transparency and fostering 
-                                environmentally responsible practices in the oil and gas industry.</p>
+                                <div class="row" id="margin5px">
+                                    <p><br>Produced water, a byproduct of oil and gas extraction, poses environmental challenges due to its complex chemical composition and high salinity. 
+                                        This project focuses on two key objectives: analyzing the chemistry of produced water with a focus on scaling elements and evaluating the 
+                                        availability of lithium for potential extraction. Utilizing data from the 
+                                        <a href="https://data.usgs.gov/datacatalog/data/USGS:59d25d63e4b05fe04cc235f9" target="_blank">United States Geological Survey (USGS)</a>, a comprehensive methodology 
+                                        for data cleaning and filtering is employed to ensure accuracy.
+                                        <br><br>
+                                        The analysis encompasses key elements such as Sodium, Calcium, Chloride, Sulfate, and Magnesium, with a focus on Total Dissolved Solids (TDS) 
+                                        greater than 35,000 ppm. Applying natural chemical balance conditions refines the dataset, and stringent charge balance criteria are employed 
+                                        for reliability. Missing data are addressed with tailored strategies respecting chemical properties.
+                                        <br><br>
+                                        Visualizations include box and violin plots showcasing elemental concentrations across geological basins, Piper plots for water type 
+                                        classification, and interactive maps revealing scaling element and lithium concentration clusters. The methodology ensures a clear representation 
+                                        of scaling element and lithium distribution and facilitates insights into spatial patterns. Furthermore, the project introduces a linear regression 
+                                        analysis on lithium concentration versus depth to investigate whether a relationship is present.
+                                        <br><br>
+                                        In conclusion, this research provides a nuanced understanding of produced water chemistry, supports sustainable water management, aligns with DOE 
+                                        goals, and explores the potential for resource recovery. The methodologies presented are adaptable, promoting transparency and fostering 
+                                        environmentally responsible practices in the oil and gas industry.</p>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -115,7 +145,7 @@
                 
                 <!-- Banner Title Section -->
                 <div class="container-fluid banner1">
-                    <h3>Induced Seismic Activity & Salt Water Disposal Well Injection Rates in the Delaware Basin</h3>
+                    <h3>Induced Seismicity & Salt Water Disposal Well Injection Rates in the Delaware Basin</h3>
                     <h6><em>Use the interactive map below to explore class II injection well data over time.</em></h6>
                 </div>
 
@@ -134,10 +164,9 @@
                         </div>
                     </div>
                     <div class="row">
-                        <!-- how to write iframe to source file locally... -->
-                        <!-- <iframe id="map1" src="./static/map1.html" height="650" width=100% title="map1"></iframe> -->
-                        <!-- how to write iframe to source file via Flask... -->
-                        <iframe id="map1" src="{{ url_for('map1') }}" height="650" width=100% title="map1"></iframe>
+                        <div class="col-md-12">
+                            <iframe id="map1" src="{{ url_for('map1') }}" height="650" width=100% title="map1"></iframe>
+                        </div>
                     </div>
                     <div class="row">
                         <div class="col-md-12">
@@ -146,14 +175,32 @@
                     </div>
                     <div class="row">
                         <div class="col-md-12">
-                            <p>Select a date from the dropdown in the top right corner of the map to view the change in pore pressure data from 2017-01-01 to the selected date in Layer 13. The date format in the dropdown reflects YYYY-MM-DD.</p> <!-- replace "Layer 13" with actual name of layer...-->
+                            <p>Select a date from the dropdown in the top right corner of the maps below to view the change in pore pressure data from 2017-01-01 to the selected date. 
+                                The date format in the dropdown reflects YYYY-MM-DD.</p>
                         </div>
                     </div>
                     <div class="row">
-                        <!-- how to write iframe to source file locally... -->
-                        <!-- <iframe id="map2" src="./static/map2.html" height="650" width=100% title="map2"></iframe> -->
-                        <!-- how to write iframe to source file via Flask... -->
-                        <iframe id="map2" src="{{ url_for('map2') }}" height="650" width=100% title="map2"></iframe>
+                        <div class="col-md-4">
+                            <div class="container-fluid banner2">
+                                <h6>Model Layer 9 | Devonian-Silurian Formation</h6> <!-- Layer 9 -->
+                                <p id="model_layer"><em>This layer is important due to injection activity.</em></p>
+                            </div>
+                            <iframe id="map2" src="{{ url_for('map2') }}" height="550" width=100% title="map2"></iframe>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="container-fluid banner2">
+                                <h6>Model Layer 13 | Devonian-Silurian Formation</h6> <!-- Layer 13 -->
+                                <p id="model_layer"><em>This layer is important due to injection activity.</em></p>
+                            </div>
+                            <iframe id="map3" src="{{ url_for('map3') }}" height="550" width=100% title="map3"></iframe>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="container-fluid banner2">
+                                <h6>Model Layer 19 | Ellenberger Formation</h6> <!-- Layer 19 -->
+                                <p id="model_layer"><em>This is the bottom formation in the Delaware Basin. It is important because of the deep seismic activity in this layer.</em></p>
+                            </div>
+                            <iframe id="map4" src="{{ url_for('map4') }}" height="550" width=100% title="map4"></iframe>
+                        </div>
                     </div>
                 </div>
                 <div class="container-fluid">
@@ -345,17 +392,13 @@
                                     </div>
                                 </div>
                                 <div class="row" id="about_blurb">
-                                    <p><br>With over 15 years of experience in environmental and water resources engineering, 
-                                        my career has been dedicated to advancing sustainable water management practices and 
-                                        environmental solutions. My work has primarily focused on analyzing produced water samples
-                                        to identify critical elements, which has significantly contributed to enhancing
-                                        environmental sustainability and project efficiency.
-                                        My expertise extends to conducting geochemical analysis of produced water, uncovering vital 
-                                        data such as the presence of Lithium. This analysis has been pivotal in improving water management
-                                        strategies and understanding environmental impacts in the industry.
-                                        I have been enhancing my skills in data analysis and visualization through training in Python, Java Script, SQL, 
-                                        and Tableau. This has equipped me to integrate my engineering experience with my growing 
-                                        data analytics proficiency to address environmental challenges more effectively, ensuring the sustainable 
+                                    <p><br>With over 15 years of experience in environmental and water resources engineering, my career has been dedicated to advancing sustainable water management 
+                                        practices and environmental solutions. My work has primarily focused on analyzing produced water samples to identify critical elements, which has 
+                                        significantly contributed to enhancing environmental sustainability and project efficiency.
+                                        My expertise extends to conducting geochemical analysis of produced water, uncovering vital data such as the presence of Lithium. This analysis has been 
+                                        pivotal in improving water management strategies and understanding environmental impacts in the industry.
+                                        I have been enhancing my skills in data analysis and visualization through training in Python, Java Script, SQL, and Tableau. This has equipped me to 
+                                        integrate my engineering experience with my growing data analytics proficiency to address environmental challenges more effectively, ensuring the sustainable 
                                         use of water resources.</p>
                                 </div>
                             </div>
@@ -390,7 +433,7 @@
                                 <div class="row" id="about_blurb">
                                     <p><br>With 12 years of versatile experience spanning project management, preconstruction/estimating, and mechanical engineering/design, I've honed skills in 
                                         process improvement and meticulous attention to detail. Notably, as the Preconstruction Manager in our Austin office, I was tasked with revitilizing 
-                                        the team, significantly improving our win ratio from 11% to over 35% within the first year along with a renewed focus on re-aligning culture and maintaining
+                                        the team, significantly improving our win ratio by 24% within the first year along with a renewed focus on re-aligning culture and maintaining
                                         sound processes for consistent, accurate results. I implemented monthly and quarterly metrics, contributing to the development of an enterprise-wide dashboard 
                                         for live sales information across all geographies. Currently, I'm undergoing intensive training in data analytics and visualization tools like Python, SQL, 
                                         Tableau, and others, poised to leverage this expertise for actionable insights and enhanced decision-making strategies in the data analytics realm.</p>
