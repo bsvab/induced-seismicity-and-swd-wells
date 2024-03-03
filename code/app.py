@@ -158,7 +158,7 @@ def earthquake_data():
     try:
         conn = get_db_connection()
         cursor = conn.cursor(cursor_factory=psycopg2.extras.DictCursor)
-        query = 'SELECT *, lat, lon FROM earthquakes'  
+        query = 'SELECT * FROM earthquakes'  
         cursor.execute(query)
         rows = cursor.fetchall()
         features = []
@@ -168,7 +168,7 @@ def earthquake_data():
                 "type": "Feature",
                 "geometry": {
                     "type": "Point",
-                    "coordinates": [row['lon'], row['lat']]
+                    "coordinates": [row['longitude'], row['latitude']]
                 },
                 "properties": dict(row)
             }
