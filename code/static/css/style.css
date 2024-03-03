@@ -47,12 +47,12 @@ body {
     max-width: 100%; /* take up the full width of the viewport */
 }
 
-#map1_container {
+/* #map1_container {
     max-width: 100%;
     /* height: 600px;  */
     /* margin: 3px; */
     /* border: 2px solid #996600;  /* removed because defined under #map1 */
-}
+/* } */
 
 #hs_container {
     max-width: 300px;
@@ -209,6 +209,26 @@ body {
     overflow: hidden;
 }
 
+#map3 {
+    /* position: relative;
+    width: 100%;
+    height: 700px;
+    float: center; */
+    border: 3px solid #996600;
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+#map4 {
+    /* position: relative;
+    width: 100%;
+    height: 700px;
+    float: center; */
+    border: 3px solid #996600;
+    border-radius: 8px;
+    overflow: hidden;
+}
+
 /* .leaflet-bottom.leaflet-left {
     width: 100%;
 } */
@@ -225,6 +245,12 @@ body {
     fill-opacity: 0.2;
     stroke: gray;
     stroke-width: 1;
+}
+
+#model_layer {
+    font-size: 10px;
+    margin: 0;
+    margin-bottom: 0;
 }
 
 /* -------------------------------------------------------------------------------------------------------------- */

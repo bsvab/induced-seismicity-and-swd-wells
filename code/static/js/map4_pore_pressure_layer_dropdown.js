@@ -1,4 +1,4 @@
-// Create and load pore pressure layer to map2 for Layer 9
+// Create and load pore pressure layer to map4 for Layer 19
 
 // Define the bounds of Texas
 let texasBounds = L.latLngBounds(
@@ -9,7 +9,7 @@ let texasBounds = L.latLngBounds(
 // Function to fetch data from Flask route
 async function fetchDataFromFlask() {
     try{
-        const response = await fetch('/pressure_data_9');
+        const response = await fetch('/pressure_data_19');
         const data = await response.json();
         return data;
     } catch (error) {
@@ -156,7 +156,7 @@ fetchDataFromFlask()
                 let squareBounds = L.latLngBounds(topLeft, bottomRight);
                 // console.log('squareBounds: ', squareBounds)
                 // Create a rectangle for the square and add to map
-                let rectangle = L.rectangle(squareBounds, {color: color, weight: 0, fillOpacity: 0.5}).addTo(map2);
+                let rectangle = L.rectangle(squareBounds, {color: color, weight: 0, fillOpacity: 0.5}).addTo(map4);
                 
                 // Add click event listener to each rectangle
                 rectangle.on('click', function(e) {
@@ -208,7 +208,7 @@ fetchDataFromFlask()
             return dropdownContent;
         }        
 
-        dropdown.onAdd = function (map2) {
+        dropdown.onAdd = function (map4) {
             let div = L.DomUtil.create('div', 'dropdown');
             div.innerHTML = populateDropdown(featuresByDate); // Populate dropdown content
 
@@ -218,10 +218,10 @@ fetchDataFromFlask()
                 let selectedDate = e.target.value;
 
                 // Iterate over existing layers and remove only those representing squares
-                map2.eachLayer(layer => {
+                map4.eachLayer(layer => {
                     // Check if the layer represents a square
                     if (layer instanceof L.GeoJSON && layer.options && layer.options.className === 'squareLayer') {
-                        map2.removeLayer(layer);
+                        map4.removeLayer(layer);
                     }
                 });
 
@@ -232,7 +232,7 @@ fetchDataFromFlask()
         };
 
         // Add dropdown control to the map
-        dropdown.addTo(map2);
+        dropdown.addTo(map4);
 
         // ------------------------------------------------------------------------------------------------------------------------------------------------
         // LEGEND
@@ -241,7 +241,7 @@ fetchDataFromFlask()
         // create legend & add to map
         let legend = L.control({position: 'topright'});
 
-        legend.onAdd = function (map2) {
+        legend.onAdd = function (map4) {
 
             let div = L.DomUtil.create('div', 'info legend'),
                 grades = [0, 100, 200, 300, 400, 500, 600, 700, 800, 900, 1000],
@@ -260,14 +260,14 @@ fetchDataFromFlask()
             return div;
         };
 
-        legend.addTo(map2);
+        legend.addTo(map4);
 
     })
     .catch(error => {
         console.error('Error fetching data:', error);
     });
 
-// Function to initialize the dropdown selection with the identified starting date
+// Function to initialize the selection with the most recent date
 function initSelection(selectedDate) {
     document.getElementById('dateDropdownContainer').value = selectedDate;
 }

@@ -1,4 +1,4 @@
-# FLASK APP HERE
+# FLASK APP
 
 from flask import Flask, jsonify, render_template, url_for, send_from_directory
 import psycopg2
@@ -51,6 +51,16 @@ def map1():
 def map2():
     return render_template('map2.html')
 
+# Route to map3
+@app.route('/map3')
+def map3():
+    return render_template('map3.html')
+
+# Route to map4
+@app.route('/map4')
+def map4():
+    return render_template('map4.html')
+
 # Route to TEST MAP1
 @app.route('/test_map1')
 def test_map1():
@@ -73,7 +83,6 @@ def get_team_image_urls():
     for person in team:
         filename = f'images/team/{person}.png'
         team_image_urls[person] = url_for('static', filename=filename)
-    print(team_image_urls)  # Log the generated image URLs
     return jsonify(team_image_urls)
 
 @app.route('/chemistry_image_urls')
@@ -246,12 +255,82 @@ def injection_data():
 #     except Exception as e:
 #         return jsonify({'error': str(e)})
     
+@app.route('/pressure_data_9')
+def pressure_data_9():
+    try:
+        conn = get_db_connection()
+        cursor = conn.cursor(cursor_factory=psycopg2.extras.DictCursor)
+        query = 'SELECT * FROM pressure_data_9'  
+        cursor.execute(query)
+        rows = cursor.fetchall()
+        features = []
+        for row in rows:
+            # Construct a GeoJSON feature for each row
+            feature = {
+                "type": "Feature",
+                "geometry": {
+                    "type": "Point",
+                    "coordinates": [row["longitude"], row["latitude"]]
+                },
+                "properties": {
+                    "layer": row["layer"],
+                    "date": row["time"],
+                    "pressure": row["pressure"],
+                    "pressure_delta": row["delta"]
+                }
+            }
+            features.append(feature)
+        geojson = {
+            "type": "FeatureCollection",
+            "features": features
+        }
+        cursor.close()
+        conn.close()
+        return jsonify(geojson)
+    except Exception as e:
+        return jsonify({'error': str(e)})
+    
 @app.route('/pressure_data_13')
-def pressure_data():
+def pressure_data_13():
     try:
         conn = get_db_connection()
         cursor = conn.cursor(cursor_factory=psycopg2.extras.DictCursor)
         query = 'SELECT * FROM pressure_data_13'  
+        cursor.execute(query)
+        rows = cursor.fetchall()
+        features = []
+        for row in rows:
+            # Construct a GeoJSON feature for each row
+            feature = {
+                "type": "Feature",
+                "geometry": {
+                    "type": "Point",
+                    "coordinates": [row["longitude"], row["latitude"]]
+                },
+                "properties": {
+                    "layer": row["layer"],
+                    "date": row["time"],
+                    "pressure": row["pressure"],
+                    "pressure_delta": row["delta"]
+                }
+            }
+            features.append(feature)
+        geojson = {
+            "type": "FeatureCollection",
+            "features": features
+        }
+        cursor.close()
+        conn.close()
+        return jsonify(geojson)
+    except Exception as e:
+        return jsonify({'error': str(e)})
+
+@app.route('/pressure_data_19')
+def pressure_data_19():
+    try:
+        conn = get_db_connection()
+        cursor = conn.cursor(cursor_factory=psycopg2.extras.DictCursor)
+        query = 'SELECT * FROM pressure_data_19'  
         cursor.execute(query)
         rows = cursor.fetchall()
         features = []
