@@ -264,10 +264,10 @@ def pressure_data():
                     "coordinates": [row["longitude"], row["latitude"]]
                 },
                 "properties": {
-                    "Layer": row["layer"],
-                    "Date": row["time"],
-                    "Pressure": row["pressure"],
-                    "Pressure Delta": row["delta"]
+                    "layer": row["layer"],
+                    "date": row["time"],
+                    "pressure": row["pressure"],
+                    "pressure_delta": row["delta"]
                 }
             }
             features.append(feature)

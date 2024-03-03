@@ -1,5 +1,13 @@
 // Create and load pore pressure layer to map2 for Layer 13
 
+// Define the bounds of Texas
+let texasBounds = L.latLngBounds(
+    [25.8371, -106.6466], // Southwest coordinates of Texas
+    [36.5007, -93.5083]  // Northeast coordinates of Texas
+);
+
+dropdown.addTo(map2);
+
 // Function to fetch data from Flask route
 async function fetchDataFromFlask() {
     try{
@@ -21,371 +29,342 @@ fetchDataFromFlask()
         const featuresByDate = groupFeaturesByDate(dataset);
         console.log(featuresByDate);
 
-        //---------------
-
         // Populate dropdown and initialize selection
         populateDropdown(featuresByDate);
-        initSelection();
+        
+        selectedDate = initSelection();
 
-        selectedDate = document.getElementById('dateDropdownContainer').value;
-
-        // Call the function to render squares for the selected date initially
-        // renderSquares(document.getElementById('dateDropdownContainer').value);
+        // Call the function to render squares for the initial selected date
         drawMapSquares(featuresByDate, selectedDate);
-        drawNewMapSquares(featuresByDate, selectedDate);
+
+        // ------------------------------------------------------------------------------------------------------------------------------------------------
+        // GROUP GEOJSON DATA BY DATE
+        // ------------------------------------------------------------------------------------------------------------------------------------------------
+
+        // Function to organize features by date
+        function groupFeaturesByDate(geojson) {
+            console.log('Type of features:', typeof features);
+            // Convert features to an array if it's an object
+            // const featuresArray = Array.isArray(features) ? features : [features];
+            // console.log('featuresArray:',featuresArray);
+
+            const featuresByDate = {};
+            geojson.features.forEach(feature => {
+                // Convert properties from string to number
+                for (const prop in feature.properties) {
+                    if (!isNaN(parseFloat(feature.properties[prop]))) {
+                        feature.properties[prop] = parseFloat(feature.properties[prop]);
+                    } 
+                    else if (prop === 'date') {
+                        // Convert date format
+                        const dateObj = new Date(feature.properties[prop]);
+                        const year = dateObj.getUTCFullYear();
+                        const month = String(dateObj.getUTCMonth() + 1).padStart(2, '0');
+                        const day = String(dateObj.getUTCDate()).padStart(2, '0');
+                        feature.properties[prop] = `${year}-${month}-${day}`;
+                    }
+                };
+                // Convert coordinates from string to number
+                for (const coord in feature.geometry.coordinates) {
+                    if (!isNaN(parseFloat(feature.geometry.coordinates[coord]))) {
+                        feature.geometry.coordinates[coord] = parseFloat(feature.geometry.coordinates[coord]);
+                    }
+                };
+
+                if (!featuresByDate[feature.properties.date]) {
+                    featuresByDate[feature.properties.date] = [];
+                }
+                featuresByDate[feature.properties.date].push(feature);
+            });
+            return featuresByDate;
+        }
+
+        // ------------------------------------------------------------------------------------------------------------------------------------------------
+        // SQUARES
+        // ------------------------------------------------------------------------------------------------------------------------------------------------
+
+        // Function to calculate color based on value
+        function getColor(value) {
+            return value >= 1000 ? '#33000F' :
+                   value >= 900  ? '#4C0016' :
+                   value >= 800  ? '#800026' :
+                   value >= 700  ? '#bd0026' :
+                   value >= 600  ? '#e31a1c' :
+                   value >= 500  ? '#fc4e2a' :
+                   value >= 400  ? '#fd8d3c' :
+                   value >= 300  ? '#feb24c' :
+                   value >= 200  ? '#fed976' :
+                   value >= 100  ? '#ffeda0' :
+                                   '#ffffcc' ;
+        }
+
+        // Function to draw map squares based on pressure data
+        function drawMapSquares(featuresByDate, selectedDate) {
+            // Calculate the number of squares needed
+            let width = texasBounds.getEast() - texasBounds.getWest();
+            let height = texasBounds.getNorth() - texasBounds.getSouth();
+
+            // Calculate number of squares horizontally and vertically
+            let numHorizontalSquares = Math.ceil(width / (5 / 69)); // 1 degree latitude is approximately 69 miles
+            let numVerticalSquares = Math.ceil(height / (5 / 69));
+
+            // Calculate the dimensions of each square
+            let squareWidth = width / numHorizontalSquares;
+            let squareHeight = height / numVerticalSquares;
+
+            // Create a dictionary to store data points for each square
+            let squareData = {};
+
+            // return features associated with selected date
+            let selectedFeatures = featuresByDate[selectedDate];
+            console.log("Selected Features:", selectedFeatures);
+
+            // Iterate over each data point and assign it to the corresponding square
+            selectedFeatures.forEach(point => {
+                
+                
+                
+                // Calculate the square index for the data point
+                let xIndex = Math.floor((Number(point.geometry.coordinates[0]) - texasBounds.getWest()) / squareWidth);
+                let yIndex = Math.floor((texasBounds.getNorth() - Number(point.geometry.coordinates[1])) / squareHeight);
+                // Create a unique key for the square
+                let key = xIndex + '_' + yIndex;
+                // Initialize array for the square if not exists
+                if (!squareData[key]) {
+                    squareData[key] = [];
+                }
+                // Add the data point to the square
+                squareData[key].push(point);
+            });
+            console.log("squareData:", squareData);
+
+            // // Iterate over each data point and assign it to the corresponding square
+            // geojson.features.forEach(feature => {
+            //     // Extract necessary properties
+            //     const lat = Number(feature.geometry.coordinates[1]);
+            //     const lng = Number(feature.geometry.coordinates[0]);
+            //     // console.log('Lat:', lat, 'Lng:', lng);
+            //     const layer = feature.properties.layer;
+            //     const pressure = Number(feature.properties.pressure);
+            //     const delta = Number(feature.properties.pressure_delta);
+            //     // handle date format issues...
+            //     const date = new Date(feature.properties.date);
+            //     const year = date.getUTCFullYear();
+            //     const month = ('0' + (date.getUTCMonth() + 1)).slice(-2); // Adding 1 to month to make it 1-based
+            //     const formattedDate = `${year}-${month}-01`;
+                        
+            //     // Calculate the square index for the data point
+            //     let xIndex = Math.floor((lng - texasBounds.getWest()) / squareWidth);
+            //     let yIndex = Math.floor((texasBounds.getNorth() - lat) / squareHeight);
+            //     // Create a unique key for the square
+            //     let key = xIndex + '_' + yIndex;
+            //     // Initialize array for the square if not exists
+            //     if (!squareData[key]) {
+            //         squareData[key] = [];
+            //     }
+            //     // Add the data point to the square
+            //     squareData[key].push({ delta, formattedDate, lat, lng });
+            // });
+
+            // Iterate over each square and draw it on the map
+            Object.keys(squareData).forEach(key => {
+                let points = squareData[key];
+                let totalDelta = points.reduce((acc, curr) => acc + curr.delta, 0);
+                let averageDelta = totalDelta / points.length;
+                let color = getColor(averageDelta);
+                // Calculate the bounds of the square
+                let xIndex = parseInt(key.split('_')[0]);
+                let yIndex = parseInt(key.split('_')[1]);
+                let topLeft = L.latLng(texasBounds.getNorth() - yIndex * squareHeight, texasBounds.getWest() + xIndex * squareWidth);
+                let bottomRight = L.latLng(texasBounds.getNorth() - (yIndex + 1) * squareHeight, texasBounds.getWest() + (xIndex + 1) * squareWidth);
+                let squareBounds = L.latLngBounds(topLeft, bottomRight);
+                // console.log('squareBounds: ', squareBounds)
+                // Create a rectangle for the square and add to map
+                L.rectangle(squareBounds, {color: color, weight: 0, fillOpacity: 0.5}).addTo(map2);
+            });
+
+            // // Iterate over each square and generate timeline dataset
+            // Object.keys(squareData).forEach(key => {
+            //     let points = squareData[key];
+            //     timelineDataset = generateSquareTimeline(points, squareWidth, squareHeight);
+            //     // console.log('Timeline dataset for square', key, ':', timelineDataset);
+            //     // Concatenate this square's timeline dataset to the overall timeline dataset
+            //     timeline_pressure_13.features = timeline_pressure_13.features.concat(timelineDataset.features);
+            // });
+            // // Now you can use the combined timeline dataset for all squares
+            // console.log('Combined timeline dataset for all squares:', timeline_pressure_13);
+        }
+
+        // // Function to generate timeline dataset for each square
+        // function generateSquareTimeline(points, squareWidth, squareHeight) {
+        //     // Group data points by month/year
+        //     const groupedByMonthYear = points.reduce((acc, { delta, date }) => {
+        //         const parse_date = new Date(date)
+        //         const year = parse_date.getUTCFullYear();
+        //         const month = parse_date.getUTCMonth();
+        //         const monthString = String(month).padStart(2, '0'); // Ensure month has 2 digits
+        //         const key = `${year}-${monthString}`;
+        //         if (!acc[key]) {
+        //             acc[key] = { deltas: [], date: new Date(Date.UTC(year, month)) };
+        //         }
+        //         acc[key].deltas.push(Number(delta));
+        //         return acc;
+        //     }, {});
+
+        //     // Initialize timeline dataset
+        //     const timelineDataset = {
+        //         type: "FeatureCollection",
+        //         features: []
+        //     };
+
+        //     // Iterate over each month/year
+        //     Object.keys(groupedByMonthYear).forEach(key => {
+        //         const { deltas, date } = groupedByMonthYear[key];
+        //         const averageDelta = deltas.reduce((sum, delta) => sum + delta, 0) / deltas.length;
+        //         const year = date.getUTCFullYear();
+        //         const month = date.getUTCMonth() + 1; // Adding 1 to month to make it 1-based
+        //         const monthString = String(month).padStart(2, '0'); // Ensure month has 2 digits
+
+        //         // Assign color based on average delta value
+        //         const color = getColor(averageDelta);
+
+        //         // Get square coordinates
+        //         const squareCoordinates = points[0]; // Assuming all points have same coordinates within the square
+        //         const lat = squareCoordinates.lat;
+        //         const lng = squareCoordinates.lng;
+        //         // console.log('var lat:', squareCoordinates.lat);
+        //         // console.log('var lng:', squareCoordinates.lng);
+
+        //         // Calculate the coordinates of the top-right and bottom-right corners
+        //         const topRightLat = Number(lat) + Number(squareHeight);
+        //         const topRightLng = Number(lng);
+        //         const bottomRightLat = Number(lat) + Number(squareHeight);
+        //         const bottomRightLng = Number(lng) + Number(squareWidth);
+        //         const bottomLeftLng = Number(lng) + Number(squareWidth);
+
+        //         // Create polygon geometry for square
+        //         const squarePolygon = [
+        //             [Number(lat), Number(lng)],       // Top-left
+        //             [topRightLat, topRightLng],       // Top-right
+        //             [bottomRightLat, bottomRightLng], // Bottom-right
+        //             [Number(lat), bottomLeftLng]     // Bottom-left
+        //             //[Number(lat), Number(lng)]        // Top-left (closing the polygon)
+        //         ];
+        //         // console.log('Square polygon:', squarePolygon);
+
+        //         // Add the data point to the timeline dataset
+        //         timelineDataset.features.push({
+        //             type: "Feature",
+        //             properties: {
+        //                 date: `${year}-${monthString}-01`, // Adding 1 to month to make it 1-based
+        //                 layer: "Layer_13",
+        //                 pressure_delta: averageDelta, 
+        //                 color: color // Assign color based on average delta value
+        //             },
+        //             geometry: {
+        //                 type: "Polygon",
+        //                 coordinates: [squarePolygon] // Update with square polygon coordinates
+        //             }
+        //         });
+        //     });
+
+        //     return timelineDataset;
+        // }
+
+        // ------------------------------------------------------------------------------------------------------------------------------------------------
+        // DROPDOWN
+        // ------------------------------------------------------------------------------------------------------------------------------------------------
+
+        // Dropdown element
+        let dropdown = L.control({position: 'topright'});
+
+        // Function to populate the dropdown with available month/year dates
+        function populateDropdown(featuresByDate) {
+            console.log("Populating dropdown...");
+            let dropdownContent = '<select id="dateDropdownContainer">';
+            console.log("Features by date:", featuresByDate); // Log featuresByDate to inspect its contents
+
+            // Get unique date keys
+            const uniqueDates = Object.keys(featuresByDate);
+            // console.log("Unique dates:", uniqueDates); // Log uniqueDates to inspect its contents
+
+            // Sort unique date keys in ascending order
+            let sortedDates = uniqueDates.sort((a, b) => new Date(a) - new Date(b));
+            // console.log("Sorted dates: ", sortedDates);
+
+            // Generate dropdown options
+            sortedDates.forEach(date => {
+                dropdownContent += `<option value="${date}">${date}</option>`;
+            });
+            
+            dropdownContent += '</select>';
+            // console.log("Dropdown content:", dropdownContent);
+
+            // Update dropdown element on the map with the generated content
+            document.getElementById('dateDropdownContainer').innerHTML = dropdownContent;
+            
+            return dropdownContent;
+        }
+
+        dropdown.onAdd = function (map2) {
+            let div = L.DomUtil.create('div', 'dropdown');
+            div.innerHTML = populateDropdown(featuresByDate); // Populate dropdown content
+
+            // Event listener for dropdown change
+            div.querySelector('select').addEventListener('change', function(e) {
+                console.log('Dropdown value changed:', e.target.value);
+                let selectedDate = e.target.value;
+
+                // Iterate over existing layers and remove only those representing squares
+                map2.eachLayer(layer => {
+                    // Check if the layer represents a square
+                    if (layer instanceof L.GeoJSON && layer.options && layer.options.className === 'squareLayer') {
+                        map2.removeLayer(layer);
+                    }
+                });
+
+                drawMapSquares(featuresByDate, selectedDate); 
+            });
+
+            return div;
+        };
+
+        // Function to initialize the selection with the most recent date
+        function initSelection() {
+            document.getElementById('dateDropdownContainer').value = '2024-01-01';
+        }
+
+        // ------------------------------------------------------------------------------------------------------------------------------------------------
+        // LEGEND
+        // ------------------------------------------------------------------------------------------------------------------------------------------------
+
+        // create legend & add to map
+        let legend = L.control({position: 'topright'});
+
+        legend.onAdd = function (map2) {
+
+            let div = L.DomUtil.create('div', 'info legend'),
+                grades = [0, 100, 200, 300, 400, 500, 600, 700, 800, 900, 1000],
+                labels = [];
+
+            // Add title to the legend
+            div.innerHTML = '<p><ins>Pore Pressure Delta</ins></p>';
+
+            // loop through our density intervals and generate a label with a colored square for each interval
+            for (let i = 0; i < grades.length; i++) {
+                div.innerHTML +=
+                    '<i style="background:' + getColor(grades[i] + 1) + '"></i> ' +
+                    grades[i].toLocaleString() + (grades[i + 1] ? ' &ndash; ' + grades[i + 1].toLocaleString() + '<br>' : ' +');
+            }
+
+            return div;
+        };
+
+        legend.addTo(map2);
 
     })
     .catch(error => {
         console.error('Error fetching data:', error);
     });
 
-// ------------------------------------------------------------------------------------------------------------------------------------------------
-// SQUARES
-// ------------------------------------------------------------------------------------------------------------------------------------------------
 
-// Define the bounds of Texas
-let texasBounds = L.latLngBounds(
-    [25.8371, -106.6466], // Southwest coordinates of Texas
-    [36.5007, -93.5083]  // Northeast coordinates of Texas
-);
-
-// Function to calculate color based on value
-function getColor(value) {
-    return value >= 1000 ? '#33000F' :
-           value >= 900  ? '#4C0016' :
-           value >= 800  ? '#800026' :
-           value >= 700  ? '#bd0026' :
-           value >= 600  ? '#e31a1c' :
-           value >= 500  ? '#fc4e2a' :
-           value >= 400  ? '#fd8d3c' :
-           value >= 300  ? '#feb24c' :
-           value >= 200  ? '#fed976' :
-           value >= 100  ? '#ffeda0' :
-                           '#ffffcc' ;
-}
-
-// Define a variable to accumulate all timeline data for all squares
-let timeline_pressure_13 = {
-    type: "FeatureCollection",
-    features: []
-};
-
-// Function to organize features by date
-function groupFeaturesByDate(features) {
-    const featuresByDate = {};
-    features.forEach(feature => {
-        // Extract necessary properties
-        const lat = Number(feature.geometry.coordinates[1]);
-        const lng = Number(feature.geometry.coordinates[0]);
-        // console.log('Lat:', lat, 'Lng:', lng);
-        const layer = feature.properties.Layer;
-        const pressure = Number(feature.properties.Pressure);
-        const delta = Number(feature.properties["Pressure Delta"]);
-        // handle date format issues...
-        const date = new Date(feature.properties.Date);
-        const year = date.getUTCFullYear();
-        const month = ('0' + (date.getUTCMonth() + 1)).slice(-2); // Adding 1 to month to make it 1-based
-        const formattedDate = `${year}-${month}-01`;
-
-        if (!featuresByDate[formattedDate]) {
-            featuresByDate[formattedDate] = [];
-        }
-        featuresByDate[formattedDate].push(feature);
-    });
-    return featuresByDate;
-}
-
-// Function to draw map squares based on pressure data
-function drawMapSquares(featuresByDate, selectedDate) {
-    // Calculate the number of squares needed
-    let width = texasBounds.getEast() - texasBounds.getWest();
-    let height = texasBounds.getNorth() - texasBounds.getSouth();
-
-    // Calculate number of squares horizontally and vertically
-    let numHorizontalSquares = Math.ceil(width / (5 / 69)); // 1 degree latitude is approximately 69 miles
-    let numVerticalSquares = Math.ceil(height / (5 / 69));
-
-    // Calculate the dimensions of each square
-    let squareWidth = width / numHorizontalSquares;
-    let squareHeight = height / numVerticalSquares;
-
-    // Create a dictionary to store data points for each square
-    let squareData = {};
-
-    // return features associated with selected date
-    let selectedFeatures = featuresByDate[selectedDate]
-
-    // Iterate over each data point and assign it to the corresponding square
-    selectedFeatures.forEach(point => {
-        // Calculate the square index for the data point
-        let xIndex = Math.floor((point.lng - texasBounds.getWest()) / squareWidth);
-        let yIndex = Math.floor((texasBounds.getNorth() - point.lat) / squareHeight);
-        // Create a unique key for the square
-        let key = xIndex + '_' + yIndex;
-        // Initialize array for the square if not exists
-        if (!squareData[key]) {
-            squareData[key] = [];
-        }
-        // Add the data point to the square
-        squareData[key].push(point);
-    });
-
-    // // Iterate over each data point and assign it to the corresponding square
-    // geojson.features.forEach(feature => {
-    //     // Extract necessary properties
-    //     const lat = Number(feature.geometry.coordinates[1]);
-    //     const lng = Number(feature.geometry.coordinates[0]);
-    //     // console.log('Lat:', lat, 'Lng:', lng);
-    //     const layer = feature.properties.Layer;
-    //     const pressure = Number(feature.properties.Pressure);
-    //     const delta = Number(feature.properties["Pressure Delta"]);
-    //     // handle date format issues...
-    //     const date = new Date(feature.properties.Date);
-    //     const year = date.getUTCFullYear();
-    //     const month = ('0' + (date.getUTCMonth() + 1)).slice(-2); // Adding 1 to month to make it 1-based
-    //     const formattedDate = `${year}-${month}-01`;
-                
-    //     // Calculate the square index for the data point
-    //     let xIndex = Math.floor((lng - texasBounds.getWest()) / squareWidth);
-    //     let yIndex = Math.floor((texasBounds.getNorth() - lat) / squareHeight);
-    //     // Create a unique key for the square
-    //     let key = xIndex + '_' + yIndex;
-    //     // Initialize array for the square if not exists
-    //     if (!squareData[key]) {
-    //         squareData[key] = [];
-    //     }
-    //     // Add the data point to the square
-    //     squareData[key].push({ delta, formattedDate, lat, lng });
-    // });
-
-    // Iterate over each square and draw it on the map
-    Object.keys(squareData).forEach(key => {
-        let points = squareData[key];
-        let totalDelta = points.reduce((acc, curr) => acc + curr.delta, 0);
-        let averageDelta = totalDelta / points.length;
-        let color = getColor(averageDelta);
-        // Calculate the bounds of the square
-        let xIndex = parseInt(key.split('_')[0]);
-        let yIndex = parseInt(key.split('_')[1]);
-        let topLeft = L.latLng(texasBounds.getNorth() - yIndex * squareHeight, texasBounds.getWest() + xIndex * squareWidth);
-        let bottomRight = L.latLng(texasBounds.getNorth() - (yIndex + 1) * squareHeight, texasBounds.getWest() + (xIndex + 1) * squareWidth);
-        let squareBounds = L.latLngBounds(topLeft, bottomRight);
-        // Create a rectangle for the square and add to map
-        L.rectangle(squareBounds, {color: color, weight: 0, fillOpacity: 0.5}).addTo(map2);
-    });
-
-    // // Iterate over each square and generate timeline dataset
-    // Object.keys(squareData).forEach(key => {
-    //     let points = squareData[key];
-    //     timelineDataset = generateSquareTimeline(points, squareWidth, squareHeight);
-    //     // console.log('Timeline dataset for square', key, ':', timelineDataset);
-    //     // Concatenate this square's timeline dataset to the overall timeline dataset
-    //     timeline_pressure_13.features = timeline_pressure_13.features.concat(timelineDataset.features);
-    // });
-    // // Now you can use the combined timeline dataset for all squares
-    // console.log('Combined timeline dataset for all squares:', timeline_pressure_13);
-}
-
-// // Function to generate timeline dataset for each square
-// function generateSquareTimeline(points, squareWidth, squareHeight) {
-//     // Group data points by month/year
-//     const groupedByMonthYear = points.reduce((acc, { delta, date }) => {
-//         const parse_date = new Date(date)
-//         const year = parse_date.getUTCFullYear();
-//         const month = parse_date.getUTCMonth();
-//         const monthString = String(month).padStart(2, '0'); // Ensure month has 2 digits
-//         const key = `${year}-${monthString}`;
-//         if (!acc[key]) {
-//             acc[key] = { deltas: [], date: new Date(Date.UTC(year, month)) };
-//         }
-//         acc[key].deltas.push(Number(delta));
-//         return acc;
-//     }, {});
-
-//     // Initialize timeline dataset
-//     const timelineDataset = {
-//         type: "FeatureCollection",
-//         features: []
-//     };
-
-//     // Iterate over each month/year
-//     Object.keys(groupedByMonthYear).forEach(key => {
-//         const { deltas, date } = groupedByMonthYear[key];
-//         const averageDelta = deltas.reduce((sum, delta) => sum + delta, 0) / deltas.length;
-//         const year = date.getUTCFullYear();
-//         const month = date.getUTCMonth() + 1; // Adding 1 to month to make it 1-based
-//         const monthString = String(month).padStart(2, '0'); // Ensure month has 2 digits
-
-//         // Assign color based on average delta value
-//         const color = getColor(averageDelta);
-
-//         // Get square coordinates
-//         const squareCoordinates = points[0]; // Assuming all points have same coordinates within the square
-//         const lat = squareCoordinates.lat;
-//         const lng = squareCoordinates.lng;
-//         // console.log('var lat:', squareCoordinates.lat);
-//         // console.log('var lng:', squareCoordinates.lng);
-
-//         // Calculate the coordinates of the top-right and bottom-right corners
-//         const topRightLat = Number(lat) + Number(squareHeight);
-//         const topRightLng = Number(lng);
-//         const bottomRightLat = Number(lat) + Number(squareHeight);
-//         const bottomRightLng = Number(lng) + Number(squareWidth);
-//         const bottomLeftLng = Number(lng) + Number(squareWidth);
-
-//         // Create polygon geometry for square
-//         const squarePolygon = [
-//             [Number(lat), Number(lng)],       // Top-left
-//             [topRightLat, topRightLng],       // Top-right
-//             [bottomRightLat, bottomRightLng], // Bottom-right
-//             [Number(lat), bottomLeftLng]     // Bottom-left
-//             //[Number(lat), Number(lng)]        // Top-left (closing the polygon)
-//         ];
-//         // console.log('Square polygon:', squarePolygon);
-
-//         // Add the data point to the timeline dataset
-//         timelineDataset.features.push({
-//             type: "Feature",
-//             properties: {
-//                 date: `${year}-${monthString}-01`, // Adding 1 to month to make it 1-based
-//                 layer: "Layer_13",
-//                 pressure_delta: averageDelta, 
-//                 color: color // Assign color based on average delta value
-//             },
-//             geometry: {
-//                 type: "Polygon",
-//                 coordinates: [squarePolygon] // Update with square polygon coordinates
-//             }
-//         });
-//     });
-
-//     return timelineDataset;
-// }
-
-// ------------------------------------------------------------------------------------------------------------------------------------------------
-// DROPDOWN
-// ------------------------------------------------------------------------------------------------------------------------------------------------
-
-// Dropdown element
-let dropdown = L.control({position: 'topright'});
-
-// Function to populate the dropdown with available month/year dates
-function populateDropdown(featuresByDate) {
-    console.log("Populating dropdown...");
-    let dropdownContent = '<select id="dateDropdownContainer">';
-    
-    // // Assuming timeline_pressure_13 is available and contains data
-    // console.log("Timeline data:", timeline_pressure_13);
-    // const uniqueDates = new Set(); // Set to store unique dates
-    // timeline_pressure_13.features.forEach(feature => {
-    //     // console.log('Processing feature:', feature);
-    //     let date = new Date(feature.properties.date);
-    //     let year = date.getUTCFullYear();
-    //     let month = ('0' + (date.getUTCMonth() + 1)).slice(-2); // Adding 1 to month to make it 1-based
-    //     let formattedDate = `${year}-${month}-01`;
-    //     uniqueDates.add(formattedDate); // Add formatted date to the set
-    // });
-
-    // // Convert set to array and sort it
-    // const sortedDates = [...uniqueDates].sort();
-
-    // Get unique date keys
-    const uniqueDates = Object.keys(featuresByDate);
-
-    // Sort unique date keys in ascending order
-    let sortedDates = uniqueDates.sort((a, b) => new Date(a) - new Date(b));
-    console.log(sortedDates);
-
-    // Generate dropdown options
-    sortedDates.forEach(date => {
-        dropdownContent += `<option value="${date}">${date}</option>`;
-    });
-    
-    dropdownContent += '</select>';
-    
-    // console.log("Dropdown content:", dropdownContent);
-
-    // Update dropdown element on the map with the generated content
-    document.getElementById('dateDropdownContainer').innerHTML = dropdownContent;
-    
-    return dropdownContent;
-}
-
-dropdown.onAdd = function (map2) {
-    let div = L.DomUtil.create('div', 'dropdown');
-    div.innerHTML = populateDropdown(); // Populate dropdown content
-
-    // Event listener for dropdown change
-    div.querySelector('select').addEventListener('change', function(e) {
-        console.log('Dropdown value changed:', e.target.value);
-        let selectedDate = e.target.value;
-
-        // Iterate over existing layers and remove only those representing squares
-        map2.eachLayer(layer => {
-            // Check if the layer represents a square
-            if (layer instanceof L.GeoJSON && layer.options && layer.options.className === 'squareLayer') {
-                map2.removeLayer(layer);
-            }
-        });
-
-        drawMapSquaresSquares(featuresByDate, selectedDate); 
-    });
-
-    return div;
-};
-
-dropdown.addTo(map2);
-
-// // Function to render squares for the selected month/year
-// function drawNewSquares(selectedDate) {
-//     // // Filter timeline dataset to get squares for the selected month/year
-//     // let filteredSquares = timeline_pressure_13.features.filter(feature => {
-//     //     return feature.properties.date === selectedDate;
-//     // });
-
-//     // // Iterate over existing layers and remove only those representing squares
-//     // map2.eachLayer(layer => {
-//     //     // Check if the layer represents a square
-//     //     if (layer instanceof L.GeoJSON && layer.options && layer.options.className === 'squareLayer') {
-//     //         map2.removeLayer(layer);
-//     //     }
-//     // });
-
-//     // Add squares to the map for the selected month/year
-//     filteredSquares.forEach(square => {
-//         L.geoJSON(square.geometry, { className: 'squareLayer' }).addTo(map2);
-//     });
-// }
-
-// Function to initialize the selection with the most recent date
-function initSelection() {
-    document.getElementById('dateDropdownContainer').value = '2024-01-01';
-}
-
-// ------------------------------------------------------------------------------------------------------------------------------------------------
-// LEGEND
-// ------------------------------------------------------------------------------------------------------------------------------------------------
-
-// create legend & add to map
-let legend = L.control({position: 'topright'});
-
-legend.onAdd = function (map2) {
-
-    let div = L.DomUtil.create('div', 'info legend'),
-        grades = [0, 100, 200, 300, 400, 500, 600, 700, 800, 900, 1000],
-        labels = [];
-
-    // Add title to the legend
-    div.innerHTML = '<p><ins>Pore Pressure Delta</ins></p>';
-
-    // loop through our density intervals and generate a label with a colored square for each interval
-    for (let i = 0; i < grades.length; i++) {
-        div.innerHTML +=
-            '<i style="background:' + getColor(grades[i] + 1) + '"></i> ' +
-            grades[i].toLocaleString() + (grades[i + 1] ? ' &ndash; ' + grades[i + 1].toLocaleString() + '<br>' : ' +');
-    }
-
-    return div;
-};
-
-legend.addTo(map2);
