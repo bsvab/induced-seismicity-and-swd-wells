@@ -8,35 +8,20 @@ The project employs a structured Extract, Transform, Load (ETL) methodology for 
 The core of the website is an interactive geomap analysis tool, hosted within an iframe, which visualizes the temporal and spatial dynamics of SWD practices, pore pressure alterations, and seismic events. This tool, alongside additional visualizations of produced water chemistry, aims to engage and inform stakeholders, researchers, and the general public about the environmental and operational implications of SWD wells.
 
 Through this digital platform, we endeavor to provide a narrative that connects SWD well operations with seismic activity and water chemistry, offering insights into sustainable practices and risk mitigation strategies in the context of oil and gas extraction. The project underscores the importance of integrating scientific research with interactive data visualization to foster a broader understanding of induced seismicity and its associated challenges.
+
 ## <p style="color:#CC6600">Table of Contents</p>
 
 1. [Abstract](#abstract)
-    - Overview of the project, objectives, and the tools used.
 2. [Introduction](#introduction)
-    - Background information on seismic activity in Texas and the project's scope.
 3. [Methodology](#methodology)
-    - Overview of the approach taken to analyze the data.
-
-    3.1. [Data Handling & Database Creation](#data-handling--database-creation)
-        - Details on the ETL process for pressure data, injection volume data, and earthquake data.
-
-    3.2. [Flask App Creation & Deployment](#flask-app-creation--deployment)
-        - Explanation of how the Flask app interfaces with the AWS-hosted database and the geomap.
-
-    3.3. [Visualizations](#visualizations)
-        - Description of the interactive geomap analysis tool and other visualizations.
-        
+<br>&nbsp;&nbsp;&nbsp;&nbsp; 3.1. [Data Handling & Database Creation](#data-handling--database-creation)
+<br>&nbsp;&nbsp;&nbsp;&nbsp; 3.2. [Flask App Creation & Deployment](#flask-app-creation--deployment)
+<br>&nbsp;&nbsp;&nbsp;&nbsp; 3.3. [Visualizations](#visualizations)        
 4. [Conclusion](#conclusion)
-    - Summary of findings and insights gained from the analysis.
 5. [Glossary of Terms](#glossary-of-terms)
-    - Definitions of key terms used throughout the report.
 6. [Technologies](#technologies)
-    - List and description of the technologies and libraries used in the project.
-7. [Sources](#sources)
-    - References and data sources utilized for the project.
+7. [Data Sources](#data-sources)
 8. [Contributors](#contributors)
-    - Information about the team members who contributed to the project.
-...
 
 ## <p style="color:#CC6600">1. Introduction</p>
 The significant increase in seismic activity within Texas, notably surpassing California in the occurrence of ML2.5 or higher earthquakes since 2022, marks a critical juncture for both scientific inquiry and environmental stewardship. This uptick in seismic events, particularly concentrated in areas such as the Delaware Basin and the Midland-Odessa area, necessitates a comprehensive examination of the links between seismicity and human interventions, notably those undertaken by the petroleum industry. Our study adopts a targeted approach, merging seismic data from the TexNet public catalog, SWD (Salt Water Disposal) well injection volume data, and pore pressure details from sophisticated gridded numerical models. This concerted effort aims to clarify the complex dynamics between SWD practices and the resulting seismic activity, with a particular focus on the Delaware Basin, a key area for unconventional shale oil and gas extraction that has seen a noticeable increase in seismicity since 2014.
@@ -47,8 +32,6 @@ our research focuses on illustrating the correlation between seismic activity, S
 
 
 ## <p style="color:#CC6600">2. Methodology</p> 
-
-...
 
 ### <p style="color:gray">2.1 Data Handling & Database Creation</p>
 
@@ -155,11 +138,14 @@ In conclusion, our visualized analysis presents a compelling narrative on the in
         - [D3.js v7](https://d3js.org/)
         - [PapaParse 5.3.0](https://www.papaparse.com/)
         - [Pandas](https://pandas.pydata.org/)
+        - [NumPy](https://www.numpy.org)
         - [Psycopg2](https://www.psycopg.org/docs/)
         - [SQLAlchemy](https://www.sqlalchemy.org/)
+        - [Pyproj 3.6.1](https://pypi.org/project/pyproj/)
+        - [Flask](https://flask.palletsprojects.com/en/3.0.x/)
     - Other Tools
         - [PostgreSQL](https://www.postgresql.org/docs/)
-        - [Amazon RDS](https://aws.amazon.com/rds/)
+        - [Amazon Web Services RDS](https://aws.amazon.com/rds/)
 
 ## <p style="color:#CC6600">6. Data Sources</p> 
 - [TexNet Seismic Data](https://www.beg.utexas.edu/texnet-cisr/texnet)
