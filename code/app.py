@@ -133,9 +133,6 @@ def get_chemistry_image_urls():
         "chemistry_piperplot_image_urls": chemistry_piperplot_image_urls
     })
 
-
-
-
 # Connection to database
 def get_db_connection():
     conn = psycopg2.connect(

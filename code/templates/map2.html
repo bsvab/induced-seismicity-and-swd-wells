@@ -12,11 +12,15 @@
     <!-- file source links to render via Flask app... -->
     <link rel="stylesheet" href="{{ url_for('static', filename='css/map2.css') }}">
 
+    <!-- leaflet-choropleth JavaScript -->
+    <script type="text/javascript" src="static/js/choropleth.js"></script>
+
 </head>
 <body>
 
     <div id="map2"></div>
     <div id="dateDropdownContainer"></div> <!-- Add a container for the dropdown -->
+    <div class="squareLayer"></div> <!-- Add a the squares -->
 
     <!-- leaflet.timeline plugin - file source links to render locally...-->
     <!-- <script src="../static/js/leaflet.timeline.js"></script> -->
@@ -38,7 +42,8 @@
     <script src="{{ url_for('static', filename='js/map2.js') }}"></script>
     <!-- <script src="{{ url_for('static', filename='js/map2_injection_layer.js') }}"></script> -->
     <!-- <script src="{{ url_for('static', filename='js/map2_seismic_layer.js') }}"></script> -->
-    <script src="{{ url_for('static', filename='js/map2_pore_pressure_layer.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/map2_pore_pressure_layer_dropdown.js') }}"></script>
+    <!-- <script src="{{ url_for('static', filename='js/map2_pore_pressure_layer_timeline.js') }}"></script> -->
     <!-- <script src="{{ url_for('static', filename='js/map2_basin_outline_layer.js') }}"></script> -->
     
 </body>
