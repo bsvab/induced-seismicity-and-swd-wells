@@ -207,6 +207,7 @@ body {
     border: 3px solid #996600;
     border-radius: 8px;
     overflow: hidden;
+    margin-top: 3px;
 }
 
 #map3 {
@@ -217,6 +218,7 @@ body {
     border: 3px solid #996600;
     border-radius: 8px;
     overflow: hidden;
+    margin-top: 3px;
 }
 
 #map4 {
@@ -227,6 +229,7 @@ body {
     border: 3px solid #996600;
     border-radius: 8px;
     overflow: hidden;
+    margin-top: 3px;
 }
 
 /* .leaflet-bottom.leaflet-left {
@@ -248,9 +251,10 @@ body {
 }
 
 #model_layer {
-    font-size: 10px;
     margin: 0;
     margin-bottom: 0;
+    margin-top: 5px;
+    text-align: center;
 }
 
 /* -------------------------------------------------------------------------------------------------------------- */

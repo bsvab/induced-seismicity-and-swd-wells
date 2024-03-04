@@ -1,5 +1,5 @@
 // Initialize the map
-let map1 = L.map('map1').setView([31.995845, -103.817762], 7.5);
+let map1 = L.map('map1').setView([31.995845, -103.817762], 8);
 
 // Define OpenStreetMap tiles
 let osmTiles = L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
