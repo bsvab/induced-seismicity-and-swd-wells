@@ -274,7 +274,12 @@ body {
 .larger {
     color: #996600;
     font-size: 20px;
-    display: inline;
+    margin: 0;
+    margin-bottom: 0;
+}
+
+.gloss_desc {
+    margin: 0;
 }
 
 .row span {
