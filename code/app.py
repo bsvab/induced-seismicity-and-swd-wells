@@ -41,6 +41,49 @@ def index():
     ]
     return render_template('index.html', basins=basins, basins_no_spaces=basins_no_spaces)
 
+@app.route('/index_copy')
+def index_copy():
+    basins = [
+        'Anadarko Basin',
+        'Appalachian Basin',
+        'Fort Worth Basin',
+        'Gulf Coast Basin',
+        'Illinois Basin',
+        'Michigan Basin',
+        'Oklahoma Platform Basins',
+        'Permian Basin',
+        'Rocky Mountain Basins',
+        'Williston Basin'
+    ]
+    basins_no_spaces = [
+        "AnadarkoBasin",
+        "AppalachianBasin",
+        "FortWorthBasin",
+        "GulfCoastBasin",
+        "IllinoisBasin",
+        "MichiganBasin",
+        "OklahomaPlatformBasins",
+        "PermianBasin",
+        "RockyMountainBasins",
+        "WillistonBasin"
+    ]
+    return render_template('index_copy.html', basins=basins, basins_no_spaces=basins_no_spaces)
+
+# Route to tester
+@app.route('/tester')
+def tester():
+    return render_template('tester.html')
+
+# Route to chemistry_visualizations
+@app.route('/chemistry_visualizations')
+def chemistry_visualizations():
+    return render_template('chemistry_visualizations.html')
+
+# Route to chemistry_visualizations
+@app.route('/chemistry_report')
+def chemistry_report():
+    return render_template('chemistry_report.html')
+
 # Route to map1
 @app.route('/map1')
 def map1():
@@ -60,21 +103,6 @@ def map3():
 @app.route('/map4')
 def map4():
     return render_template('map4.html')
-
-# Route to TEST MAP1
-@app.route('/test_map1')
-def test_map1():
-    return render_template('tester_ignore_with_time.html')
-
-# Route to TEST MAP2
-@app.route('/test_map2')
-def test_map2():
-    return render_template('tester_ignore_with_time_1.html')
-
-# Route to TEST MAP3
-@app.route('/test_map3')
-def test_map3():
-    return render_template('tester_ignore_flask.html')
 
 @app.route('/team_image_urls')
 def get_team_image_urls():
