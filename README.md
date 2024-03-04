@@ -108,21 +108,6 @@ In conclusion, our visualized analysis presents a compelling narrative on the in
 
 ## <p style="color:#CC6600">5. Technologies</p> 
 
-- <ins>Produced Water Chemistry</ins>
-    - Languages 
-        - [Python 3.10 or higher](https://www.python.org/)
-        - [HTML](https://html.spec.whatwg.org/multipage/)
-    - Libraries / Modules / Plugins
-        - [Pandas](https://pandas.pydata.org/)
-        - [NumPy](https://www.numpy.org)
-        - [Matplotlib](https://matplotlib.org/)
-        - [SciPy](https://www.scipy.org/scipylib)
-        - [Scikit-learn](https://scikit-learn.org/stable/index.html)
-        - [WQChartPy](https://github.com/jyangfsu/WQChartPy/tree/main?tab=readme-ov-file) 
-        - [Seaborn](https://seaborn.pydata.org/#) 
-        - [GeoPandas](https://geopandas.org/en/stable/#) 
-        - [Folium](https://pypi.org/project/folium/)
-        - [Branca](https://pypi.org/project/branca/)
 - <ins>Induced Seismic Activity & Injection Wells</ins>
     - Languages 
         - [Python 3.10 or higher](https://www.python.org/)
@@ -146,6 +131,21 @@ In conclusion, our visualized analysis presents a compelling narrative on the in
     - Other Tools
         - [PostgreSQL](https://www.postgresql.org/docs/)
         - [Amazon Web Services RDS](https://aws.amazon.com/rds/)
+- <ins>Produced Water Chemistry</ins>
+    - Languages 
+        - [Python 3.10 or higher](https://www.python.org/)
+        - [HTML](https://html.spec.whatwg.org/multipage/)
+    - Libraries / Modules / Plugins
+        - [Pandas](https://pandas.pydata.org/)
+        - [NumPy](https://www.numpy.org)
+        - [Matplotlib](https://matplotlib.org/)
+        - [SciPy](https://www.scipy.org/scipylib)
+        - [Scikit-learn](https://scikit-learn.org/stable/index.html)
+        - [WQChartPy](https://github.com/jyangfsu/WQChartPy/tree/main?tab=readme-ov-file) 
+        - [Seaborn](https://seaborn.pydata.org/#) 
+        - [GeoPandas](https://geopandas.org/en/stable/#) 
+        - [Folium](https://pypi.org/project/folium/)
+        - [Branca](https://pypi.org/project/branca/)
 
 ## <p style="color:#CC6600">6. Data Sources</p> 
 - [TexNet Seismic Data](https://www.beg.utexas.edu/texnet-cisr/texnet)
