@@ -62,19 +62,22 @@
                     </div>
                     </div>
                 </div>
-                <!-- <div class="container-fluid">
+                <div class="container-fluid">
                     <div class="row">
                     <div class="col-md-12">
                         <p>Welcome to our site!
                             <br><br>
-                            This is a collection of data visualizations spanning two projects. One focuses on the chemical composition of scaling elements in produced water, and the other focuses 
-                            on the seismic effects of the class II injection wells used to dispose of it. The abstract for each project is included below.
+                            This multi-page web application was developed to allow the user to easily view the data visualization outputs generated over the course of two projects. 
+                            One project focuses on the concentration of major scaling elements along with Lithium (an element of interest to the DOE) in produced water, and the other focuses 
+                            on the induced seismic effects of the class II injection wells used to dispose of it. The abstract for each project is included below to provide an overview 
+                            of what to expect from the outputs of each project. Further detail is available in the respective "detailed report" tabs.
                             <br><br>
                             We hope you find this platform to be informative and functional in it's presentation of the data.
+                            <br><br>
                         </p>
                     </div>
                     </div>
-                </div> -->
+                </div>
 
                 <!-- Side-by-side Containers -->
                 <div class="container-fluid">
@@ -83,7 +86,7 @@
                             <div class="container-fluid">
                                 <div class="row">
                                     <div class="container-fluid banner2">
-                                        <h4>Induced Seismicity and Salt Water Disposal Wells | Abstract</h4>
+                                        <h5>Induced Seismicity and Salt Water Disposal Wells | Abstract</h5>
                                     </div>
                                 </div>
                                 <div class="row" id="margin5px">
@@ -112,7 +115,7 @@
                             <div class="container-fluid">
                                 <div class="row">
                                     <div class="container-fluid banner2">
-                                        <h4>Produced Water Chemistry | Abstract</h4>
+                                        <h5>Produced Water Chemistry | Abstract</h5>
                                     </div>
                                 </div>
                                 <div class="row" id="margin5px">
@@ -184,23 +187,23 @@
                         <div class="col-md-4">
                             <div class="container-fluid banner2">
                                 <h6>Top Devonian-Silurian Formation</h6> <!-- Layer 9 -->
-                                <p id="model_layer"><em>This layer is important due to injection activity.</em></p>
                             </div>
                             <iframe id="map2" src="{{ url_for('map2') }}" height="550" width=100% title="map2"></iframe>
+                            <p id="model_layer"><em>This layer is important due to injection activity.</em></p>
                         </div>
                         <div class="col-md-4">
                             <div class="container-fluid banner2">
                                 <h6>Bottom Devonian-Silurian Formation</h6> <!-- Layer 13 -->
-                                <p id="model_layer"><em>This layer is important due to injection activity.</em></p>
                             </div>
                             <iframe id="map3" src="{{ url_for('map3') }}" height="550" width=100% title="map3"></iframe>
+                            <p id="model_layer"><em>This layer is important due to injection activity.</em></p>
                         </div>
                         <div class="col-md-4">
                             <div class="container-fluid banner2">
                                 <h6>Ellenberger Formation</h6> <!-- Layer 19 -->
-                                <p id="model_layer"><em>This is the bottom formation in the Delaware Basin. It is important because of the deep seismic activity in this layer.</em></p>
                             </div>
                             <iframe id="map4" src="{{ url_for('map4') }}" height="550" width=100% title="map4"></iframe>
+                            <p id="model_layer"><em>This is the bottom formation in the Delaware Basin. <br>It is important because of the deep seismic activity in this layer.</em></p>
                         </div>
                     </div>
                 </div>

@@ -11,17 +11,20 @@ Through this digital platform, we endeavor to provide a narrative that connects 
 
 ## <p style="color:#CC6600">Table of Contents</p>
 
-1. [Abstract](#abstract)
-2. [Introduction](#introduction)
-3. [Methodology](#methodology)
-<br>&nbsp;&nbsp;&nbsp;&nbsp; 3.1. [Data Handling & Database Creation](#data-handling--database-creation)
-<br>&nbsp;&nbsp;&nbsp;&nbsp; 3.2. [Flask App Creation & Deployment](#flask-app-creation--deployment)
-<br>&nbsp;&nbsp;&nbsp;&nbsp; 3.3. [Visualizations](#visualizations)        
-4. [Conclusion](#conclusion)
-5. [Glossary of Terms](#glossary-of-terms)
-6. [Technologies](#technologies)
-7. [Data Sources](#data-sources)
-8. [Contributors](#contributors)
+[1. Introduction](#1-introduction)  
+[2. Methodology](#2-methodology)  
+&nbsp;&nbsp;&nbsp;&nbsp; [2.1 Data Handling & Database Creation](#21-data-handling--database-creation)  
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; [2.1.1 Extract](#211-extract)  
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; [2.1.2 Transform](#212-transform)  
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; [2.1.3 Load](#213-load)  
+&nbsp;&nbsp;&nbsp;&nbsp; [2.2 Flask App Creation & Deployment](#22-flask-app-creation--deployment)  
+&nbsp;&nbsp;&nbsp;&nbsp; [2.3 Data Flow Big Picture](#23-data-flow-big-picture)  
+&nbsp;&nbsp;&nbsp;&nbsp; [2.4 Visualizations](#24-visualizations)  
+[3. Conclusion](#3-conclusion)  
+[4. Glossary of Terms](#4-glossary-of-terms)  
+[5. Technologies](#5-technologies)  
+[6. Data Sources](#6-data-sources)  
+[7. Contributors](#7-contributors)  
 
 ## <p style="color:#CC6600">1. Introduction</p>
 The significant increase in seismic activity within Texas, notably surpassing California in the occurrence of ML2.5 or higher earthquakes since 2022, marks a critical juncture for both scientific inquiry and environmental stewardship. This uptick in seismic events, particularly concentrated in areas such as the Delaware Basin and the Midland-Odessa area, necessitates a comprehensive examination of the links between seismicity and human interventions, notably those undertaken by the petroleum industry. Our study adopts a targeted approach, merging seismic data from the TexNet public catalog, SWD (Salt Water Disposal) well injection volume data, and pore pressure details from sophisticated gridded numerical models. This concerted effort aims to clarify the complex dynamics between SWD practices and the resulting seismic activity, with a particular focus on the Delaware Basin, a key area for unconventional shale oil and gas extraction that has seen a noticeable increase in seismicity since 2014.
@@ -29,7 +32,6 @@ The significant increase in seismic activity within Texas, notably surpassing Ca
 A key aspect of our study is the temporal scope, constrained to the period from January 1, 2017, to January 1, 2024. This timeframe is dictated by the availability of seismic data from TexNet, ensuring a comprehensive analysis based on the most reliable and complete datasets available. Both seismic and SWD well injection volume data, accessible through TexNet via API calls, are in the public domain, allowing for an open and transparent research process. 
 
 our research focuses on illustrating the correlation between seismic activity, SWD well injection volumes, and changes in pore pressure. Through the development of an interactive geomap analysis tool, we visualize how the volume of fluid injected into SWD wells potentially elevates pore pressure and, consequently, affects the seismic activity of faults in the region. This project is driven by the goal of providing a clear visual representation of these relationships, offering valuable insights into how injection practices may influence seismicity. By creating an innovative interactive geomap analysis tool, we aim to provide insights that can help stakeholders, policymakers, and the scientific community devise strategies to mitigate the seismic risks associated with these practices. It reflects our dedication to contributing to the understanding of induced seismicity's environmental and societal impacts, with the ultimate aim of guiding more informed and sustainable practices in petroleum extraction.
-
 
 ## <p style="color:#CC6600">2. Methodology</p> 
 
@@ -53,13 +55,17 @@ The project's methodology for managing the diverse datasets required for our ana
 
 #### 2.1.3 LOAD
 
-- **Amazon RDS**: Selected for its capacity to efficiently manage and store large datasets, Amazon RDS was utilized as the repository for our processed data. Through the employment of Python libraries such as Psycopg2 and SQLAlchemy, a connection was established between our database management tool (pgAdmin) and Amazon RDS. Dedicated tables were created for each dataset (earthquakes, injectionVolumes, pressureData), with the DataFrame column names meticulously matched to the corresponding table headers within the database. This preparatory work facilitated the smooth transfer of each DataFrame into its respective table in Amazon RDS, marking the completion of our data handling and database creation phase and laying the groundwork for our subsequent analysis.
-...
+- **Amazon Web Services RDS**: Selected for its capacity to efficiently manage and store large datasets, Amazon Web Services (AWS) RDS was utilized as the repository for our processed data. Through the employment of Python libraries such as Psycopg2 and SQLAlchemy, a connection was established between our database management tool (pgAdmin) and AWS RDS. Dedicated tables were created for each dataset (earthquakes, injectionVolumes, pressureData), with the DataFrame column names meticulously matched to the corresponding table headers within the database. This preparatory work facilitated the smooth transfer of each DataFrame into its respective table in AWS RDS, marking the completion of our data handling and database creation phase and laying the groundwork for our subsequent analysis.
 
 ### <p style="color:gray">2.2 Flask App Creation & Deployment</p>
-Our project's cornerstone is the development of a Flask application, acting as the crucial conduit between our comprehensive database hosted on Amazon Web Services (AWS) and the dynamic geomap featured on our web application. This Flask app is meticulously engineered to fetch, process, and present seismic activity, injection volume, and pore pressure data. It is designed to facilitate user access to real-time, interactive visualizations, enabling an in-depth exploration of the intricate relationships among these critical environmental and geological variables.
+Our project's cornerstone is the development of a Flask application, acting as the crucial conduit between our comprehensive database hosted on Amazon Web Services (AWS) and the dynamic geomap featured on our web application. This Flask app is engineered to fetch, process, and present seismic activity, injection volume, and pore pressure data. It is designed to facilitate user access to real-time, interactive visualizations, enabling an in-depth exploration of the intricate relationships among these critical environmental and geological variables.
 
-### <p style="color:gray">2.3 Visualizations</p>
+### <p style="color:gray">2.3 Data Flow Big Picture</p>
+The below flowchart outlines the overall data flow for a multi-tab application that integrates TexNet's seismic data and injection volumes with pressure data from a CMG model (output in .txt format). It features two APIs provided by TexNet, one for injection volumes and another for seismicity data. The data from these sources is consolidated into a PostgreSQL database on AWS Cloud. A Flask application, utilizing HTML, CSS, and JavaScript, serves this data on a multi-tab dashboard, providing a comprehensive and interactive view of the data.
+
+&nbsp;&nbsp;&nbsp;&nbsp; ![flowchart](images/readme/project3_flowchart.png)  
+
+### <p style="color:gray">2.4 Visualizations</p>
 The methodology for incorporating seismic, injection, and pressure data into our interactive geomap involves several integral steps, leveraging both the front-end capabilities provided through the web application and the back-end functionalities enabled by our Flask app:
 1. **Seamless Data Retrieval**: Initially, the Flask app establishes secure connections to our AWS-hosted database, which is meticulously curated to include up-to-date and historically relevant data on seismic activities, injection volumes, and pore pressure measurements. This setup ensures that the database serves as a reliable and scalable source of information for our analysis.
 2. **Dynamic Data Processing**: Upon user interaction, such as selecting specific tabs or initiating queries on the web application, the Flask app dynamically retrieves relevant datasets. It processes these datasets to fit the visualization requirements of the geomap, including converting data into GeoJSON format for geographic rendering and calculating necessary metrics that highlight the relationships between seismic events, injection practices, and subsurface pore pressure changes.
@@ -156,9 +162,10 @@ In conclusion, our visualized analysis presents a compelling narrative on the in
         - [Branca](https://pypi.org/project/branca/)
 
 ## <p style="color:#CC6600">6. Data Sources</p> 
+- CMG Model Output
 - [TexNet Seismic Data](https://www.beg.utexas.edu/texnet-cisr/texnet)
-- [USGS Produced Water Data](https://www.usgs.gov/)
 - [Injection Data API](https://injection.texnet.beg.utexas.edu/api/Export)
+- [USGS Produced Water Data](https://www.usgs.gov/)
 
 ## <p style="color:#CC6600">7. Contributors</p> 
 
