@@ -25,7 +25,8 @@
     <div class="container mt-3">
         
         <!-- Navigation Tabs via Bootstrap -->
-        <ul class="nav nav-tabs" id="myTab" role="tablist">
+        
+        <!-- <ul class="nav nav-tabs" id="myTab" role="tablist">
             <li class="nav-item">
                 <a class="nav-link active" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true">Home</a>
             </li>
@@ -41,12 +42,46 @@
             <li class="nav-item">
                 <a class="nav-link" id="glossary-tab" data-toggle="tab" href="#glossary" role="tab" aria-controls="glossary" aria-selected="false">Glossary of Terms</a>
             </li>
-        </ul>
+        </ul> -->
 
-        <div class="tab-content" id="myTabContent">
+        <nav>
+            <div class="nav nav-tabs" id="nav-tab" role="tablist">
+                <a class="nav-item nav-link active" id="nav-home-tab" data-toggle="tab" href="#nav-home" role="tab"
+                    aria-controls="nav-home" aria-selected="true">Home</a>
+                <div class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" id="nav-seismic-tab" role="button" data-toggle="dropdown"
+                        aria-haspopup="true" aria-expanded="false">
+                        Induced Seismicity & SWD Wells
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="nav-seismic-tab">
+                        <a class="dropdown-item" href="#nav-seismic_visualizations">Visualizations</a>
+                        <a class="dropdown-item" href="#nav-seismic_report">Detailed Report</a>
+                        <!-- Add more dropdown items here if needed -->
+                    </div>
+                </div>
+                <div class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" id="nav-chem-tab" role="button" data-toggle="dropdown"
+                        aria-haspopup="true" aria-expanded="false">
+                        Produced Water Chemistry
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="nav-chem-tab">
+                        <a class="dropdown-item" href="#nav-chemistry_visualizations">Visualizations</a>
+                        <a class="dropdown-item" href="#nav-chemistry_report">Detailed Report</a>
+                        <!-- Add more dropdown items here if needed -->
+                    </div>
+                </div>
+                <a class="nav-item nav-link" id="nav-about-tab" data-toggle="tab" href="#nav-about" role="tab"
+                    aria-controls="nav-about" aria-selected="true">About Us</a>
+                <a class="nav-item nav-link" id="nav-glossary-tab" data-toggle="tab" href="#nav-glossary" role="tab"
+                    aria-controls="nav-glossary" aria-selected="true">Glossary of Terms</a>
+
+            </div>
+        </nav>
+
+        <div class="tab-content" id="nav-tabContent">
             
             <!-- HOME TAB -->
-            <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
+            <div class="tab-pane fade show active" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab">
 
                 <!-- Banner Title Section -->
                 <div class="container-fluid banner1">
@@ -145,7 +180,8 @@
             </div>
             
             <!-- SEISMIC TAB -->
-            <div class="tab-pane fade" id="seismic" role="tabpanel" aria-labelledby="seismic-tab">
+            <!-- Visualizations Dropdown Content -->
+            <div class="tab-pane fade" id="nav-seismic_visualizations" role="tabpanel">
                 
                 <!-- Banner Title Section -->
                 <div class="container-fluid banner1">
@@ -213,8 +249,224 @@
                 </div>
             </div>
 
+            <!-- Detailed Report Dropdown Content -->
+            <div class="tab-pane fade" id="nav-seismic_report" role="tabpanel">
+                
+                <!-- Banner Title Section & Dropdown -->
+                <div class="container-fluid banner1">
+                    <h3>Detailed Report</h3>
+                </div>
+
+                <!-- Content Section -->
+                <div class="container-fluid">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <p> </p>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-lg-12">
+                            <h1>Interactive Geomap Analysis of Seismic Activity and Salt Water Disposal Well Injection Rates in the Delaware Basin</h1>
+
+                            <h2 style="color:#CC6600">Abstract</h2>
+                            <p>This web-based project provides an interactive and comprehensive exploration of the relationship between induced seismic activity, saltwater disposal (SWD) well injection volumes, and subsurface pore pressure changes within the Delaware Basin, West Texas. Utilizing publicly accessible data from TexNet and employing advanced numerical models, the project aims to illuminate the complex interactions that contribute to induced seismicity. The website features interactive tabs that allow users to delve into various aspects of the study, including seismic activity in relation to SWD wells, produced water chemistry (project 1), and a detailed glossary of terms for educational purposes.</p>
+
+                            <p>The project employs a structured Extract, Transform, Load (ETL) methodology for data preparation, leveraging technologies such as Python's Pandas and Pyproj libraries for data manipulation and transformation, and Amazon RDS for database storage. The extracted data sets—comprising pressure data from text files, injection volume data from APIs, and seismic event data—are meticulously processed to ensure accuracy and usability.</p>
+
+                            <p>The core of the website is an interactive geomap analysis tool, hosted within an iframe, which visualizes the temporal and spatial dynamics of SWD practices, pore pressure alterations, and seismic events. This tool, alongside additional visualizations of produced water chemistry, aims to engage and inform stakeholders, researchers, and the general public about the environmental and operational implications of SWD wells.</p>
+
+                            <p>Through this digital platform, we endeavor to provide a narrative that connects SWD well operations with seismic activity and water chemistry, offering insights into sustainable practices and risk mitigation strategies in the context of oil and gas extraction. The project underscores the importance of integrating scientific research with interactive data visualization to foster a broader understanding of induced seismicity and its associated challenges.</p>
+
+                            <h2 style="color:#CC6600">Table of Contents</h2>
+
+                            <ul>
+                            <li><a href="#1-introduction">1. Introduction</a></li>
+                            <li><a href="#2-methodology">2. Methodology</a>
+                            <ul>
+                            <li><a href="#21-data-handling--database-creation">2.1 Data Handling & Database Creation</a>
+                            <ul>
+                            <li><a href="#211-extract">2.1.1 Extract</a></li>
+                            <li><a href="#212-transform">2.1.2 Transform</a></li>
+                            <li><a href="#213-load">2.1.3 Load</a></li>
+                            </ul>
+                            </li>
+                            <li><a href="#22-flask-app-creation--deployment">2.2 Flask App Creation & Deployment</a></li>
+                            <li><a href="#23-data-flow-big-picture">2.3 Data Flow Big Picture</a></li>
+                            <li><a href="#24-visualizations">2.4 Visualizations</a></li>
+                            </ul>
+                            </li>
+                            <li><a href="#3-conclusion">3. Conclusion</a></li>
+                            <li><a href="#4-glossary-of-terms">4. Glossary of Terms</a></li>
+                            <li><a href="#5-technologies">5. Technologies</a></li>
+                            <li><a href="#6-data-sources">6. Data Sources</a></li>
+                            <li><a href="#7-contributors">7. Contributors</a></li>
+                            </ul>
+
+                            <h2 style="color:#CC6600">1. Introduction</h2>
+                            <p>The significant increase in seismic activity within Texas, notably surpassing California in the occurrence of ML2.5 or higher earthquakes since 2022, marks a critical juncture for both scientific inquiry and environmental stewardship. This uptick in seismic events, particularly concentrated in areas such as the Delaware Basin and the Midland-Odessa area, necessitates a comprehensive examination of the links between seismicity and human interventions, notably those undertaken by the petroleum industry. Our study adopts a targeted approach, merging seismic data from the TexNet public catalog, SWD (Salt Water Disposal) well injection volume data, and pore pressure details from sophisticated gridded numerical models. This concerted effort aims to clarify the complex dynamics between SWD practices and the resulting seismic activity, with a particular focus on the Delaware Basin, a key area for unconventional shale oil and gas extraction that has seen a noticeable increase in seismicity since 2014.</p>
+
+                            <p>A key aspect of our study is the temporal scope, constrained to the period from January 1, 2017, to January 1, 2024. This timeframe is dictated by the availability of seismic data from TexNet, ensuring a comprehensive analysis based on the most reliable and complete datasets available. Both seismic and SWD well injection volume data, accessible through TexNet via API calls, are in the public domain, allowing for an open and transparent research process.</p>
+
+                            <p>Our research focuses on illustrating the correlation between seismic activity, SWD well injection volumes, and changes in pore pressure. Through the development of an interactive geomap analysis tool, we visualize how the volume of fluid injected into SWD wells potentially elevates pore pressure and, consequently, affects the seismic activity of faults in the region. This project is driven by the goal of providing a clear visual representation of these relationships, offering valuable insights into how injection practices may influence seismicity. By creating an innovative interactive geomap analysis tool, we aim to provide insights that can help stakeholders, policymakers, and the scientific community devise strategies to mitigate the seismic risks associated with these practices. It reflects our dedication to contributing to the understanding of induced seismicity's environmental and societal impacts, with the ultimate aim of guiding more informed and sustainable practices in petroleum extraction.</p>
+
+                            <h2 style="color:#CC6600">2. Methodology</h2> 
+
+                            <h3 style="color:gray">2.1 Data Handling & Database Creation</h3>
+
+                            <p>The project's methodology for managing the diverse datasets required for our analysis entailed a structured approach to data handling and database creation, segmented into three primary stages: extract, transform, and load (ETL). This process ensured the data's integrity and usability for our analytical objectives.</p>
+
+                            <h4>2.1.1 EXTRACT</h4>
+
+                            <ul>
+                            <li><strong>Pressure Data</strong>: Originated from a text file, this dataset was transformed into a CSV format to facilitate easier manipulation and integration into our analysis framework.</li>
+                            <li><strong>Injection Volume Data</strong>: Retrieved from an API endpoint (<a href="https://injection.texnet.beg.utexas.edu/api/Export">https://injection.texnet.beg.utexas.edu/api/Export</a>), with specific parameters tailored to extract only the data pertinent to our project's scope.</li>
+                            <li><strong>Earthquake Data</strong>: Sourced from another API endpoint (<a href="https://maps.texnet.beg.utexas.edu/arcgis/rest/services/catalog/catalog_all_flat/MapServer/0/query">https://maps.texnet.beg.utexas.edu/arcgis/rest/services/catalog/catalog_all_flat/MapServer/0/query</a>), utilizing targeted parameters to filter the dataset according to our analytical needs. The data was initially loaded in JSON format.</li>
+                            </ul>
+
+                            <h4>2.1.2 TRANSFORM</h4>
+
+                            <ul>
+                            <li><strong>Pressure Data</strong>: Upon conversion to a Pandas DataFrame, the dataset was further refined by assigning a layer number to each row and converting the time column into a DateTime format for precise temporal analysis. Additionally, latitude and longitude values were transformed from the NAD 1927 State Plane Texas Central FIPS 4203 format to the WGS84 coordinate system using the pyproj library, ensuring geographical accuracy.</li>
+                            <li><strong>Injection Volume Data</strong> & <strong>Earthquake Data</strong>: Both datasets were processed into Pandas DataFrames for subsequent transformation steps. For the earthquake data, specifically, the event_date column was converted to DateTime format, and the time component was removed to retain only the date information (year-month-date), standardizing the temporal data across all datasets.</li>
+                            </ul>
+
+                            <h4>2.1.3 LOAD</h4>
+
+                            <p><strong>Amazon Web Services RDS</strong>: Selected for its capacity to efficiently manage and store large datasets, Amazon Web Services (AWS) RDS was utilized as the repository for our processed data. Through the employment of Python libraries such as Psycopg2 and SQLAlchemy, a connection was established between our database management tool (pgAdmin) and AWS RDS. Dedicated tables were created for each dataset (earthquakes, injectionVolumes, pressureData), with the DataFrame column names meticulously matched to the corresponding table headers within the database. This preparatory work facilitated the smooth transfer of each DataFrame into its respective table in AWS RDS, marking the completion of our data handling and database creation phase and laying the groundwork for our subsequent analysis.</p>
+
+                            <h3 style="color:gray">2.2 Flask App Creation & Deployment</h3>
+                            <p>Our project's cornerstone is the development of a Flask application, acting as the crucial conduit between our comprehensive database hosted on Amazon Web Services (AWS) and the dynamic geomap featured on our web application. This Flask app is engineered to fetch, process, and present seismic activity, injection volume, and pore pressure data. It is designed to facilitate user access to real-time, interactive visualizations, enabling an in-depth exploration of the intricate relationships among these critical environmental and geological variables.</p>
+
+                            <h3 style="color:gray">2.3 Data Flow Big Picture</h3>
+                            <p>The below flowchart outlines the overall data flow for a multi-tab application that integrates TexNet's seismic data and injection volumes with pressure data from a CMG model (output in .txt format). It features two APIs provided by TexNet, one for injection volumes and another for seismicity data. The data from these sources is consolidated into a PostgreSQL database on AWS Cloud. A Flask application, utilizing HTML, CSS, and JavaScript, serves this data on a multi-tab dashboard, providing a comprehensive and interactive view of the data.</p>
+
+                            <img src="{{ url_for('static', filename='images/report_seismic/project3_flowchart.png') }}" alt="flowchart">
+
+                            <h3 style="color:gray">2.4 Visualizations</h3>
+                            <p>The methodology for incorporating seismic, injection, and pressure data into our interactive geomap involves several integral steps, leveraging both the front-end capabilities provided through the web application and the back-end functionalities enabled by our Flask app:</p>
+                            <ol>
+                            <li><strong>Seamless Data Retrieval</strong>: Initially, the Flask app establishes secure connections to our AWS-hosted database, which is meticulously curated to include up-to-date and historically relevant data on seismic activities, injection volumes, and pore pressure measurements. This setup ensures that the database serves as a reliable and scalable source of information for our analysis.</li>
+                            <li><strong>Dynamic Data Processing</strong>: Upon user interaction, such as selecting specific tabs or initiating queries on the web application, the Flask app dynamically retrieves relevant datasets. It processes these datasets to fit the visualization requirements of the geomap, including converting data into GeoJSON format for geographic rendering and calculating necessary metrics that highlight the relationships between seismic events, injection practices, and subsurface pore pressure changes.</li>
+                            <li><strong>Interactive Geomap Visualization</strong>:
+                                <ul>
+                                <li>For <strong>seismic activity data</strong>, the app visualizes earthquake epicenters, magnitudes, and depths, allowing users to discern patterns and correlations with injection sites and pore pressure changes over time.</li>
+                                <li><strong>Injection volume data</strong> is represented through markers whose sizes reflect the volume of fluid injected, providing insights into the scale of SWD operations within the Delaware Basin. This visualization underscores temporal and spatial trends in injection practices.</li>
+                                <li><strong>Pore pressure data</strong> is integrated to illustrate how subsurface pressures vary across different geological layers and time periods, offering clues about the potential impact of fluid injections on the subsurface stress regime and seismicity.</li>
+                                </ul>
+                            </li>
+                            <li><strong>Enhanced User Engagement</strong>: The geomap is equipped with interactive features, such as pop-ups and sliders, enabling users to delve into specific details of each dataset. For instance, clicking on an injection marker might reveal the total volume injected and the corresponding time frame, while seismic markers could display information about the earthquake's magnitude, depth, and exact date.</li>
+                            <li><strong>Comprehensive Visualization Controls</strong>: A timeline slider control is incorporated into the geomap, facilitating the chronological exploration of seismic events, injection activities, and pore pressure changes. This feature allows users to visually track the progression and potential causality between SWD well injections and seismic activities, alongside corresponding pore pressure fluctuations.</li>
+                            </ol>
+                            <p>By harnessing the Flask app's capabilities to render these complex datasets interactively, our project not only demystifies the connections between induced seismicity, SWD practices, and subsurface dynamics but also promotes an engaging and educational experience for users. This comprehensive approach to data integration and visualization exemplifies our commitment to leveraging advanced technologies and methodologies to address critical environmental and geological questions, providing stakeholders, researchers, and the public with valuable insights into the sustainable management of natural resources and hazard mitigation.</p>
+
+                            <h2 style="color:#CC6600">3. Conclusion</h2>
+                            <p>Through our project's analysis, incorporating injection data, seismic data, and pore pressure data, all visualized comprehensively, we have identified significant patterns that illuminate the relationship between SWD well operations and seismic activities in West Texas, particularly in the Delaware Basin. Our findings underscore the intricate connections between injection into SWD and the resultant seismic events, highlighting several key observations:</p>
+
+                            <ol>
+                            <li><strong>Spatial and Temporal Correlations</strong>: We observed a clear spatial correlation between the locations of SWD wells and the occurrence of seismic events, with earthquake epicenters tending to cluster around high-density injection areas. Temporally, increases in seismic activity were often preceded by periods of intensified injection volumes, suggesting a direct link between SWD practices and the timing of seismic events.</li>
+                            <li><strong>Pore Pressure Influence</strong>: The visualization of pore pressure data alongside seismic and injection activities has provided critical insights into how changes in subsurface pressure conditions can influence fault stability. The areas experiencing increased seismic activity correspond with regions showing elevated pore pressure levels, indicative of the role fluid injection plays in modifying the subsurface stress regime.</li>
+                            <li><strong>Injection Parameters</strong>: Our analysis has reinforced the understanding that the volume fluid injected into SWD wells are pivotal in assessing the risk of induced seismicity. The visualized data highlight areas where elevated injection activities align with increased seismic occurrences, offering a quantitative basis for evaluating the impact of SWD operations on seismic risk.</li>
+                            </ol>
+
+                            <p>This project has leveraged visual analytics to bridge the gap between complex data sets and actionable insights, providing a robust framework for understanding the dynamics of induced seismicity in the Delaware Basin. The correlations and patterns unveiled through our visualizations not only contribute to the scientific discourse on induced seismicity but also serve as a valuable resource for stakeholders in assessing and mitigating the seismic risks associated with SWD well operations.</p>
+
+                            <p>In conclusion, our visualized analysis presents a compelling narrative on the interactions between SWD well injections, pore pressure changes, and seismic activity, offering a nuanced perspective on the geological and operational factors that drive induced seismicity. As we advance, it is crucial to continue refining our methodologies and expanding our data sets to enhance the precision of our insights, ultimately guiding more sustainable and safer resource extraction practices.</p>
+
+                            <h2 style="color:#CC6600">4. Glossary of Terms</h2>
+
+                            <ol>
+                            <li><ins>Class II Injection Well</ins>: A type of well designated for the injection of fluids associated with oil and natural gas production back into the ground. These wells are regulated under the Safe Drinking Water Act and are used to enhance oil production, dispose of brine (saltwater) that is a byproduct of oil and gas production, and store hydrocarbons that are liquid at standard temperature and pressure. Class II wells help in managing the byproducts of oil and gas extraction, thereby mitigating potential environmental impacts.</li>
+
+                            <li><ins>Salt Water Disposal (SWD) Well</ins>: A type of well used for the disposal of saline water (brine) that is produced along with oil and gas. The water is injected into porous rock formations deep underground, often into the same formation from which it was produced.</li>
+
+                            <li><ins>Seismic Activity</ins>: The frequency, type, and size of earthquakes experienced over a period of time in a specific area. Seismic activity is a natural process but can be influenced by human activities, such as the injection of fluids into the earth's subsurface.</li>
+
+                            <li><ins>Pore Pressure</ins>: The pressure of fluids within the pores of a rock or soil, which can affect the rock's mechanical properties and its ability to transmit fluids. Changes in pore pressure can influence the stability of the rock and potentially trigger seismic events.</li>
+
+                            <li><ins>Induced Seismicity</ins>: Earthquakes that result from human activities, such as the injection or extraction of fluids from the earth's subsurface, mining, reservoir-induced seismicity from the filling of large reservoirs, and other large-scale engineering projects.</li>
+
+                            <li><ins>TexNet</ins>: The Texas Seismological Network, a state-funded initiative to monitor and research earthquake activity across Texas. TexNet provides public access to seismic data through its catalog.</li>
+
+                            <li><ins>Injection Volume</ins>: The total amount of fluid injected into a well over a specified period. This term is particularly relevant in the context of SWD wells, where the volume of injected wastewater is a critical factor in understanding the potential for induced seismicity.</li>
+
+                            <li><ins>Gridded Numerical Models</ins>: Computational models that represent the subsurface through a grid of cells, allowing for the simulation of processes such as fluid flow and pressure changes. These models are used to predict how changes in conditions might affect the subsurface, including the potential for induced seismicity.</li>
+
+                            <li><ins>Interactive Geomap Analysis Tool</ins>: A digital tool that allows users to visualize and interact with geographic data on a map. In the context of this study, it refers to a tool developed to display seismic data, SWD well injection volumes, and pore pressure changes to analyze their relationships.</li>
+
+                            <li><ins>Delaware Basin</ins>: A sub-basin of the Permian Basin located in West Texas and southeastern New Mexico, known for its significant oil and gas production. The Delaware Basin has been a focus of study for induced seismicity related to petroleum extraction activities.</li>
+
+                            <li><ins>CMG (Computer Modelling Group) Model</ins>: A sophisticated computational tool used for simulating subsurface flow and transport phenomena, including hydrocarbon extraction, CO2 sequestration, and groundwater movement. CMG models are essential in the energy industry for reservoir simulation, helping in decision-making for exploration, development, and management of oil and gas resources.</li>
+
+                            <li><ins>Model Layers</ins>: Refers to the discrete stratigraphic units within a geological basin as represented in the CMG model. Each layer is a simplification of a geological formation or group of formations, characterized by specific properties such as porosity, permeability, and fluid saturation.</li>
+
+                            <li><ins>Model Layer 9-13 (Devonian-Silurian Top and Bottom Formation)</ins>: These layers correspond to the geological formations spanning the Devonian and Silurian periods within the model. They are critical for understanding the sedimentary deposits and hydrocarbon potential in the Delaware Basin.</li>
+
+                            <li><ins>Model Layer 19 (Ellenberger Formation)</ins>: This layer specifically represents the Ellenberger Formation within the CMG model, a significant carbonate rock formation dating back to the Early Ordovician period.</li>
+                            </ol>
+
+                            <h2 style="color:#CC6600">5. Technologies</h2>
+
+                            <ul>
+                            <li>Languages
+                                <ul>
+                                    <li><a href="https://www.python.org/">Python 3.10 or higher</a></li>
+                                    <li><a href="https://html.spec.whatwg.org/multipage/">HTML</a></li>
+                                    <li><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference">Javascript</a></li>
+                                    <li><a href="https://developer.mozilla.org/en-US/docs/Web/CSS">CSS</a></li>
+                                    <li><a href="https://www.postgresql.org/docs/current/sql.html">SQL(via PostgreSQL)</a></li>
+                                </ul>
+                            </li>
+                            <li>Libraries / Modules / Plugins
+                                <ul>
+                                    <li><a href="https://leafletjs.com/">Leaflet</a></li>
+                                    <li><a href="https://getbootstrap.com/">Bootstrap 4.5.2</a></li>
+                                    <li><a href="https://jquery.com/">jQuery 3.5.1</a></li>
+                                    <li><a href="https://popper.js.org/">Popper.js 1.16.0</a></li>
+                                    <li><a href="https://d3js.org/">D3.js v7</a></li>
+                                    <li><a href="https://www.papaparse.com/">PapaParse 5.3.0</a></li>
+                                    <li><a href="https://pandas.pydata.org/">Pandas</a></li>
+                                    <li><a href="https://www.numpy.org">NumPy</a></li>
+                                    <li><a href="https://www.psycopg.org/docs/">Psycopg2</a></li>
+                                    <li><a href="https://www.sqlalchemy.org/">SQLAlchemy</a></li>
+                                    <li><a href="https://pypi.org/project/pyproj/">Pyproj 3.6.1</a></li>
+                                    <li><a href="https://flask.palletsprojects.com/en/3.0.x/">Flask</a></li>
+                                </ul>
+                            </li>
+                            <li>Other Tools
+                                <ul>
+                                    <li><a href="https://www.postgresql.org/docs/">PostgreSQL</a></li>
+                                    <li><a href="https://aws.amazon.com/rds/">Amazon Web Services RDS</a></li>
+                                </ul>
+                            </li>
+                            </ul>
+
+                            <h2 style="color:#CC6600">6. Data Sources</h2>
+
+                            <ul>
+                            <li>CMG Model Output</li>
+                            <li><a href="https://www.beg.utexas.edu/texnet-cisr/texnet">TexNet Seismic Data</a></li>
+                            <li><a href="https://injection.texnet.beg.utexas.edu/api/Export">Injection Data API</a></li>
+                            <li><a href="https://www.usgs.gov/">USGS Produced Water Data</a></li>
+                            </ul>
+
+                            <h2 style="color:#CC6600">7. Contributors</h2>
+
+                            <ul>
+                            <li><a href="https://github.com/roxanadrv">Roxana Darvari</a></li>
+                            <li><a href="https://github.com/bsvab">Brittany Svab</a></li>
+                            <li><a href="https://github.com/ajuarez2112">Alejandro Juarez</a></li>
+                            <li><a href="https://github.com/thesarahcain">Sarah Cain</a></li>
+                            <li><a href="https://github.com/ithilien12358">John Cahill</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
             <!-- CHEMISTRY TAB -->
-            <div class="tab-pane fade" id="chemistry" role="tabpanel" aria-labelledby="chemistry-tab">
+            <!-- Visualizations Dropdown Content -->
+            <div class="tab-pane fade" id="nav-chemistry_visualizations" role="tabpanel">
                 
                 <!-- Banner Title Section & Dropdown -->
                 <div class="container-fluid banner1">
@@ -352,8 +604,212 @@
                 </div>
             </div>
 
+            <!-- Detailed Report Dropdown Content -->
+            <div class="tab-pane fade" id="nav-chemistry_report" role="tabpanel">
+                
+                <!-- Banner Title Section & Dropdown -->
+                <div class="container-fluid banner1">
+                    <h3>Detailed Report</h3>
+                </div>
+
+                <!-- Content Section -->
+                <div class="container-fluid">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <p> </p>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-lg-12">
+                            
+                            <h1>Analysis & Visualization of Produced Water Chemistry for Environmental & Agricultural Utilization</h1>
+
+                            <h2 style="color:#996600">Abstract:</h2>
+
+                            <p>Produced water, a byproduct of oil and gas extraction, poses environmental challenges due to its complex chemical composition and high salinity. This project focuses on two key objectives: analyzing the chemistry of produced water with a focus on scaling elements and evaluating the availability of lithium for potential extraction. Utilizing data from the United States Geological Survey (USGS), a comprehensive methodology for data cleaning and filtering is employed to ensure accuracy.</p>
+
+                            <p>The analysis encompasses key elements such as Sodium, Calcium, Chloride, Sulfate, and Magnesium, with a focus on Total Dissolved Solids (TDS) greater than 35,000 ppm. Applying natural chemical balance conditions refines the dataset, and stringent charge balance criteria are employed for reliability. Missing data are addressed with tailored strategies respecting chemical properties.</p>
+
+                            <p>Visualizations include box and violin plots showcasing elemental concentrations across geological basins, Piper plots for water type classification, and interactive maps revealing scaling element and lithium concentration clusters. The methodology ensures a clear representation of scaling element and lithium distribution and facilitates insights into spatial patterns. Furthermore, the project introduces a linear regression analysis on lithium concentration versus depth to investigate whether a relationship is present.</p>
+
+                            <p>In conclusion, this research provides a nuanced understanding of produced water chemistry, supports sustainable water management, aligns with DOE goals, and explores the potential for resource recovery. The methodologies presented are adaptable, promoting transparency and fostering environmentally responsible practices in the oil and gas industry.</p>
+
+                            <h2 style="color:#996600">Table of Contents:</h2>
+
+                            <ul>
+                                <li><a href="#1-introduction">Introduction</a>
+                                    <ul>
+                                        <li><a href="#11-overview-of-produced-water">Overview of Produced Water</a></li>
+                                        <li><a href="#11-overview-of-produced-water">Objectives</a></li>
+                                    </ul>
+                                </li>
+                                <li><a href="#2-data-acquisition--initial-processing">Data Acquisition & Initial Processing</a>
+                                    <ul>
+                                        <li><a href="#21-raw-data-acquisition">Raw Data Acquisition</a></li>
+                                        <li><a href="#22-data-loading--merging">Data Loading & Merging</a></li>
+                                    </ul>
+                                </li>
+                                <li><a href="#3-data-cleaning--filtering">Data Cleaning & Filtering</a>
+                                    <ul>
+                                        <li><a href="#31-column-removal">Column Removal</a></li>
+                                        <li><a href="#32-data-filtering-based-on-tds">Data Filtering Based on TDS</a></li>
+                                        <li><a href="#33-applying-conditions-for-filtering">Applying Conditions for Filtering</a></li>
+                                        <li><a href="#34-handling-missing-data">Handling Missing Data</a></li>
+                                    </ul>
+                                </li>
+                                <li><a href="#4-visualization">Visualization</a>
+                                    <ul>
+                                        <li><a href="#41-methodology-for-generating-box--violin-plots">Methodology for Generating Box & Violin Plots</a></li>
+                                        <li><a href="#42-methodology-for-generating-piper-plots">Methodology for Generating Piper Plots</a></li>
+                                        <li><a href="#43-methodology-for-mapping-scaling-element-concentration-clusters">Methodology for Mapping Scaling Element Concentration Clusters</a></li>
+                                        <li><a href="#44-methodology-for-mapping-lithium-concentration-clusters">Methodology for Mapping Lithium Concentration Clusters</a></li>
+                                        <li><a href="#45-methodology-for-generating-a-linear-regression-on-li-concentration-vs-depth">Methodology for Generating a Linear Regression on Li Concentration vs Depth</a></li>
+                                    </ul>
+                                </li>
+                                <li><a href="#5-conclusion">Conclusion</a></li>
+                                <li><a href="#6-glossary-of-terms">Glossary of Terms</a></li>
+                                <li><a href="#7-technologies">Technologies</a></li>
+                                <li><a href="#8-contributors">Contributors</a></li>
+                            </ul>
+
+                            <h2 style="color:#996600">1. Introduction:</h2>
+
+                            <h3 style="color:#707070">1.1. Overview of Produced Water</h3>
+
+                            <p>Produced water, the wastewater generated during the extraction of oil and gas and in other industrial processes, presents a significant environmental challenge. This water typically contains various chemicals and dissolved solids. The oil and gas industry often relies on injection wells to manage this produced water, where it is re-injected underground. While this method is efficient and cost-effective, it carries environmental risks, such as potential groundwater contamination and seismic activity inducement.</p>
+
+                            <p>In light of these challenges, the Department of Energy (DOE) has funded research to explore treatment options for high-salinity produced water from the oil and gas industry. This research also aims to investigate the feasibility of extracting critical elements, such as lithium, from produced water, thus turning a waste product into a potential resource.</p>
+
+                            <p>The oil and gas sector faces unique challenges in managing produced water, largely due to its complex chemical composition, high salinity, and the large volumes involved. Various treatment and management techniques are employed, balancing environmental impacts with economic considerations.</p>
+
+                            <h3 style="color:#707070">1.2. Objectives</h3>
+
+                            <p>This project, aligning with DOE's research interests, is centered around two key objectives:</p>
+
+                            <ol>
+                                <li>Analyzing the Chemistry of Produced Water: The aim is to understand the composition of produced water and identify elements that lead to scaling in treatment processes, a major impediment in water treatment leading to efficiency losses and increased costs.</li>
+                                <li>Evaluating Lithium Availability: We assess the potential for lithium extraction from produced water in the oil and gas industry across the U.S. With the current economic feasibility threshold for lithium extraction set at a concentration of 80 mg/l, this project explores the availability of lithium in produced water from different basins across the US, and anticipates future advancements in extraction technologies that could make it more economically viable.</li>
+                            </ol>
+
+                            <h2 style="color:#996600">2. Data Acquisition & Initial Processing:</h2>
+
+                            <h3 style="color:#707070">2.1. Raw Data Acquisition</h3>
+
+                            <p>The raw dataset for this study was sourced from the United States Geological Survey (USGS) website. The USGS provides comprehensive data on water resources, including data on produced water chemistry from various oil and gas basins across the United States. This dataset includes information on the concentrations of various elements, such as sodium, calcium, chloride, sulfate, and magnesium, as well as total dissolved solids (TDS) and lithium.</p>
+
+                            <p>The dataset is structured, containing rows representing individual samples and columns representing different parameters measured in the samples. Each sample is associated with a geographic location, allowing for spatial analysis of the data.</p>
+
+                            <h3 style="color:#707070">2.2. Data Loading & Merging</h3>
+
+                            <p>The raw data was loaded into a Python environment using the Pandas library, a powerful tool for data manipulation and analysis. The data was stored in a DataFrame object, allowing for easy manipulation and analysis.</p>
+
+                            <p>Multiple datasets were merged to create a comprehensive dataset covering multiple oil and gas basins across the United States. This merged dataset was then used for subsequent analysis.</p>
+
+                            <h2 style="color:#996600">3. Data Cleaning & Filtering:</h2>
+
+                            <h3 style="color:#707070">3.1. Column Removal</h3>
+
+                            <p>Before proceeding with the analysis, certain columns deemed irrelevant or redundant were removed from the dataset. This step streamlined the dataset, making it more manageable and improving computational efficiency.</p>
+
+                            <h3 style="color:#707070">3.2. Data Filtering Based on TDS</h3>
+
+                            <p>Produced water often has a high total dissolved solids (TDS) content, which can impact its usability and treatment requirements. To focus the analysis on samples with significant TDS levels, a filtering step was applied to exclude samples with TDS below a certain threshold.</p>
+
+                            <h3 style="color:#707070">3.3. Applying Conditions for Filtering</h3>
+
+                            <p>Further conditions were applied to the dataset to ensure the reliability and relevance of the data. These conditions included filtering out samples with incomplete information or suspected errors.</p>
+
+                            <h3 style="color:#707070">3.4. Handling Missing Data</h3>
+
+                            <p>Missing data points, a common issue in datasets, were addressed using appropriate strategies. Depending on the nature of the missing data and its potential impact on the analysis, various techniques such as imputation or removal of incomplete samples were employed.</p>
+
+                            <h2 style="color:#996600">4. Visualization:</h2>
+
+                            <p>The analysis of produced water chemistry and lithium availability was supported by various visualizations, aiding in data exploration and interpretation. The following methodologies were employed to generate visualizations:</p>
+
+                            <h3 style="color:#707070">4.1. Methodology for Generating Box & Violin Plots</h3>
+
+                            <p>Box and violin plots were used to visualize the distribution of elemental concentrations across different geological basins. These plots provide insights into the variability of element concentrations and highlight potential outliers.</p>
+
+                            <h3 style="color:#707070">4.2. Methodology for Generating Piper Plots</h3>
+
+                            <p>Piper plots were employed for water type classification based on major ion chemistry. These plots are particularly useful for visualizing the dominant ions present in the water samples and identifying distinct water types.</p>
+
+                            <h3 style="color:#707070">4.3. Methodology for Mapping Scaling Element Concentration Clusters</h3>
+
+                            <p>Interactive maps were created to visualize spatial clusters of scaling element concentrations in produced water samples. These maps allow for the identification of regions with elevated levels of scaling elements, aiding in risk assessment and management.</p>
+
+                            <h3 style="color:#707070">4.4. Methodology for Mapping Lithium Concentration Clusters</h3>
+
+                            <p>Similar to scaling element concentration maps, interactive maps were generated to visualize spatial clusters of lithium concentrations in produced water samples. These maps provide insights into the distribution of lithium across different oil and gas basins.</p>
+
+                            <h3 style="color:#707070">4.5. Methodology for Generating a Linear Regression on Li Concentration vs Depth</h3>
+
+                            <p>A linear regression analysis was performed to explore the relationship between lithium concentration and depth. This analysis aimed to determine if there is a correlation between lithium concentration and depth, which could inform future extraction strategies.</p>
+
+                            <h2 style="color:#996600">5. Conclusion:</h2>
+
+                            <p>The analysis and visualization of produced water chemistry presented in this project offer valuable insights into the composition and distribution of key elements in produced water samples from various oil and gas basins across the United States. By focusing on scaling elements and lithium availability, this research contributes to our understanding of produced water management and the potential for resource recovery.</p>
+
+                            <p>The methodologies employed in this project, including data cleaning, filtering, and visualization techniques, can be adapted and applied to other datasets, promoting transparency and fostering environmentally responsible practices in the oil and gas industry. By leveraging data-driven insights, stakeholders can make informed decisions regarding produced water treatment and management, ultimately contributing to sustainable water use and environmental protection.</p>
+
+                            <h2 style="color:#996600">6. Glossary of Terms:</h2>
+
+                            <ol>
+                                <li><ins>Produced Water</ins>: This refers to the water that is brought to the surface during oil and gas extraction. It often contains various organic and inorganic substances and is typically considered a byproduct of the hydrocarbon extraction process.</li>
+                                <li><ins>Well Depth</ins>: The vertical distance measured from the surface to the bottom of a well. This is a critical factor in geological and hydrological studies as it can influence the characteristics of the water or oil extracted.</li>
+                                <li><ins>Basin (Geological Basin)</ins>: A large-scale geological depression, often circular or elliptical in shape, where layers of sediment accumulate over time. Basins are critical in petroleum geology as they are often the sites of significant accumulations of oil and natural gas. These structures are formed by tectonic actions such as subsidence of the Earth's crust and can vary widely in size and complexity.</li>
+                                <li><ins>Formation (Geological Formation in Oil and Gas Reservoirs)</ins>: In the context of oil and gas exploration and production, a geological formation is a distinct layer of sedimentary rock with consistent characteristics that distinguish it from adjacent strata. These formations are critical in identifying potential reservoirs of hydrocarbons. They often contain organic material that, over geological time, has been transformed into oil and gas. The properties of a formation, such as porosity, permeability, and thickness, are key factors in determining the viability and productivity of an oil or gas reservoir. In oil and gas terminology, formations are usually named after the geographic location where they were first studied or identified. Understanding the geological formations is essential for successful drilling and extraction operations, as it guides the placement of wells and informs predictions about the presence and recoverability of oil and gas deposits.</li>
+                                <li><ins>Major Elements</ins>: These are the elements found in high concentrations in geological samples. They are significant in geochemical investigations as they influence the chemical and physical properties of rocks and fluids.</li>
+                                <li><ins>Scaling Elements in Produced Water Treatment</ins>: In the context of produced water treatment, scaling elements refer to minerals like calcium, magnesium, barium, and strontium, which can precipitate out of produced water under certain conditions. These precipitates can form scale that coats and clogs pipes and equipment, causing significant operational challenges in treatment processes. Managing scaling elements is crucial for efficient and cost-effective treatment of produced water.</li>
+                                <li><ins>Concentration</ins>: The abundance of a constituent divided by the total volume of a mixture. In geochemistry, concentration is a fundamental concept used to quantify the level of a particular element or compound in a geological sample. It is critical for understanding the composition and quality of groundwater, surface water, and produced water.</li>
+                                <li><ins>Molarity</ins>: A unit of concentration in chemistry, representing the number of moles of a solute dissolved in one liter of solution. It is a standard measure for quantifying the concentration of elements or compounds in a solution, crucial in geochemical analyses to determine the precise chemical makeup of water samples, including produced water.</li>
+                                <li><ins>Charge Balance</ins>: In geochemistry, this refers to the state where the sum of the charges from all the cations (positively charged ions) and anions (negatively charged ions) in a solution are balanced. It's important for understanding the chemical stability of mineral waters and produced waters.</li>
+                                <li><ins>Total Dissolved Solid (TDS)</ins>: A measure of the combined content of all inorganic and organic substances contained in a liquid. In water quality analysis and geochemistry, TDS is used to indicate the general quality of the water.</li>
+                                <li><ins>Violin Plot</ins>: A method of data visualization that combines a box plot with a kernel density plot. In environmental and geochemical studies, violin plots can illustrate the distribution and probability density of data, particularly useful for comparing multiple data sets.</li>
+                                <li><ins>Piper Plot</ins>: A graphical representation used in hydrochemistry to illustrate the chemical composition of water samples. The plot is divided into three fields: two triangular fields that show the major cations (calcium, magnesium, sodium, and potassium) and anions (carbonate, bicarbonate, sulfate, and chloride) respectively, and a central diamond-shaped field that provides a comprehensive view of water chemistry. Piper plots are instrumental in understanding the geochemical evolution of water, identifying water types, and assessing water-rock interaction processes.</li>
+                            </ol>
+
+                            <h2 style="color:#996600">7. Technologies:</h2>
+
+                            <ul>
+                            <li>Languages:</li>
+                                <ul>
+                                    <li><a href="https://www.python.org/">Python 3.10 or higher</a></li>
+                                    <li><a href="https://html.spec.whatwg.org/multipage/">HTML</a></li>
+                                </ul>
+                            <li>Libraries / Modules / Plugins:</li>
+                                <ul>
+                                    <li><a href="https://pandas.pydata.org/">Pandas</a></li>
+                                    <li><a href="https://www.numpy.org">NumPy</a></li>
+                                    <li><a href="https://matplotlib.org/">Matplotlib</a></li>
+                                    <li><a href="https://www.scipy.org/scipylib">SciPy</a></li>
+                                    <li><a href="https://scikit-learn.org/stable/index.html">Scikit-learn</a></li>
+                                    <li><a href="https://github.com/jyangfsu/WQChartPy/tree/main?tab=readme-ov-file">WQChartPy</a></li>
+                                    <li><a href="https://seaborn.pydata.org/#">Seaborn</a></li>
+                                    <li><a href="https://geopandas.org/en/stable/#">GeoPandas</a></li>
+                                    <li><a href="https://pypi.org/project/folium/">Folium</a></li>
+                                    <li><a href="https://pypi.org/project/branca/">Branca</a></li>
+                                </ul>
+                            </ul>
+
+                            <h2 style="color:#996600">8. Contributors:</h2>
+
+                            <ul>
+                                <li><a href="https://github.com/roxanadrv">Roxana Darvari</a></li>
+                                <li><a href="https://github.com/bsvab">Brittany Svab</a></li>
+                                <li><a href="https://github.com/ithilien12358">John Cahill</a></li>
+                                <li><a href="https://github.com/ajuarez2112">Alejandro Juarez</a></li>
+                                <li><a href="https://github.com/thesarahcain">Sarah Cain</a></li>
+                            </ul>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+
             <!-- ABOUT US TAB -->
-            <div class="tab-pane fade" id="about_us" role="tabpanel" aria-labelledby="about_us-tab">
+            <div class="tab-pane fade" id="nav-about" role="tabpanel" aria-labelledby="nav-about-tab">
 
                 <!-- Banner Title Section -->
                 <div class="container-fluid banner1">
@@ -557,7 +1013,7 @@
                 </div>
             </div>
             <!-- GLOSSARY TAB -->
-            <div class="tab-pane fade" id="glossary" role="tabpanel" aria-labelledby="glossary-tab">
+            <div class="tab-pane fade" id="nav-glossary" role="tabpanel" aria-labelledby="nav-glossary-tab">
 
                 <!-- Banner Title Section -->
                 <div class="container-fluid banner1">
@@ -674,6 +1130,8 @@
     <script src="{{ url_for('static', filename='js/tab_chemistry.js') }}"></script>
     <!-- <script src="{{ url_for('static', filename='js/tab_about_us.js') }}"></script> --> <!-- THIS JS CODE MUST BE DIRECTLY IN THE HTML IN ORDER FOR FLASK TO RENDER, IT IS INCLUDED IN SCRIPT TAG BELOW -->
 
+    
+
     <script>
         let team = ["roxana_darvari", "brittany_svab", "alejandro_juarez", "sarah_cain", "john_cahill"]
 
@@ -727,6 +1185,18 @@
 
     </script>
 
+    <script>
+        // Handle click events for dropdown items to switch active tab
+        $(document).ready(function () {
+            console.log("Document is ready"); // Debugging statement
+            $('.dropdown-item').on('click', function (e) {
+                console.log("Dropdown item clicked"); // Debugging statement
+                e.preventDefault();
+                var targetTab = $(this).attr('href');
+                $('.nav-tabs a[href="' + targetTab + '"]').tab('show');
+            });
+        });
+    </script>
 
 </body>
 </html>
