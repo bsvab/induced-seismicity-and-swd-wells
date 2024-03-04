@@ -106,23 +106,16 @@ In conclusion, our visualized analysis presents a compelling narrative on the in
 
 10. <ins>Delaware Basin</ins>: A sub-basin of the Permian Basin located in West Texas and southeastern New Mexico, known for its significant oil and gas production. The Delaware Basin has been a focus of study for induced seismicity related to petroleum extraction activities.
 
+11. <ins>CMG (Computer Modelling Group) Model</ins>: A sophisticated computational tool used for simulating subsurface flow and transport phenomena, including hydrocarbon extraction, CO2 sequestration, and groundwater movement. CMG models are essential in the energy industry for reservoir simulation, helping in decision-making for exploration, development, and management of oil and gas resources.
+
+12. <ins>Model Layers</ins>: Refers to the discrete stratigraphic units within a geological basin as represented in the CMG model. Each layer is a simplification of a geological formation or group of formations, characterized by specific properties such as porosity, permeability, and fluid saturation.
+
+13. <ins>Model Layer 9-13 (Devonian-Silurian Top and Bottom Formation)</ins>: These layers correspond to the geological formations spanning the Devonian and Silurian periods within the model. They are critical for understanding the sedimentary deposits and hydrocarbon potential in the Delaware Basin.
+
+14. <ins>Model Layer 19 (Ellenberger Formation)</ins>: This layer specifically represents the Ellenberger Formation within the CMG model, a significant carbonate rock formation dating back to the Early Ordovician period.
+
 ## <p style="color:#CC6600">5. Technologies</p> 
 
-- <ins>Produced Water Chemistry</ins>
-    - Languages 
-        - [Python 3.10 or higher](https://www.python.org/)
-        - [HTML](https://html.spec.whatwg.org/multipage/)
-    - Libraries / Modules / Plugins
-        - [Pandas](https://pandas.pydata.org/)
-        - [NumPy](https://www.numpy.org)
-        - [Matplotlib](https://matplotlib.org/)
-        - [SciPy](https://www.scipy.org/scipylib)
-        - [Scikit-learn](https://scikit-learn.org/stable/index.html)
-        - [WQChartPy](https://github.com/jyangfsu/WQChartPy/tree/main?tab=readme-ov-file) 
-        - [Seaborn](https://seaborn.pydata.org/#) 
-        - [GeoPandas](https://geopandas.org/en/stable/#) 
-        - [Folium](https://pypi.org/project/folium/)
-        - [Branca](https://pypi.org/project/branca/)
 - <ins>Induced Seismic Activity & Injection Wells</ins>
     - Languages 
         - [Python 3.10 or higher](https://www.python.org/)
@@ -146,6 +139,21 @@ In conclusion, our visualized analysis presents a compelling narrative on the in
     - Other Tools
         - [PostgreSQL](https://www.postgresql.org/docs/)
         - [Amazon Web Services RDS](https://aws.amazon.com/rds/)
+- <ins>Produced Water Chemistry</ins>
+    - Languages 
+        - [Python 3.10 or higher](https://www.python.org/)
+        - [HTML](https://html.spec.whatwg.org/multipage/)
+    - Libraries / Modules / Plugins
+        - [Pandas](https://pandas.pydata.org/)
+        - [NumPy](https://www.numpy.org)
+        - [Matplotlib](https://matplotlib.org/)
+        - [SciPy](https://www.scipy.org/scipylib)
+        - [Scikit-learn](https://scikit-learn.org/stable/index.html)
+        - [WQChartPy](https://github.com/jyangfsu/WQChartPy/tree/main?tab=readme-ov-file) 
+        - [Seaborn](https://seaborn.pydata.org/#) 
+        - [GeoPandas](https://geopandas.org/en/stable/#) 
+        - [Folium](https://pypi.org/project/folium/)
+        - [Branca](https://pypi.org/project/branca/)
 
 ## <p style="color:#CC6600">6. Data Sources</p> 
 - [TexNet Seismic Data](https://www.beg.utexas.edu/texnet-cisr/texnet)
