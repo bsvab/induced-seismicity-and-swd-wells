@@ -173,4 +173,3 @@ In conclusion, our visualized analysis presents a compelling narrative on the in
 - [Brittany Svab](https://github.com/bsvab)
 - [Alejandro Juarez](https://github.com/ajuarez2112)
 - [Sarah Cain](https://github.com/thesarahcain)
-- [John Cahill](https://github.com/ithilien12358)
