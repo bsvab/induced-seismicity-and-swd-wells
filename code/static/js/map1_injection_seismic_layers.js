@@ -94,7 +94,7 @@ async function initTimelineLayers() {
         let radius = earthquakeCircleSize(magnitude);
         let event_date = feature.properties["event_date"];
         let popupContent = `Magnitude: ${magnitude}<br>`+
-                            `Event Date:${event_date}</br>`;
+                            `Event Date: ${event_date}</br>`;
         return L.circleMarker(latlng, {
         radius: radius,
         color: '#d53e4f', // Red color for earthquake data
