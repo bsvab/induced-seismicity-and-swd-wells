@@ -9,7 +9,7 @@
     <script src="https://unpkg.com/leaflet@1.6.0/dist/leaflet.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.4.0/dist/js/bootstrap.bundle.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/PapaParse/5.3.0/papaparse.min.js"></script>
     <script src="https://d3js.org/d3.v7.min.js"></script>
 
@@ -1200,6 +1200,40 @@
                 $('.nav-tabs a[href="' + targetTab + '"]').tab('show');
             });
         });
+    </script>
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        // Enable Bootstrap 5 dropdown functionality explicitly if needed
+        var dropdownElementList = [].slice.call(document.querySelectorAll('.dropdown-toggle'));
+        var dropdownList = dropdownElementList.map(function (dropdownToggleEl) {
+            return new bootstrap.Dropdown(dropdownToggleEl);
+        });
+    
+        // Handling click on dropdown items
+        document.querySelectorAll('.dropdown-item').forEach(item => {
+            item.addEventListener('click', function (e) {
+                e.preventDefault(); // Prevent default anchor behavior
+    
+                const targetTabSelector = this.getAttribute('href=rev-seismic-tab');
+                const targetTab = document.querySelector(`.nav-tabs a[href="${targetTabSelector}"]`);
+    
+                // Hide current active tab content
+                document.querySelector('.tab-pane.active').classList.remove('active', 'show');
+    
+                // Show the target tab content
+                const targetTabPane = document.querySelector(targetTab.getAttribute('href=nav-chem-tab'));
+                targetTabPane.classList.add('active', 'show');
+    
+                // Activate the target tab
+                document.querySelector('.nav-tabs .nav-link.active').classList.remove('active');
+                targetTab.classList.add('active');
+    
+                // Close the dropdown (Bootstrap 5 method)
+                let dropdown = bootstrap.Dropdown.getInstance(item.closest('.dropdown'));
+                if (dropdown) dropdown.hide();
+            });
+        });
+    });
     </script>
 
 </body>
