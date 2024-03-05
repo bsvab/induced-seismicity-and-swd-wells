@@ -69,21 +69,6 @@ def index_copy():
     ]
     return render_template('index_copy.html', basins=basins, basins_no_spaces=basins_no_spaces)
 
-# Route to tester
-@app.route('/tester')
-def tester():
-    return render_template('tester.html')
-
-# Route to chemistry_visualizations
-@app.route('/chemistry_visualizations')
-def chemistry_visualizations():
-    return render_template('chemistry_visualizations.html')
-
-# Route to chemistry_visualizations
-@app.route('/chemistry_report')
-def chemistry_report():
-    return render_template('chemistry_report.html')
-
 # Route to map1
 @app.route('/map1')
 def map1():
@@ -106,7 +91,7 @@ def map4():
 
 @app.route('/team_image_urls')
 def get_team_image_urls():
-    team = ['roxana_darvari', 'brittany_svab', 'alejandro_juarez', 'sarah_cain', 'john_cahill']
+    team = ['roxana_darvari', 'brittany_svab', 'alejandro_juarez', 'sarah_cain']
     team_image_urls = {}
     for person in team:
         filename = f'images/team/{person}.png'
